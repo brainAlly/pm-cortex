@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Unified PM Operating System — three-tier memory brain + 45 commands, 8 skills, and 7 sub-agents for product managers",
   "author": {
-    "name": "Brainly IO",
+    "name": "BrainAlly",
     "email": "contact@brainly.io",
-    "url": "https://github.com/brainly-io/unified-pm-os"
+    "url": "https://github.com/brainAlly/pm-cortex"
   },
   "keywords": [
     "product-management",
