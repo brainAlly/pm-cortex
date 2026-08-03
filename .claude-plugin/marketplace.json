@@ -1,12 +1,12 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "unified-pm-os",
+  "name": "PM Cortex",
   "version": "1.0.0",
   "description": "Unified PM Operating System — three-tier memory brain + 58 rationalized skills, commands, and sub-agents for product managers.",
   "owner": {
     "name": "BrainAlly",
     "email": "contact@brainly.io",
-    "url": "https://github.com/brainly-io/unified-pm-os"
+    "url": "https://github.com/brainAlly/pm-cortex"
   },
   "plugins": [
     {
