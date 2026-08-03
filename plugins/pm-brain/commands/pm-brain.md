@@ -42,20 +42,55 @@ Load `prompts/interview.md`. Ask the 6 batches (greenfield) or only the gaps not
 
 ### 4. Copy the scaffold
 
-Copy **every file and folder** from `scaffold/` into the current working directory — including the hidden `.claude/` directory (hooks + per-brain settings) and dotfiles (`.gitignore`, `.gitkeep`). Preserve structure.
+Copy **every file and folder** from `scaffold/` into the current working directory — including the hidden `.claude/` directory (hooks + per-brain settings) and dotfiles (`.gitignore`, `.gitkeep`). Preserve structure exactly.
 
 Use the form of copy that picks up dotfiles by default:
 
 - **Bash:** `cp -R scaffold/. <dest>/`  (the trailing `/.` is what makes dotfiles come along)
 - **PowerShell:** `Copy-Item -Recurse -Force scaffold\* <dest>\` followed by `Copy-Item -Recurse -Force scaffold\.* <dest>\` (the second pass picks up `.claude/` and `.gitignore`; `Copy-Item -Recurse scaffold\*` alone *will* silently drop them)
 
-After copying, verify the install by listing the destination — `.claude/`, `.gitignore`, `.pm-os-version`, `CLAUDE.md`, `outputs/`, and every brain area folder (`brain/knowledge/`, `brain/hypotheses/`, `brain/decisions/`, `brain/source/`, `brain/ingestion/`, `brain/stakeholders/`, `brain/style/`, `rules/`, `maintenance/`, `docs/`) must all be present. If `.claude/` is missing the hook won't fire on agent writes and schema violations will go uncaught — re-do the copy.
+**After copying, run this verification checklist. Every item must pass before proceeding.**
+
+Root-level files and folders:
+- [ ] `.claude/` directory exists
+- [ ] `.claude/commands/` exists and contains 45 `.md` files
+- [ ] `.claude/skills/` exists and contains 54 subdirectories (each with a `SKILL.md`)
+- [ ] `.claude/sub-agents/` exists and contains 7 `.md` files
+- [ ] `.claude/hooks/validate_brain_file.py` exists
+- [ ] `.claude/settings.json` exists
+- [ ] `.gitignore` exists
+- [ ] `.pm-os-version` exists
+- [ ] `CLAUDE.md` exists
+- [ ] `brain/` exists as a **directory** (not individual brain folders at root)
+- [ ] `docs/` exists with `examples/` and `advanced/` subdirectories
+- [ ] `maintenance/` exists
+- [ ] `outputs/` exists
+- [ ] `rules/` exists
+- [ ] `templates/` exists and contains 6 `.md` files
+
+Brain subdirectories (all must be **inside `brain/`**, never at project root):
+- [ ] `brain/decisions/`
+- [ ] `brain/hypotheses/`
+- [ ] `brain/ingestion/` (with `meetings/`, `interviews/`, `market/`, `adhoc/` subdirs)
+- [ ] `brain/knowledge/` (with `product/`, `users/`, `market/`, `org/` subdirs)
+- [ ] `brain/source/` (with `meetings/`, `interviews/`, `market/`, `adhoc/` subdirs)
+- [ ] `brain/stakeholders/`
+- [ ] `brain/style/`
+- [ ] `brain/INDEX.md`
+
+**If any item fails:**
+- If `brain/` is missing and `decisions/`, `hypotheses/`, etc. appear at project root — the scaffold was not copied; Claude regenerated the old pm-brain structure from memory. Do NOT proceed. Tell the PM: "Scaffold copy failed — I could not read the plugin's scaffold/ directory and generated the wrong structure from memory. Please verify the plugin is correctly installed in Claude Desktop and retry /pm-brain."
+- If `.claude/commands/` is empty or missing — same failure mode. Same message.
+- If `templates/` is missing — same failure mode. Same message.
+- Do not attempt to recreate missing files from memory. The scaffold is deterministic and must come from the plugin's `scaffold/` directory verbatim.
 
 **Critical rules:**
 - Copy in place. The current working directory **is** the project root. Do not create a nested subfolder.
+- Brain subdirectories (`decisions/`, `hypotheses/`, `knowledge/`, etc.) live inside `brain/` — never at the project root. If you see them at root, the copy failed.
 - Preserve `.gitkeep` files in empty folders.
 - Preserve `.claude/hooks/validate_brain_file.py` and `.claude/settings.json` exactly as shipped — they're what makes schema enforcement happen in-loop as the agent edits brain files.
 - Do not modify scaffold files at the source. If you need to change a template permanently, edit `scaffold/` and re-version the skill.
+- **Never regenerate scaffold content from memory.** If a file or directory is missing after the copy, the copy failed. Fix the copy — do not synthesize replacements.
 
 ### 5. Populate placeholders from interview answers
 
@@ -194,8 +229,12 @@ pm-brain/
 │   │   ├── source/           # Verbatim audit anchors
 │   │   └── ingestion/        # Synthesized records
 │   ├── rules/                # PM's process rules (discovery, data, etc.)
+│   ├── templates/            # Blank output starters (PRD, OKR, retro, launch checklist, etc.)
 │   ├── maintenance/          # /review run logs
-│   ├── docs/                 # Guidebook, case studies, troubleshooting, FAQs
+│   ├── docs/
+│   │   ├── examples/         # Example PRDs and case studies for style reference
+│   │   ├── advanced/         # Guides (agents, context management, prompt testing, etc.)
+│   │   └── *.md              # Overview, schemas, workflows, system-evolution
 │   └── outputs/              # Generated artifacts (PRDs, decks, etc.)
 ├── CHANGELOG.md
 └── UPGRADE_MANIFEST.md
