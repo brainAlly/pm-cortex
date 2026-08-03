@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "PM Cortex",
+  "name": "pm-cortex",
   "version": "1.0.0",
   "description": "Unified PM Operating System — three-tier memory brain + 58 rationalized skills, commands, and sub-agents for product managers.",
   "owner": {
