@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "unified-pm-os",
+  "version": "1.0.0",
+  "description": "Unified PM Operating System — three-tier memory brain + 58 rationalized skills, commands, and sub-agents for product managers.",
+  "owner": {
+    "name": "BrainAlly",
+    "email": "contact@brainly.io",
+    "url": "https://github.com/brainly-io/unified-pm-os"
+  },
+  "plugins": [
+    {
+      "name": "pm-brain",
+      "description": "Initialize your PM Brain — a self-evolving second brain with memory, personalization, and 45 PM commands built in.",
+      "source": "./plugins/pm-brain",
+      "category": "product-management",
+      "featured": true
+    }
+  ]
+}
