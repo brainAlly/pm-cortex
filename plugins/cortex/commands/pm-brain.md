@@ -217,6 +217,7 @@ pm-brain/
 │   │   ├── skills/           # 8 standalone skills (local to project)
 │   │   ├── sub-agents/       # 7 sub-agents (local to project)
 │   │   └── settings.json     # Wires the hook to Write|Edit
+│   ├── .gitignore            # Ignores source/, ingestion/, outputs/, maintenance/log/
 │   ├── .pm-os-version        # Current installed version
 │   ├── CLAUDE.md             # Operating manual (PM-OS:START/END markers)
 │   ├── brain/
