@@ -1,0 +1,47 @@
+# ── OS ──────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+
+# ── Python (hooks) ───────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ── brain/source/ ────────────────────────────────────────────────────────────
+# Raw artifacts — immutable originals. Large files, sensitive transcripts.
+# Directories are tracked via .gitkeep; contents are not.
+brain/source/interviews/*
+!brain/source/interviews/.gitkeep
+brain/source/meetings/*
+!brain/source/meetings/.gitkeep
+brain/source/market/*
+!brain/source/market/.gitkeep
+brain/source/adhoc/*
+!brain/source/adhoc/.gitkeep
+
+# ── brain/ingestion/ ─────────────────────────────────────────────────────────
+# Working memory — synthesized observations, not yet promoted.
+# Directories are tracked via .gitkeep; contents are not.
+brain/ingestion/interviews/*
+!brain/ingestion/interviews/.gitkeep
+brain/ingestion/meetings/*
+!brain/ingestion/meetings/.gitkeep
+brain/ingestion/market/*
+!brain/ingestion/market/.gitkeep
+brain/ingestion/adhoc/*
+!brain/ingestion/adhoc/.gitkeep
+
+# ── outputs/ ─────────────────────────────────────────────────────────────────
+# Generated deliverables — PRDs, plans, etc. Not source of truth.
+outputs/*
+!outputs/.gitkeep
+
+# ── maintenance/log/ ─────────────────────────────────────────────────────────
+maintenance/log/*
+!maintenance/log/.gitkeep
