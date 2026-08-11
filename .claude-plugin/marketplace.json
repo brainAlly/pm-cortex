@@ -10,9 +10,9 @@
   },
   "plugins": [
     {
-      "name": "pm-brain",
-      "description": "Initialize your PM Brain — a self-evolving second brain with memory, personalization, and 45 PM commands built in.",
-      "source": "./plugins/pm-brain",
+      "name": "cortex",
+      "description": "Initialize your PM Cortex brain — a self-evolving second brain with memory, personalization, and 45 PM commands built in.",
+      "source": "./plugins/cortex",
       "category": "product-management",
       "featured": true
     }

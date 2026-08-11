@@ -11,7 +11,7 @@ PM Cortex is a unified product management operating system — one plugin, one b
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                          PM CORTEX                                   │
-│                   (single plugin: pm-brain)                          │
+│                   (single plugin: cortex)                          │
 ├──────────────────────┬──────────────────────┬────────────────────────┤
 │   CONTEXTUAL MEMORY  │  ORCHESTRATED         │  SPECIALIST            │
 │   (Brain Layer)      │  COMMANDS             │  REVIEWERS             │
@@ -162,7 +162,7 @@ your-product-brain/                (scaffolded by /pm-brain)
 ```
 
 ```
-~/.claude/plugins/pm-brain/        (plugin — installed globally)
+~/.claude/plugins/cortex/        (plugin — installed globally)
 ├── commands/pm-brain.md           (init + upgrade orchestration)
 ├── prompts/                       (interview, migration, post-scaffold)
 └── scaffold/                      (deterministic template copied on init)

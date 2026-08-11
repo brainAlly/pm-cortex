@@ -51,7 +51,7 @@ To test PM Cortex thoroughly:
 1. **Install PM Cortex**
    ```
    claude plugin marketplace add brainAlly/pm-cortex
-   claude plugin install pm-brain@pm-cortex
+   claude plugin install cortex@pm-cortex
    ```
 
 2. **Initialize a test brain**

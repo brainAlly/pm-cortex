@@ -13,7 +13,7 @@ Get PM Cortex running in under 10 minutes.
 
 ```
 claude plugin marketplace add brainAlly/pm-cortex
-claude plugin install pm-brain@pm-cortex
+claude plugin install cortex@pm-cortex
 ```
 
 That's it. You now have:
@@ -112,7 +112,7 @@ The system compounds over time. The more you ingest, the better every command ge
 
 **"Plugin not found"**
 - Verify marketplace is added: `claude plugin marketplace list`
-- Retry: `claude plugin install pm-brain@pm-cortex`
+- Retry: `claude plugin install cortex@pm-cortex`
 
 **"Brain dirs missing after init"**
 - Verify `brain/` subdirectory exists: `ls brain/`
