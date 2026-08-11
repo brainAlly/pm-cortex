@@ -52,7 +52,7 @@ Seven independent agents — senior engineer, product designer, executive, legal
 
 ```
 claude plugin marketplace add brainAlly/pm-cortex
-claude plugin install pm-brain@pm-cortex
+claude plugin install cortex@pm-cortex
 ```
 
 See [Quickstart Guide](quickstart.md) for full setup including brain initialization.

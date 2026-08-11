@@ -55,7 +55,7 @@ Help me install PM Cortex.
 Check if the brainAlly/pm-cortex marketplace is added. If not, add it with:
 claude plugin marketplace add brainAlly/pm-cortex
 
-Then install: claude plugin install pm-brain@pm-cortex
+Then install: claude plugin install cortex@pm-cortex
 
 After installation, guide me through creating a brain directory, opening it in Claude Desktop, and running /pm-brain to initialize.
 ```
@@ -71,7 +71,7 @@ After installation, guide me through creating a brain directory, opening it in C
 claude plugin marketplace add brainAlly/pm-cortex
 
 # Install
-claude plugin install pm-brain@pm-cortex
+claude plugin install cortex@pm-cortex
 ```
 
 ---
@@ -272,7 +272,7 @@ pm-cortex/
 ├── .claude-plugin/
 │   └── marketplace.json          # Plugin registry (brainAlly/pm-cortex)
 │
-└── plugins/pm-brain/
+└── plugins/cortex/
     ├── .claude-plugin/
     │   └── plugin.json           # Plugin identity
     ├── commands/
