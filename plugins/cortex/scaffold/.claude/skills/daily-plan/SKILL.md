@@ -58,12 +58,12 @@ Inspired by personal operating system patterns but tailored specifically for Pro
 ## Context Routing
 
 **Check these files first:**
-1. `context-library/strategy/` - Quarter priorities, OKRs, North Star
+1. `brain/knowledge/strategy.md` - Quarter priorities, OKRs, North Star
 2. `outputs/weekly-plans/` - This week's priorities (if `/weekly-plan` was run)
 3. `outputs/prds/` - Active PRDs and their stages
-4. `context-library/stakeholder-*.md` - Stakeholder profiles and communication styles
+4. `brain/stakeholders/[slug].md` - Stakeholder profiles and communication styles
 5. `outputs/meeting-notes/` - Recent meeting context
-6. `context-library/launches/` - Recently launched features (past 2 weeks)
+6. `brain/knowledge/product/features/` - Recently launched features (filter by status: launched, past 2 weeks)
 
 **Integration Options (Multiple Paths):**
 
@@ -154,7 +154,7 @@ Extract:
 ```
 
 For each meeting:
-- Look up attendees in `context-library/stakeholder-*.md`
+- Look up attendees in `brain/stakeholders/[slug].md`
 - Scan `outputs/meeting-notes/` for recent interactions with each person
 - Note: What was discussed last time, open action items
 
@@ -192,7 +192,7 @@ If Gmail MCP not available:
 
 **C. Active PRDs & Initiatives:**
 
-Scan `outputs/prds/` and `context-library/prds/`:
+Scan `outputs/prds/`:
 - Check file modification dates (recently updated = active)
 - Read frontmatter or first section to determine stage:
   - Team Kickoff
@@ -207,7 +207,7 @@ For each active PRD:
 - What the next milestone is
 - Who's blocking progress (if stalled)
 
-Cross-reference with `context-library/strategy/`:
+Cross-reference with `brain/knowledge/strategy.md`:
 - How does each PRD map to quarter priorities?
 - Which strategic pillar does it support?
 
@@ -237,7 +237,7 @@ Categorize:
 
 **E. Metrics to Monitor (Analytics MCP or files):**
 
-Check `context-library/launches/` for features launched in past 2 weeks.
+Check `brain/knowledge/product/features/` for features with status: launched in past 2 weeks.
 
 For each recent launch:
 If Analytics MCP available:
@@ -248,7 +248,7 @@ Metrics: Adoption, engagement, conversion (based on PRD success criteria)
 ```
 
 If MCP not available:
-- Check if metrics file exists in `context-library/metrics/`
+- Check `brain/knowledge/product/metrics.md` for tracked metrics
 - Or note: "Manual check needed for [feature] metrics"
 
 Flag:
@@ -263,8 +263,8 @@ Flag:
 For each person you're meeting today:
 
 1. **Profile lookup:**
-   - Read `context-library/stakeholder-*.md` if exists
-   - Extract: Role, communication style, priorities, pet peeves
+   - Read `brain/stakeholders/[slug].md` if exists
+   - Extract: Role, communication style, priorities, open asks, last concern
 
 2. **Recent interaction history:**
    - Scan `outputs/meeting-notes/` for past meetings with this person
@@ -347,7 +347,7 @@ mcps_used: [Calendar, Gmail, Linear, Analytics]
 
 ## Strategic Context
 
-**This Quarter's North Star:** [from strategy/]
+**This Quarter's North Star:** [from brain/knowledge/strategy.md]
 **This Week's Priority:** [from weekly plan]
 
 **Active Initiatives:**
@@ -486,8 +486,8 @@ mcps_used: [Calendar, Gmail, Linear, Analytics]
 **Delegation Section Trigger Logic:**
 
 Include this section when ANY of these are true:
-- PM's role is VP, Director, or Head of [function] (check `context-library/personal-context-pm-background.md` or `context-library/business-info-template.md`)
-- PM has direct reports or manages PM leads (check stakeholder profiles for reports)
+- PM's role is VP, Director, or Head of [function] (check `brain/knowledge/org/team.md` or `brain/knowledge/strategy.md`)
+- PM has direct reports or manages PM leads (check `brain/stakeholders/` for reports)
 - PM explicitly asks for delegation suggestions
 
 Skip this section when:
@@ -579,36 +579,32 @@ When user runs `/daily-plan tomorrow`:
 
 **Google Calendar MCP:**
 ```
-1. Run: /connect-mcps connect to google-calendar
-2. I'll first check for official remote MCP server
-3. If remote server available: Guide you to use `claude mcp add --transport http`
-4. If not: Walk you through OAuth setup (credentials from Google Cloud Console)
-5. Test: I'll fetch today's events to confirm it works
-6. Done! Future /daily-plan calls will auto-fetch meetings
+1. In Claude Desktop: Settings → MCP Servers → Add Server
+2. Search for Google Calendar or add via `claude mcp add --transport http <server-url>`
+3. Complete OAuth flow (credentials from Google Cloud Console if self-hosted)
+4. Test: ask Claude to fetch today's events to confirm it works
+5. Done — future /daily-plan calls will auto-fetch meetings
 ```
 
 **Gmail MCP:**
 ```
-1. Run: /connect-mcps connect to gmail
-2. Similar priority: Check remote server first, then OAuth flow
-3. Permissions needed: Read email (not send)
-4. I'll fetch unread/important emails for daily context
+1. Add Gmail MCP via Claude Desktop Settings → MCP Servers
+2. Complete OAuth flow — read-only permissions (not send)
+3. Claude will fetch unread/important emails for daily context
 ```
 
 **Linear/Jira MCP:**
 ```
-1. Run: /connect-mcps connect to linear (or jira)
-2. I'll check for remote servers, then fall back to API keys
-3. You'll need: API key from Linear/Jira settings (if no remote server)
-4. I'll query your assigned tasks daily
+1. Add Linear or Jira MCP via Claude Desktop Settings → MCP Servers
+2. You'll need: API key from Linear/Jira settings (if no remote server)
+3. Claude will query your assigned tasks daily
 ```
 
 **Analytics MCP (Amplitude/Mixpanel):**
 ```
-1. Run: /connect-mcps connect to amplitude (or mixpanel)
-2. I'll check remote servers first, then manual setup
-3. You'll need: API key + Project ID (if manual)
-4. I'll pull metrics for recently launched features
+1. Add Analytics MCP via Claude Desktop Settings → MCP Servers
+2. You'll need: API key + Project ID (if manual setup)
+3. Claude will pull metrics for recently launched features
 ```
 
 **Priority order:** Remote servers > Local servers > Manual OAuth/API tokens
@@ -808,7 +804,7 @@ Total time: 2 minutes
 **I'll then:**
 - Look up Sarah, John, VP Eng in stakeholder profiles (if exists)
 - Check PRD X in `outputs/prds/`
-- Find Feature Z in `context-library/launches/`
+- Find Feature Z in `brain/knowledge/product/features/`
 - Generate full daily plan with all context
 
 **Trade-off:**
@@ -852,11 +848,11 @@ Total time: 2 minutes
 **If Calendar MCP not connected:**
 - Prompt: "I don't have calendar access. What meetings do you have today?"
 - Or: "I can read from a manual calendar file if you have one."
-- Offer: "Want to connect Google Calendar? Run `/connect-mcps connect to google-calendar`"
+- Offer: "Want to connect Google Calendar? Add it via Claude Desktop → Settings → MCP Servers"
 
 **If Gmail MCP not connected:**
 - Skip email section or ask: "Any important emails I should factor into today's plan?"
-- Offer: "Want email context in future? Run `/connect-mcps connect to gmail`"
+- Offer: "Want email context in future? Add Gmail MCP via Claude Desktop → Settings → MCP Servers"
 
 **If Linear/Jira MCP not connected:**
 - Scan `outputs/meeting-notes/` for unchecked action items
@@ -868,7 +864,7 @@ Total time: 2 minutes
 
 **If Stakeholder profiles don't exist:**
 - Generate basic meeting list without context
-- Suggest: "Want richer meeting context? Fill out stakeholder profiles in `context-library/`"
+- Suggest: "Want richer meeting context? Run `/prep [name]` after your next meeting to build stakeholder profiles in `brain/stakeholders/`"
 
 ---
 
@@ -880,11 +876,9 @@ Total time: 2 minutes
 **After `/daily-plan`:**
 - `/meeting-notes` - Capture outcomes from today's meetings
 - `/create-tickets` - Convert action items to Linear/Jira tasks
-- `/daily-review` - (If created) Reflect on what got done
 
 **Parallel use:**
 - `/prd-draft` - Today's work might include PRD writing
-- `/prototype` - Today might be prototype iteration day
 
 ---
 
@@ -918,7 +912,7 @@ Total time: 2 minutes
 
 **Before this:**
 - `/weekly-plan` - Set weekly priorities
-- `/connect-mcps` - Connect to Calendar, Gmail, Linear
+- Connect MCP servers (Calendar, Gmail, Linear) via Claude Desktop → Settings → MCP Servers
 
 **After this:**
 - `/meeting-notes` - Capture meeting outcomes
