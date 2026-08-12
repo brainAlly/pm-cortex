@@ -19,10 +19,11 @@ Central routing map. Start here for any task that spans multiple areas.
 
 ## Knowledge Areas
 
+- **Knowledge tier** → `knowledge/INDEX.md` (strategy, product, users, market, org)
 - **Strategy** → `knowledge/strategy.md`
 - **Product** → `knowledge/product/` (roadmap, metrics, features)
 - **Users** → `knowledge/users/` (personas, segments, insights)
-- **Market** → `knowledge/market/` (landscape, competitors, trends)
+- **Market** → `knowledge/market/` (landscape, trends)
 - **Org** → `knowledge/org/` (team, rituals, tools)
 
 ## Active State
