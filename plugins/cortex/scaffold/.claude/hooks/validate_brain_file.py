@@ -128,16 +128,14 @@ def main():
         kind = "Brain file"
         schema = "brain/"
 
-    print(f"\n[PM-OS] Schema validation failed for {kind} file: {path}")
+    print(f"\n[PM Cortex] Write blocked — schema validation failed for {kind} file: {path}")
     print(f"Schema reference: {schema}")
     print("Missing required fields:")
     for e in errors:
         print(f"  - {e}")
-    print("\nFile was saved but does not conform to schema. Fix before routing to the brain index.\n")
+    print("\nFix the missing fields and retry the write.\n")
 
-    # Exit 0 so the hook warns but does not block the write.
-    # Change to sys.exit(1) to make the hook block non-conforming writes.
-    sys.exit(0)
+    sys.exit(1)
 
 
 if __name__ == "__main__":
