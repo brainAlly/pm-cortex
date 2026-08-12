@@ -1,3 +1,8 @@
+---
+description: Drift check between recent decisions, hypotheses, and ingestion against strategy.md — read-only synthesis, surfaces tensions for PM to resolve
+argument-hint: "[decisions|hypotheses|ingestion]"
+---
+
 # /strategy-check
 
 Drift check between recent decisions / ingestions / active hypotheses and `knowledge/strategy.md`. Read-only synthesis. Surfaces tensions for the PM to resolve; does NOT silently edit strategy.

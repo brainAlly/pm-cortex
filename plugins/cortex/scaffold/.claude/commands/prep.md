@@ -1,3 +1,8 @@
+---
+description: Surface what to ask, raise, or watch for in an upcoming stakeholder conversation or meeting
+argument-hint: "<stakeholder-slug|meeting-name|meeting-type>"
+---
+
 # /prep
 
 Surface what to ask, raise, or watch for in an upcoming conversation.

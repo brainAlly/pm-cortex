@@ -1,3 +1,8 @@
+---
+description: Log a decision — draft a complete decision file from the existing evidence trail and surface it for PM sign-off
+argument-hint: "<slug-or-framing> [--resolves <hypothesis-slug>]"
+---
+
 # /decide
 
 Log a decision. Drafts a complete decision file from the existing evidence trail and surfaces it for PM sign-off.

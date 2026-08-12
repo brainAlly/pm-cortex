@@ -1,3 +1,8 @@
+---
+description: Run the 5-area risk scan on a feature or plan — surfaces uncovered risks and drafts hypothesis stubs for the gaps
+argument-hint: "<feature-slug|plan-name>"
+---
+
 # /risk
 
 Run the 5-area risk scan on a feature or plan. Surface which risks have no hypothesis, draft stubs for the gaps.
