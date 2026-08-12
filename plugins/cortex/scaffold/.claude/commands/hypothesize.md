@@ -1,3 +1,8 @@
+---
+description: Generate or refresh hypotheses for a feature — pre-ship across 5 risk areas, or post-ship from data
+argument-hint: "<feature-slug|problem-statement> [brain/hypotheses/<slug>.md]"
+---
+
 # /hypothesize
 
 Generate or refresh hypotheses for a feature. Works **pre-ship** (proactive, organized by the 5 risk areas) or **post-ship** (data-derived from analytics / interviews / churn — "why is retention dropping?"). Same schema either way; the `Origin` field distinguishes them.

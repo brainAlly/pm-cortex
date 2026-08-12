@@ -1,3 +1,8 @@
+---
+description: Generate solution directions for a problem, grounded in what the brain already knows — not a brainstorm, a synthesis
+argument-hint: "<problem-statement|opportunity>"
+---
+
 # /ideate
 
 Generate solution directions for a problem, grounded in what the brain already knows. Not a brainstorm. A synthesis.

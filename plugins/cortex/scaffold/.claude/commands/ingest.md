@@ -1,3 +1,8 @@
+---
+description: Route a new artifact into the brain — interview, meeting, market signal, or ad-hoc note
+argument-hint: "[interview|meeting|market|adhoc]"
+---
+
 # /ingest
 
 Route a new artifact into the brain. Four shapes, one verb.

@@ -1,3 +1,8 @@
+---
+description: Turn a new objective into a concrete plan — discovery questions, interviews, hypotheses, experiments, and decision points
+argument-hint: "<objective-statement>"
+---
+
 # /plan
 
 Turn a new team objective into a concrete plan: what we know, what we assume, who to interview, which hypotheses to open, which experiments to run, what decision would unlock execution.
