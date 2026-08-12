@@ -1,6 +1,6 @@
 ---
 name: pm-brain
-description: Initialize or upgrade a Unified PM Brain — a three-tier memory brain with 45 commands, 8 skills, 7 sub-agents, and a style personalization layer for a product operator (PM, product lead, founder, or anyone accountable for one product or initiative) doing judgment-heavy work with scattered inputs. Detects greenfield vs. migration mode, runs a focused interview (6 batches including style), copies the deterministic scaffold into the working directory, populates placeholders from interview answers, runs a self-test, and commits. Run `/pm-brain upgrade` to apply updates from a newer plugin version. Use when invoked via `/pm-brain` or when the user asks to set up a PM Brain.
+description: Initialize or upgrade a Unified PM Brain; a three-tier memory brain with 45 commands, 8 skills, 7 sub-agents, and a style personalization layer for a product operator (PM, product lead, founder, or anyone accountable for one product or initiative) doing judgment-heavy work with scattered inputs. Detects greenfield vs. migration mode, runs a focused interview (6 batches including style), copies the deterministic scaffold into the working directory, populates placeholders from interview answers, runs a self-test, and commits. Run `/pm-brain upgrade` to apply updates from a newer plugin version. Use when invoked via `/pm-brain` or when the user asks to set up a PM Brain.
 ---
 
 # PM Brain — Skill
