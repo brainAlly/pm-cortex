@@ -116,7 +116,7 @@ Output <promise>DASHBOARD_COMPLETE</promise> when done." \
 Step 1: Generate PRD using:
 - Context from context-library/business-info-template.md
 - Writing style from context-library/writing-style-executive.md
-- PRD workflow from .claude/skills/prd-draft
+- PRD workflow from .claude/skills/_prd-draft
 
 Step 2: Run reviews using all 7 sub-agents:
 - sub-agents/engineer-reviewer.md
@@ -451,7 +451,7 @@ Ralph Wiggum works seamlessly with other PM OS components:
 ### With Workflows
 ```bash
 /ralph-loop "Follow process in:
-- .claude/skills/prd-draft
+- .claude/skills/_prd-draft
 Complete all steps until PRD is done."
 ```
 

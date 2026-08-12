@@ -282,7 +282,7 @@ What we are explicitly NOT doing in v1:
 
 ## Success Metrics
 
-> **📚 Tip:** For help choosing the right metrics, see `.claude/skills/define-north-star/` (align to North Star) and `.claude/skills/experiment-metrics/` (STEDII framework for trustworthy metrics).
+> **📚 Tip:** For help choosing the right metrics, see `.claude/skills/_define-north-star/` (align to North Star) and `.claude/skills/_experiment-metrics/` (STEDII framework for trustworthy metrics).
 
 **Primary Metric:** [Metric name]
 - Current: [baseline]
