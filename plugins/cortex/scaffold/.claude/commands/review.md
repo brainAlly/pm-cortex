@@ -1,3 +1,8 @@
+---
+description: Run weekly maintenance sweep across knowledge, hypotheses, decisions, and stakeholders to surface drift and compression opportunities
+argument-hint: "[optional scope: hypotheses|stakeholders|knowledge|decisions]"
+---
+
 # /review
 
 The weekly maintenance sweep. Six checks. Produces a dated report and edits files directly where confidence is high.
