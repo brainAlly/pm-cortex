@@ -1,6 +1,9 @@
 ---
+
 name: summarize-meeting
 description: "Summarize a meeting transcript into structured notes with date, participants, topic, key decisions, summary points, and action items. Use when processing meeting recordings, creating meeting notes, writing meeting minutes, or recapping discussions."
+user-invocable: false
+argument-hint: "<transcript or meeting notes>"
 ---
 
 # Summarize Meeting

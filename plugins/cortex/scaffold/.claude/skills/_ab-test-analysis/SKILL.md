@@ -1,6 +1,9 @@
 ---
+
 name: ab-test-analysis
 description: "Analyze A/B test results with statistical significance, sample size validation, confidence intervals, and ship/extend/stop recommendations. Use when evaluating experiment results, checking if a test reached significance, interpreting split test data, or deciding whether to ship a variant."
+user-invocable: false
+argument-hint: "<test results as data, screenshot, or description>"
 ---
 
 ## A/B Test Analysis

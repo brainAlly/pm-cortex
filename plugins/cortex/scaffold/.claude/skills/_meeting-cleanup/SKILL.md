@@ -1,8 +1,9 @@
 ---
+
 name: meeting-cleanup
 description: Batch process multiple meetings from a single day. Consolidates action items and insights across meetings.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<paste all transcripts>"
 ---
 
 ## Quick Start

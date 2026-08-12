@@ -1,8 +1,9 @@
 ---
+
 name: daily-plan
 description: Generate PM daily plan with context
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "[full] [tomorrow]"
 ---
 
 ## Quick Start

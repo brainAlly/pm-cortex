@@ -1,8 +1,9 @@
 ---
+
 name: meeting-notes
 description: Transform meeting transcripts into structured action items, decisions, and key insights. Processes raw notes, voice memos, or recordings.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<transcript or meeting notes>"
 ---
 
 ## Quick Start

@@ -1,6 +1,9 @@
 ---
+
 name: weekly-plan
 description: Set next week's priorities
+user-invocable: false
+argument-hint: "[next]"
 ---
 
 ## Purpose

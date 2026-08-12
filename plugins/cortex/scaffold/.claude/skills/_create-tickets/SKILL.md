@@ -1,6 +1,9 @@
 ---
+
 name: create-tickets
 description: Create tickets via Linear/Jira MCP or generate formatted ticket text
+user-invocable: false
+argument-hint: "<prd-name or feature spec>"
 ---
 
 # Create Tickets Skill

@@ -1,8 +1,9 @@
 ---
+
 name: user-interview
 description: Systematically process user interviews to extract actionable insights. Batch processes interviews and generates research reports.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<paste transcript(s)>"
 ---
 
 # User Interview Processing Workflow

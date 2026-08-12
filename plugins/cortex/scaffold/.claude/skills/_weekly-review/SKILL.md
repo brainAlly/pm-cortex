@@ -1,6 +1,9 @@
 ---
+
 name: weekly-review
 description: Review week's progress, meetings, learnings
+user-invocable: false
+argument-hint: "[last-week]"
 ---
 
 ## Quick Start

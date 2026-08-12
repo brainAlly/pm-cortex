@@ -1,8 +1,9 @@
 ---
+
 name: feature-metrics
 description: Define success metrics using the STEDII framework for trustworthy experiment metrics.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<feature name>"
 ---
 
 # /feature-metrics - Define Success Metrics

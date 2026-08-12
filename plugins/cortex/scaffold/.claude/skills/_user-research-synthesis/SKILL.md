@@ -1,8 +1,9 @@
 ---
+
 name: user-research-synthesis
 description: Turn user interviews into actionable insights. Advanced synthesis techniques and frameworks.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<topic or paste interview files>"
 ---
 
 # /user-research-synthesis - Turn Interview Data Into Insights

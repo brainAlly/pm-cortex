@@ -1,8 +1,9 @@
 ---
+
 name: expansion-strategy
 description: Upsell, cross-sell, and account growth tactics. Framework for revenue expansion.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<expansion lever: upsell | cross-sell | seat expansion>"
 ---
 
 # Expansion Strategy: Upsell, Cross-sell, and Account Growth

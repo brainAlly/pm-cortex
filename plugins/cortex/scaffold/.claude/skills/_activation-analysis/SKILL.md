@@ -1,8 +1,9 @@
 ---
+
 name: activation-analysis
 description: Analyze user activation using Setup → Aha → Habit framework. Identifies activation bottlenecks.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<product or onboarding flow>"
 ---
 
 # Activation Analysis: Setup → Aha → Habit Framework

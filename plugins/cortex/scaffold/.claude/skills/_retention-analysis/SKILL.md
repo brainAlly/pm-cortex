@@ -1,8 +1,9 @@
 ---
+
 name: retention-analysis
 description: Cohort analysis and retention optimization framework. Identifies retention drivers and churn factors.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<product or user segment>"
 ---
 
 # Retention Analysis: Measuring What Keeps Users Coming Back

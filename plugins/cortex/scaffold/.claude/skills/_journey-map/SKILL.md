@@ -1,6 +1,9 @@
 ---
+
 name: journey-map
 description: Create user journey maps and customer journey maps (dual mode)
+user-invocable: false
+argument-hint: "<user journey | customer journey> for <product or flow>"
 ---
 
 # Journey Map Skill
