@@ -114,8 +114,8 @@ Output <promise>DASHBOARD_COMPLETE</promise> when done." \
 /ralph-loop "Create a complete PRD for [feature name] and run it through all 7 sub-agent reviews.
 
 Step 1: Generate PRD using:
-- Context from context-library/business-info-template.md
-- Writing style from context-library/writing-style-executive.md
+- Context from brain/knowledge/strategy.md
+- Writing style from brain/style/writing.md
 - PRD workflow from .claude/skills/_prd-draft
 
 Step 2: Run reviews using all 7 sub-agents:
@@ -432,11 +432,11 @@ Output <promise>DONE</promise> when all success criteria met.
 
 Ralph Wiggum works seamlessly with other PM OS components:
 
-### With Context Library
+### With Brain Context
 ```bash
 /ralph-loop "Create strategy doc using context from:
-- context-library/business-info-template.md
-- context-library/writing-style-executive.md
+- brain/knowledge/strategy.md
+- brain/style/writing.md
 ..."
 ```
 
