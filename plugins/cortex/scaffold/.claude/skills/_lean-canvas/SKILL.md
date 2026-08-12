@@ -1,6 +1,9 @@
 ---
+
 name: lean-canvas
 description: "Generate a Lean Canvas with problem, solution, metrics, cost structure, UVP, unfair advantage, channels, segments, and revenue. Use when exploring a lean startup canvas, testing a business hypothesis, or modeling a new venture."
+user-invocable: false
+argument-hint: "<product idea or business concept>"
 ---
 # Lean Canvas
 

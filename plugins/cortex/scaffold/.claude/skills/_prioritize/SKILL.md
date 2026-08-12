@@ -1,8 +1,9 @@
 ---
+
 name: prioritize
 description: Classify PM tasks using LNO Framework (Leverage/Neutral/Overhead) to focus on high-impact work.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<paste task list or calendar>"
 ---
 
 # Task Prioritization: LNO Framework

@@ -1,6 +1,9 @@
 ---
+
 name: retro
 description: "Facilitate a structured sprint retrospective — what went well, what didn't, and prioritized action items with owners and deadlines. Use when running a retrospective, reflecting on a sprint, creating action items from team feedback, or learning how to run effective retros."
+user-invocable: false
+argument-hint: "[format] <team feedback, sprint data, or retrospective notes>"
 ---
 
 ## Sprint Retrospective Facilitator

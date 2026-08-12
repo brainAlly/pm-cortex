@@ -1,6 +1,9 @@
 ---
+
 name: meeting-agenda
 description: Create structured meeting agendas for effective collaboration
+user-invocable: false
+argument-hint: "<meeting topic> with <attendees>"
 ---
 
 ## Quick Start

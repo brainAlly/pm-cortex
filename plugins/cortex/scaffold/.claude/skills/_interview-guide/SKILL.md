@@ -1,8 +1,9 @@
 ---
+
 name: interview-guide
 description: Create JTBD-based interview guides for user research. Structured questions for discovery interviews.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<topic> with <target segment>"
 ---
 
 # /interview-guide - Create Interview Guides

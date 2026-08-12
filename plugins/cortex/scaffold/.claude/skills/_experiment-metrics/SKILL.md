@@ -1,8 +1,9 @@
 ---
+
 name: experiment-metrics
 description: STEDII framework for selecting trustworthy experiment metrics. Ensures metric validity and reliability.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<feature or experiment name>"
 ---
 
 # Experiment Metrics Selection: STEDII Framework

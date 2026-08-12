@@ -1,8 +1,9 @@
 ---
+
 name: impact-sizing
 description: Quantify feature value with driver trees, confidence levels, and the 4-step sizing framework.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<feature name or idea>"
 ---
 
 # /impact-sizing - Quantify Feature Value

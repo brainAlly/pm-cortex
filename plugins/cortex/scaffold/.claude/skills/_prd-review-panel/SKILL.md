@@ -1,6 +1,9 @@
 ---
+
 name: prd-review-panel
 description: Multi-agent PRD review (7 perspectives)
+user-invocable: false
+argument-hint: "<prd-name or leave blank to pick from recent>"
 ---
 
 ## Purpose

@@ -1,8 +1,9 @@
 ---
+
 name: prd-draft
 description: Create a modern, AI-era PRD for features and initiatives. Guides through clarifying questions, generates draft, and offers multi-agent review.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<feature idea or problem statement>"
 ---
 
 ## Quick Start

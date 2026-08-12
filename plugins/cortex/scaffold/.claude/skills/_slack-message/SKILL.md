@@ -1,8 +1,9 @@
 ---
+
 name: slack-message
 description: Draft team communications for Slack. Creates clear, actionable messages for different contexts.
-disable-model-invocation: false
 user-invocable: false
+argument-hint: "<recipient> <situation>"
 ---
 
 # /slack-message - Write Contextual Messages Fast

@@ -1,6 +1,9 @@
 ---
+
 name: launch-checklist
 description: Comprehensive product launch planning
+user-invocable: false
+argument-hint: "<feature name or prd-name> [target date]"
 ---
 
 ## Quick Start
