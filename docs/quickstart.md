@@ -99,7 +99,8 @@ The system compounds over time. The more you ingest, the better every command ge
 
 **Daily (5 min each):**
 - `/daily-plan` — Start the day with context
-- `/ingest` — After every meeting or interview
+- `/meeting-notes` — After every meeting (then `/ingest` the output to route it to brain)
+- `/ingest` — After every interview, research artifact, or external data source
 - `/prep` — Before every stakeholder conversation
 
 **Weekly (20 min):**

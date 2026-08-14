@@ -148,9 +148,11 @@ Commands generate structured output. `/ingest` stores it in the brain. Future co
 # - Suggested questions
 # ↓
 
-# After meeting: Ingest notes
-/ingest
-[paste meeting notes]
+# After meeting: Capture and ingest notes
+/meeting-notes
+[paste meeting transcript]
+
+/ingest [meeting-notes output]
 
 # Updates:
 # - brain/stakeholders/john-cto.md (touchpoint logged)
