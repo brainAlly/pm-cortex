@@ -104,7 +104,7 @@ Operator-facing verbs. Each command is a thin spec: input, files to load, files 
 
 | Verb | When to run it |
 | --- | --- |
-| `/pm-brain upgrade` | Built-in — upgrades the PM Brain scaffold to the latest version (no command file; runs directly) |
+| `/pm-brain upgrade` | Built-in — upgrades the PM Cortex scaffold to the latest version (no command file; runs directly) |
 
 ---
 
