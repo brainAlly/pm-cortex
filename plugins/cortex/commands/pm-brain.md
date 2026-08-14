@@ -40,14 +40,39 @@ Load `prompts/migration.md`. **Copy** (do not move) pre-existing PM artifacts in
 
 Load `prompts/interview.md`. Ask the 6 batches (greenfield) or only the gaps not covered by source artifacts (migration). Confirm back what you heard before scaffolding.
 
-### 4. Copy the scaffold
+### 4. Locate and copy the scaffold
 
-Copy **every file and folder** from `scaffold/` into the current working directory — including the hidden `.claude/` directory (hooks + per-brain settings) and dotfiles (`.gitignore`, `.gitkeep`). Preserve structure exactly.
+#### 4a. Find the plugin directory
+
+The scaffold lives inside the plugin's cached installation. Locate it before copying.
+
+**macOS — run both, use whichever returns a path:**
+
+```bash
+find ~/Library/Application\ Support/Claude -type d -name "cortex" 2>/dev/null | head -5
+find ~/.claude/plugins -type d -name "cortex" 2>/dev/null | head -5
+```
+
+**Windows — run in PowerShell:**
+
+```powershell
+Get-ChildItem -Path "$env:APPDATA\Claude" -Recurse -Directory -Filter "cortex" -ErrorAction SilentlyContinue | Select-Object -First 5 FullName
+```
+
+Verify the found path contains a `scaffold/` subdirectory (`ls <found-path>/scaffold/` or `dir <found-path>\scaffold\`). If `scaffold/` is absent, check parent and sibling directories. The plugin directory always contains `plugin.json` alongside `scaffold/`, `commands/`, and `prompts/`.
+
+Set `PLUGIN_DIR` to the confirmed path.
+
+**If the plugin cannot be found:** stop and tell the PM: "I could not locate the PM Cortex plugin in the Claude Desktop cache. Please confirm the plugin is installed (`claude plugin list`) and retry /pm-brain."
+
+#### 4b. Copy the scaffold
+
+Copy **every file and folder** from `$PLUGIN_DIR/scaffold/` into the current working directory — including the hidden `.claude/` directory (hooks + per-brain settings) and dotfiles (`.gitignore`, `.gitkeep`). Preserve structure exactly.
 
 Use the form of copy that picks up dotfiles by default:
 
-- **Bash:** `cp -R scaffold/. <dest>/`  (the trailing `/.` is what makes dotfiles come along)
-- **PowerShell:** `Copy-Item -Recurse -Force scaffold\* <dest>\` followed by `Copy-Item -Recurse -Force scaffold\.* <dest>\` (the second pass picks up `.claude/` and `.gitignore`; `Copy-Item -Recurse scaffold\*` alone *will* silently drop them)
+- **Bash:** `cp -R "$PLUGIN_DIR/scaffold/." ./`  (the trailing `/.` is what makes dotfiles come along)
+- **PowerShell:** `Copy-Item -Recurse -Force "$PLUGIN_DIR\scaffold\*" .\` followed by `Copy-Item -Recurse -Force "$PLUGIN_DIR\scaffold\.*" .\` (the second pass picks up `.claude/` and `.gitignore`; `Copy-Item -Recurse scaffold\*` alone *will* silently drop them)
 
 **After copying, run this verification checklist. Every item must pass before proceeding.**
 
@@ -152,30 +177,34 @@ Run this after updating the plugin in Claude Desktop to apply new commands, skil
 
 Read `.pm-os-version` from the project root. If not found, treat as `v0.0.0` and apply all manifest entries.
 
-### 2. Read the manifest
+### 2. Locate the plugin directory
 
-Read `UPGRADE_MANIFEST.md` from the plugin directory. Find all version sections with version numbers greater than the current `.pm-os-version`.
+Use the same find commands as the init flow (step 4a above) to locate the `cortex` plugin directory in the Claude Desktop cache. Confirm the path contains `UPGRADE_MANIFEST.md`. Set `PLUGIN_DIR` to that path.
 
-### 3. Show the changelog
+### 3. Read the manifest
 
-Before applying any changes, read `CHANGELOG.md` from the plugin directory and display the release notes for all versions being applied. Ask the PM to confirm: "Ready to apply these updates? (y/n)"
+Read `$PLUGIN_DIR/UPGRADE_MANIFEST.md`. Find all version sections with version numbers greater than the current `.pm-os-version`.
 
-### 4. Apply manifest instructions
+### 4. Show the changelog
+
+Before applying any changes, read `$PLUGIN_DIR/CHANGELOG.md` and display the release notes for all versions being applied. Ask the PM to confirm: "Ready to apply these updates? (y/n)"
+
+### 5. Apply manifest instructions
 
 For each version above current, in order from oldest to newest:
 
-- **Copy**: Copy the specified file from the plugin directory to the PM's project directory. Create parent directories if they don't exist.
-- **Replace**: Overwrite the existing file in the PM's project directory with the plugin version.
+- **Copy**: Copy the specified file from `$PLUGIN_DIR` to the PM's project directory. Create parent directories if they don't exist.
+- **Replace**: Overwrite the existing file in the PM's project directory with the version from `$PLUGIN_DIR`.
 - **Create directory**: Create the specified directory if it does not already exist.
 - **CLAUDE.md update**: Replace only the content between `<!-- PM-OS:START -->` and `<!-- PM-OS:END -->` markers in the project's `CLAUDE.md`. Never touch content outside those markers — it is the PM's own.
 
 **Critical rule:** Never write to `brain/source/`, `brain/ingestion/`, `brain/knowledge/`, `brain/hypotheses/`, `brain/decisions/`, `brain/stakeholders/`, or `outputs/`. These contain the PM's data and are never modified by upgrades.
 
-### 5. Update version
+### 6. Update version
 
 Write the new version number to `.pm-os-version`.
 
-### 6. Report
+### 7. Report
 
 Tell the PM exactly what changed:
 - New commands added (list them)
