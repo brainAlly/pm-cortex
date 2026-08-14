@@ -19,7 +19,7 @@ Start your day with a prioritized plan that pulls together meetings, tasks, acti
 
 Load if available:
 - `brain/knowledge/strategy.md` — quarter priorities and North Star to anchor Today's Three
-- `brain/knowledge/product/roadmap.md` — active PRDs and their stages
+- `brain/knowledge/product/roadmap.md` — active PRDs and their stages, **and the `§ Now` work table** (open items with an owner and due date — these are live candidates for Today's Three, especially anything due soon or overdue)
 - `brain/knowledge/users/insights.md` — user context for meeting prep
 - `brain/stakeholders/<slug>.md` for each person in today's meetings — open asks, communication style, last interaction
 - `brain/style/writing.md` and `brain/style/patterns.md` — output format preferences
@@ -33,7 +33,7 @@ Load if available:
 
 Check `outputs/daily-plans/` for an existing plan from today. If found, offer to update, replace, or keep it.
 
-Load `brain/knowledge/strategy.md` for quarter goals and `brain/knowledge/product/roadmap.md` for active PRD stages. These anchor "Today's Three."
+Load `brain/knowledge/strategy.md` for quarter goals and `brain/knowledge/product/roadmap.md` for active PRD stages and the `§ Now` work table. These anchor "Today's Three." Pull open `Now` rows owned by the PM — surface any that are due today or overdue before generic backlog items, so work that `/review` converted from a finding doesn't sit untouched.
 
 Load `rules/prioritization.md` for team-specific LNO norms — it may define which task categories are always Overhead for this PM or set a different Leverage threshold.
 

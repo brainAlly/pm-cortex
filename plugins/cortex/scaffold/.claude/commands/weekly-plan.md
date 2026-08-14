@@ -18,7 +18,7 @@ Plan the week ahead with clear priorities tied to quarterly goals, active PRDs, 
 
 Load if available:
 - `brain/knowledge/strategy.md` — OKRs, North Star, and strategic pillars to anchor Top 3
-- `brain/knowledge/product/roadmap.md` — active PRDs and pipeline stages
+- `brain/knowledge/product/roadmap.md` — active PRDs and pipeline stages, **and the `§ Now` work table** (open owned items, especially anything Friday's `/review` converted from a finding — these are carry-in work for the week, not just PRDs)
 - `brain/style/writing.md` and `brain/style/patterns.md` — output format preferences
 - Recent `outputs/weekly-reviews/` — carry-over items and learnings from last week
 - `brain/decisions/` — recent committed decisions that affect this week's priorities
@@ -38,7 +38,7 @@ Load `rules/prioritization.md` for team-specific LNO norms that govern which wee
 
 Apply the **weekly-plan** skill.
 
-Use brain strategy context to validate that each priority advances a declared goal. Use PRD pipeline to surface stage-blocking work. Reference last week's review to surface carry-overs.
+Use brain strategy context to validate that each priority advances a declared goal. Use PRD pipeline to surface stage-blocking work. Reference last week's review to surface carry-overs. Pull open `roadmap.md § Now` rows into the week's priorities — an owned item with a due date this week is committed work, not a backlog suggestion.
 
 ### Step 3: Save Output
 

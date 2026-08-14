@@ -8,6 +8,7 @@ Central routing map. Start here for any task that spans multiple areas.
 |---|---|
 | Understand the product strategy | `knowledge/strategy.md` |
 | Check feature status or roadmap | `knowledge/product/roadmap.md` |
+| See open work / what needs an owner | `knowledge/product/roadmap.md § Now` |
 | Find user insights or personas | `knowledge/users/` |
 | Look up a competitor | `knowledge/market/competitors/` |
 | Check a stakeholder's open asks | `stakeholders/` |

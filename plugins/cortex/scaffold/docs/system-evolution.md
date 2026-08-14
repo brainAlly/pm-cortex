@@ -202,6 +202,7 @@ Corrective action:
 - Focus on decision-relevant tensions
 - Reduce maintenance verbosity
 - Eliminate low-value checks
+- **Convert findings to owned work, don't just re-narrate them.** "Same stale items appear repeatedly" is the signature of a sweep that reports state without changing it. `/review` writes each judgment item into `knowledge/product/roadmap.md § Now` with an owner and a due date (see `/review § Converting findings to work`). A finding that has become a tracked, owned Now row stops re-surfacing; one that stays as prose in the log will reappear every week by construction.
 
 ---
 
