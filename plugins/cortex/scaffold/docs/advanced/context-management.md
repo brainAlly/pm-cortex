@@ -154,8 +154,8 @@ Now write a PRD.
 **Using File References:**
 ```
 Read these files for context:
-- context-library/business-info-template.md
-- context-library/writing-style-internal.md
+- brain/knowledge/strategy.md
+- brain/style/writing.md
 
 Then: [your task]
 ```
@@ -175,10 +175,10 @@ Then: [your task]
 **Template Example:**
 ```
 STANDARD PRD CONTEXT:
-- Company: [from business-info-template.md]
-- Product: [from business-info-template.md]
-- Target users: [from business-info-template.md]
-- Writing style: Internal (context-library/writing-style-internal.md)
+- Company: [from brain/knowledge/strategy.md]
+- Product: [from brain/knowledge/product/]
+- Target users: [from brain/knowledge/users/]
+- Writing style: [from brain/style/writing.md]
 - OKRs: [current quarter OKRs]
 
 [Then add task-specific context]
@@ -504,7 +504,7 @@ token_count = client.count_tokens("Your text here")
 ## Next Steps
 
 1. Audit your current context usage
-2. Build your context library (context-library/)
+2. Build your brain context (`brain/knowledge/`, `brain/style/`, `brain/stakeholders/`)
 3. Create reusable context templates
 4. Set calendar reminder for monthly context audits
 5. Track which context patterns work best for you
