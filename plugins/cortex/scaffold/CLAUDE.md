@@ -113,6 +113,7 @@ If the prompt blends types (e.g., "synthesize and then draft a decision"), execu
 | `/daily-plan`, `/weekly-plan` | `knowledge/strategy.md`, `knowledge/product/roadmap.md`, `style/writing.md`, `style/patterns.md` |
 | `/prep [stakeholder]` | `stakeholders/[name].md`, their open decisions, recent `ingestion/meetings/` for that person |
 | `/ingest` | Relevant `ingestion/` area + `hypotheses/` for mentioned features + `stakeholders/` for mentioned people |
+| `/meeting-notes` | `stakeholders/[name].md` for attendees, recent `ingestion/meetings/` for prior context on the topic, `style/writing.md` |
 | `/prd-draft` | `knowledge/product/`, `knowledge/users/`, relevant `hypotheses/`, `style/writing.md` |
 | `/discover`, `/risk`, `/hypothesize` | `knowledge/strategy.md`, `knowledge/users/insights.md`, active `hypotheses/` for the feature |
 | `/decide` | `decisions/INDEX.md`, relevant `hypotheses/`, `knowledge/strategy.md` |
