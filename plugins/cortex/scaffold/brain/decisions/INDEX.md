@@ -7,7 +7,8 @@
 ## Pending
 
 <!-- Decisions under consideration — not yet committed -->
-<!-- Format: [YYYY-MM-DD-slug] | [one-line description] | [decision trigger] -->
+<!-- Format: [YYYY-MM-DD-slug] | [one-line description] | Blocked by: [slug(s)/condition, or none] | [→ frontier if actionable now] -->
+<!-- "Blocked by" is the structured dependency — /review reads it to compute the frontier. Do not describe the dependency only in prose. -->
 
 ---
 

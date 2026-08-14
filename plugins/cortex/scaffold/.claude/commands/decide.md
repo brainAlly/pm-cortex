@@ -22,8 +22,9 @@ A decision slug (`/decide ship-weekly-digest`) or a one-line decision framing (`
 
 ## Updates
 
-- `brain/decisions/YYYY-MM-DD-<slug>.md` — created with the full schema: status (`pending` or `decided`), context, decision, evidence rows (each tagged), explicitly NOT doing, stakeholders signed off, reversal condition (observable + specific), remaining ambiguities. Drafted, not committed.
-- `brain/decisions/INDEX.md` — add under `## Pending` if `status: pending`, otherwise under `## Recently decided`
+- `brain/decisions/YYYY-MM-DD-<slug>.md` — created with the full schema: status (`pending` or `decided`), context, decision, evidence rows (each tagged), explicitly NOT doing, stakeholders signed off, reversal condition (observable + specific), dependency fields (`Blocked by` / `Blocks`), remaining ambiguities. Drafted, not committed.
+- `brain/decisions/INDEX.md` — add under `## Pending` if `status: pending`, otherwise under `## Recently decided`. In the Pending row, record `Blocked by` and mark `→ frontier` if it is actionable now (nothing blocks it).
+- **Any upstream decision named in this decision's `Blocked by`** — add this decision's slug to that upstream file's `Blocks` field, so the dependency graph is consistent in both directions.
 - `brain/hypotheses/<slug>.md` — if the decision resolves a hypothesis, mark that hypothesis `promoted` (if decision validates it) or `demoted` (if decision goes the other way), with a Resolution row linking to the new decision file
 - `brain/hypotheses/INDEX.md` — reflect the hypothesis status change
 
@@ -33,6 +34,7 @@ A decision slug (`/decide ship-weekly-digest`) or a one-line decision framing (`
 - **Reversal condition is mandatory and observable.** "If things change" / "if market shifts" / "if we get pushback" are not acceptable. The condition must name a specific, measurable signal (a metric crossing a threshold, a stakeholder explicitly withdrawing support, a competitor shipping a specific feature). The audit check `all_decisions_have_reversal_condition` rejects vague reversal conditions.
 - **Commentary, gaps, and "things we don't yet know"** go under `## Remaining ambiguities`, NOT under `## Evidence`. Aggregation/meta rows ("N=3 customers, mixed sentiment") are not evidence — they go under Remaining ambiguities too.
 - Default to `status: pending` unless the PM explicitly said "this is decided." Pending invites stakeholder sign-off; decided implies the choice has been made and is being recorded for the audit trail.
+- **Dependencies are mandatory, not optional prose.** Fill `Blocked by` and `Blocks` explicitly. If the decision can be made today with nothing upstream, write `Blocked by: none` — that is a real, load-bearing claim (it puts the decision on the frontier), not a skipped field. Do not encode a dependency only in the `Driver` or `Reversal Condition` text; if this decision waits on another, it goes in `Blocked by` as a slug so `/review` can compute the frontier.
 
 ## Surfaces
 
