@@ -119,7 +119,7 @@ If the prompt blends types (e.g., "synthesize and then draft a decision"), execu
 | `/discover`, `/risk`, `/hypothesize` | `knowledge/strategy.md`, `knowledge/users/insights.md`, active `hypotheses/` for the feature |
 | `/decide` | `decisions/INDEX.md`, relevant `hypotheses/`, `knowledge/strategy.md` |
 | `/ideate` | `knowledge/strategy.md`, `knowledge/users/insights.md`, active `hypotheses/`, recent `decisions/` |
-| `/review` | All `hypotheses/`, `decisions/INDEX.md`, `stakeholders/INDEX.md`, `knowledge/strategy.md` |
+| `/review` | All `hypotheses/`, `decisions/` (the files, not just `INDEX.md` — needed to compute the decision frontier from `Blocked by`/`Blocks`), `stakeholders/INDEX.md`, `knowledge/strategy.md` |
 | `/competitor-analysis` | `knowledge/market/competitors/`, `knowledge/market/landscape.md` |
 | `/sprint`, `/retro` | `knowledge/product/roadmap.md`, open `hypotheses/`, `knowledge/org/` |
 | `/strategy-check` | `knowledge/strategy.md`, recent `decisions/`, recent `ingestion/` |

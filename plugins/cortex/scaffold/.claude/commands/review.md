@@ -31,12 +31,29 @@ The six standard checks, with counts and the top item in each:
 
 1. **Stale knowledge** — files not updated in 6+ weeks
 2. **Stale evidence** — market past 30-60 days, interviews past 90, strategy assumptions past quarterly
-3. **Hypothesis and decision hygiene** — active hypotheses with no evidence in 30+ days, promoted hypotheses without decisions, triggered "what would reverse this" conditions, decision debt
+3. **Hypothesis and decision hygiene** — active hypotheses with no evidence in 30+ days, promoted hypotheses without decisions, triggered "what would reverse this" conditions, and decision debt reported as **the unblocked frontier vs. blocked decisions** (see § Decision frontier), never as an age-sorted list
 4. **Stakeholder cadence and strategy tensions** — high-influence stakeholders not touched in 3+ weeks, drift between recent decisions and strategy
 5. **Knowledge synthesis (compression)** — recurring patterns, recurring contradictions, candidates for `strategy.md § Tensions`
 6. **Archival sweep** — shipped features past 90 days, resolved hypotheses, old market intel
 
 Compression is additive. Minority signals are preserved. Archive extracts durable lessons before removing.
+
+## Decision frontier — waiting vs. stuck
+
+The decision-hygiene check does **not** sort pending decisions by age. Age cannot tell a decision that is correctly *waiting* on an upstream gate from one that is *stuck* — actionable now, but not being made. Both look equally old, so an age-sorted list nags all of them equally and forever (`docs/system-evolution.md` failure mode 7). Compute the frontier instead, from the `Blocked by` / `Blocks` fields in each decision file:
+
+1. Read every `pending` decision's `Blocked by`.
+2. A gate is **satisfied** when the named upstream decision is `decided` (check its status) or the named external condition has demonstrably occurred (check `ingestion/` / `knowledge/` for evidence, don't assume).
+3. A pending decision is **on the frontier** when all its `Blocked by` gates are satisfied — or it is `Blocked by: none`. Everything else is **waiting**.
+
+Report the two lists separately, frontier first:
+
+- **Frontier (actionable now):** the decisions the PM can actually make this week. Age applies **only** here — a frontier decision pending more than ~2 weeks is genuinely stuck, and each converts to a Now work row (see § Converting findings to work) with the PM as owner and a due date.
+- **Waiting (blocked):** each named with the specific gate it waits on ("waits on `design-partner-scope`", "waits on: first design partner live"). Do **not** flag these for age — they are idle by design. Surface a waiting decision only when its gate has just been satisfied (it should move to the frontier now) or to trace a whole blocked chain back to the single unmade frontier decision worth naming.
+
+Where the old sweep produced five equally-stale items, this produces one honest line: "Four decisions are waiting; one is actionable now: `design-partner-scope` — added to Now, owner you, due [date]."
+
+**Cycle / orphan guard:** if a decision is `Blocked by` a slug that does not exist, is `Blocked by` itself directly or through a cycle, or *every* pending decision is blocked (no frontier at all), surface it as a graph error for the PM. A decision set that can never start is a data bug, not a waiting state.
 
 ## Converting findings to work — hard rule
 

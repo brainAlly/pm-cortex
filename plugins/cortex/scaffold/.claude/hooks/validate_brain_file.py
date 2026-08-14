@@ -12,12 +12,19 @@ import re
 
 VALIDATED_DIRS = {
     "decisions": {
+        # Substrings must match the section headers/fields the schema actually
+        # emits (see brain/decisions/_SCHEMA.md), lowercased. "what we are
+        # deciding" and "reversal condition" are section headers, not `field:`
+        # labels — matching the earlier `question:` / `reversal-condition:`
+        # forms blocked every conformant decision write.
         "required_fields": [
             "status:",
             "driver:",
-            "question:",
+            "what we are deciding",
             "decision:",
-            "reversal-condition:",
+            "reversal condition",
+            "blocked by:",
+            "blocks:",
         ],
         "name": "Decision",
         "schema": "brain/decisions/_SCHEMA.md",
