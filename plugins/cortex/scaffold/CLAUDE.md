@@ -20,6 +20,7 @@ This system combines a three-tier memory brain with 45 PM commands and 8 standal
 - **Retrieve before asking.** Search the brain. Inspect linked files. Infer from decisions. Ask only when the answer materially affects direction and isn't recoverable from the brain.
 - **Self-test before judgment-heavy work.** Before strategy reviews, interview synthesis, or maintenance sweeps, ask: "Can I quote the relevant content right now?" If not, reload.
 - **Signal density over completeness.** A short high-signal synthesis beats exhaustive capture.
+- **Findings convert to work.** A diagnosis with no owner and no date is not done. Anything that needs action lands as a row in `knowledge/product/roadmap.md § Now`, never as a note that gets re-discovered next week. Flagging a problem and creating the work to fix it are two different acts — do both.
 - **No hedging.** State it or don't.
 - **Output quality standard.** Short, specific, actionable. Minimum viable document — appendices for supporting detail. Real names, numbers, and quotes over generic statements. Every section helps someone decide or act.
 
@@ -168,6 +169,7 @@ Surface a single yes/no prompt before updating — maximum one per skill run:
 - Updating `knowledge/strategy.md` with a new North Star or expansion direction
 - Updating competitor file with a significant new development
 - Logging a scope decision to `decisions/` when one crystallized during PRD work
+- Adding an open-work row to `knowledge/product/roadmap.md § Now` when a task surfaces an action that needs an owner: *"Add '[item]' to Now — owner [X], due [date]? (y/n)"*. `/review` writes these directly without asking (see its § Converting findings to work).
 
 ### Defer to /review (never auto-write)
 Surface the finding during the next `/review` sweep:
@@ -315,6 +317,7 @@ Every important concept has exactly one canonical home. Other files reference bu
 | Decisions | `brain/decisions/YYYY-MM-DD-[slug].md` |
 | User patterns (promoted) | `brain/knowledge/users/insights.md` |
 | Competitor state | `brain/knowledge/market/competitors/[slug].md` |
+| Open work / next actions | `brain/knowledge/product/roadmap.md § Now` |
 
 If you find drift between a canonical file and a referencing file, surface the conflict to the PM — never silently overwrite.
 

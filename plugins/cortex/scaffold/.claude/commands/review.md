@@ -23,7 +23,7 @@ None, or an optional scope (`/review hypotheses`, `/review stakeholders`) to run
 
 - `maintenance/log/<date>-review.md` — the dated report
 - Direct edits to durable files where confidence is high: promote / demote hypotheses, update stakeholder `Last touched`, archive shipped features past 90 days, compress duplicate insights
-- Drafts (not committed) for items that need PM judgment: stale strategy assumptions, unresolved tensions, decision debt
+- **Work rows in `brain/knowledge/product/roadmap.md § Now`** for every finding that needs a human to act. Each row carries an owner and a due date and links back to this run's log entry (see § Converting findings to work). The log records what was surfaced; the Now table records what someone committed to do about it. A finding that ends the run as prose in the log with no Now row is a bug in the sweep, not a completed check.
 
 ## Surfaces
 
@@ -37,6 +37,22 @@ The six standard checks, with counts and the top item in each:
 6. **Archival sweep** — shipped features past 90 days, resolved hypotheses, old market intel
 
 Compression is additive. Minority signals are preserved. Archive extracts durable lessons before removing.
+
+## Converting findings to work — hard rule
+
+A sweep that only narrates is the failure this system exists to prevent (`docs/system-evolution.md`, failure mode 7 — "the same stale items appear repeatedly"). An age-sorted list re-surfaces the same items every week and changes nothing, because narrating a finding is not the same as assigning it.
+
+So: **every finding that needs a human to act becomes a row in `brain/knowledge/product/roadmap.md § Now`** in the same run, not a paragraph in the log. That includes stale strategy assumptions that need re-validation, unresolved tensions that need a decision, decision debt, and any diagnosed gap named across the brain (a missing eval harness, an unowned integration, a metric nobody is watching).
+
+For each such finding:
+1. **Write the Now row** with `Item`, `Owner`, `Due`, `Status: todo`, and `Source` linking back to this run's `maintenance/log/<date>-review.md` entry (or the underlying hypothesis / decision file).
+2. **If you cannot name an owner or a plausible due date, do not invent them and do not write a blank-owner row** (Now rows are never ownerless — see `roadmap.md § Now`). Instead, collect all such findings into one "needs an owner" list in the report and ask the PM to assign them in a single prompt (the autonomy cap is one prompt per run — batch, never ask per-item). On the PM's reply, write the now-owned rows. An unassigned finding is allowed to sit in the report for a week; a finding that vanishes with no row and no report line is not.
+3. **Do not duplicate.** Before adding, scan Now for an existing row with the same `Source`. If it exists, update its status or due date instead of adding a second row. This is what stops the weekly re-surfacing.
+4. **Never fabricate progress.** Writing the row is the action. Do not mark anything `in-progress` or `done` that the PM has not actually moved.
+
+Findings the sweep already resolves directly (compression, `Last touched` bumps, archival) do **not** need a Now row — they are done. Only judgment items that need a human get a row.
+
+The report's closing line names the count: "N findings converted to Now work (M need an owner)." Never close a run with "Direct edits made this run: None" while judgment items sit unassigned in the log.
 
 ## Surfacing drift — cite, don't paraphrase
 
