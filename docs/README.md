@@ -1,6 +1,6 @@
 # PM Cortex Documentation
 
-Welcome to the PM Cortex documentation. This guide covers the unified PM operating system — one plugin, one brain, 58 items working together.
+Welcome to the PM Cortex documentation. This guide covers the unified PM operating system — one plugin, one brain, 60 items working together.
 
 ## Quick Navigation
 
@@ -35,7 +35,7 @@ Seven independent agents — senior engineer, product designer, executive, legal
 | Commands | 45 | PM (slash command) |
 | Skills | 8 | Agent (auto) |
 | Sub-agents | 7 | Agent suggests, PM confirms |
-| **Total** | **58** | |
+| **Total** | **60** | |
 
 ## Common Tasks
 
