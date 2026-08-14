@@ -11,7 +11,7 @@ PM Cortex is a unified PM operating system for Claude Desktop — a three-tier m
 
 ---
 
-## What's Inside — 58 Items Total
+## What's Inside — 60 Items Total
 
 ### 🧠 The Brain — Three-Tier Memory
 
