@@ -35,11 +35,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Metrics/Analytics | `context-library/metrics/*.md` | D7, D30, retention, churn, cohort, "monthly active", DAU, WAU | Current retention curves, cohort performance, churn rates |
-| User Research | `context-library/research/*.md` | churn, "stopped using", "didn't come back", "why I left", "why I switched" | Churn interview quotes, reasons users stop using product |
-| Meeting Notes | `context-library/meetings/*.md` | churn, "cancelled", "downgrade", lost deal, customer feedback | CS feedback on churn, customer complaints, drop-off patterns |
-| PRDs | `context-library/prds/*.md` | retention, sticky, habit, engagement, notification, reminder | Features built to improve retention |
-| Business Info | `context-library/business-info-template.md` | target user, use case, frequency, engagement, core activity | How often users should use product, what drives stickiness |
+| Metrics/Analytics | `brain/knowledge/product/metrics.md` | D7, D30, retention, churn, cohort, "monthly active", DAU, WAU | Current retention curves, cohort performance, churn rates |
+| User Research | `brain/ingestion/interviews/` | churn, "stopped using", "didn't come back", "why I left", "why I switched" | Churn interview quotes, reasons users stop using product |
+| Meeting Notes | `brain/ingestion/meetings/` | churn, "cancelled", "downgrade", lost deal, customer feedback | CS feedback on churn, customer complaints, drop-off patterns |
+| PRDs | `brain/knowledge/product/features/*.md` | retention, sticky, habit, engagement, notification, reminder | Features built to improve retention |
+| Business Info | `brain/knowledge/strategy.md` | target user, use case, frequency, engagement, core activity | How often users should use product, what drives stickiness |
 
 **Context Priority:**
 1. Internal context FIRST (business info, retention metrics, churn research)
@@ -58,11 +58,11 @@ When this skill is invoked, immediately check:
 Before diving into retention analysis, let me check what data already exists about your users...
 
 **Checking:**
-- `context-library/business-info-template.md` for expected product usage patterns
-- `context-library/metrics/` for existing retention metrics and cohort data
-- `context-library/research/` for churn interviews and user feedback
-- `context-library/meetings/` for CS/support feedback on why users churn
-- `context-library/prds/` for features built to improve retention
+- `brain/knowledge/strategy.md` for expected product usage patterns
+- `brain/knowledge/product/` for existing retention metrics and cohort data
+- `brain/ingestion/interviews/` for churn interviews and user feedback
+- `brain/ingestion/meetings/` for CS/support feedback on why users churn
+- `brain/knowledge/product/features/` for features built to improve retention
 
 **[If analytics MCP connected]:** "Let me also query [Amplitude/Mixpanel] for your current retention curves, churn rates by cohort, and behavioral differences between retained vs churned users."
 
@@ -277,7 +277,7 @@ Referrals: 70% D30 retention
 
 **Run retention analysis:**
 ```
-Use /retention-analysis and reference context-library/business-info-template.md
+Use /retention-analysis and reference brain/knowledge/strategy.md
 
 Help me analyze our retention:
 - D1 retention: ___%
@@ -525,15 +525,15 @@ Use this with your data:
 
 **Research & Findings:**
 - Save to: `outputs/analyses/retention-analysis-[date].md`
-- When finalized, move to: `context-library/research/retention-[product].md`
+- When finalized, move to: `brain/ingestion/interviews/retention-synthesis.md`
 
 **Retention Metrics & Dashboards:**
-- Update `context-library/metrics/` with your retention dashboard
+- Update `brain/knowledge/product/` with your retention dashboard
 - Include retention curves, cohort analysis, and trend notes
 - Link retention findings to broader business metrics
 
 **Retention Features & Improvements:**
-- Create PRD in `context-library/prds/` for each retention initiative
+- Create PRD in `brain/knowledge/product/features/` for each retention initiative
 - Link this retention analysis as context
 - Track impact in PRD success metrics
 

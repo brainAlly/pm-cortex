@@ -35,11 +35,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Metrics/Analytics | `context-library/metrics/*.md` | "onboarding", "setup", "activation", D7, D30, "time to value", TTV | Current activation rates by stage, onboarding metrics, D7/D30 retention |
-| User Research | `context-library/research/*.md` | "onboarding", "setup", "first time", "confused", "stuck", "struggle" | User feedback on onboarding, confusion points, success moments |
-| Meeting Notes | `context-library/meetings/*.md` | "activation", "onboarding", "new users", "drop-off", "support tickets" | CS/support feedback on where users get stuck, win/loss reasons |
-| PRDs | `context-library/prds/*.md` | "onboarding", "activation", "tutorial", "first-time user" | Past onboarding improvements, features to drive activation |
-| Business Info | `context-library/business-info-template.md` | target user, customer segment, use case, primary value | Who you're activating, what value matters to them |
+| Metrics/Analytics | `brain/knowledge/product/metrics.md` | "onboarding", "setup", "activation", D7, D30, "time to value", TTV | Current activation rates by stage, onboarding metrics, D7/D30 retention |
+| User Research | `brain/ingestion/interviews/` | "onboarding", "setup", "first time", "confused", "stuck", "struggle" | User feedback on onboarding, confusion points, success moments |
+| Meeting Notes | `brain/ingestion/meetings/` | "activation", "onboarding", "new users", "drop-off", "support tickets" | CS/support feedback on where users get stuck, win/loss reasons |
+| PRDs | `brain/knowledge/product/features/*.md` | "onboarding", "activation", "tutorial", "first-time user" | Past onboarding improvements, features to drive activation |
+| Business Info | `brain/knowledge/strategy.md` | target user, customer segment, use case, primary value | Who you're activating, what value matters to them |
 
 **Context Priority:**
 1. Internal context FIRST (business info, existing activation metrics, user research)
@@ -58,11 +58,11 @@ When this skill is invoked, immediately check:
 Before measuring the Setup → Aha → Habit stages, let me check what data already exists...
 
 **Checking:**
-- `context-library/business-info-template.md` for your product and target users
-- `context-library/metrics/` for existing activation metrics and onboarding data
-- `context-library/research/` for user research on onboarding struggles
-- `context-library/meetings/` for CS/support feedback on where users get stuck
-- `context-library/prds/` for past onboarding improvements
+- `brain/knowledge/strategy.md` for your product and target users
+- `brain/knowledge/product/` for existing activation metrics and onboarding data
+- `brain/ingestion/interviews/` for user research on onboarding struggles
+- `brain/ingestion/meetings/` for CS/support feedback on where users get stuck
+- `brain/knowledge/product/features/` for past onboarding improvements
 
 **[If analytics MCP connected]:** "Let me also query [Amplitude/Mixpanel] for your current activation funnel, setup completion rates, and D7/D30 retention by cohort."
 
@@ -235,7 +235,7 @@ The Setup → Aha → Habit framework breaks activation into three measurable st
 Use this prompt pattern:
 
 ```
-Use /activation-analysis and reference context-library/business-info-template.md
+Use /activation-analysis and reference brain/knowledge/strategy.md
 
 Help me define the Setup → Aha → Habit stages for my product.
 
@@ -483,15 +483,15 @@ Use this with your team:
 
 **Research & Findings:**
 - Save to: `outputs/analyses/activation-analysis-[date].md`
-- When finalized, move to: `context-library/research/activation-[product].md`
+- When finalized, move to: `brain/ingestion/interviews/activation-synthesis.md`
 
 **Onboarding Improvements:**
-- Create PRD in `context-library/prds/` for each onboarding change
+- Create PRD in `brain/knowledge/product/features/` for each onboarding change
 - Link this activation analysis as context
 - Track changes in the PRD's success metrics section
 
 **Activation Metrics:**
-- Update `context-library/metrics/` with your Setup, Aha, Habit definitions and rates
+- Update `brain/knowledge/product/` with your Setup, Aha, Habit definitions and rates
 - Track weekly changes as baseline for comparison
 
 ### Cross-Skill Integration

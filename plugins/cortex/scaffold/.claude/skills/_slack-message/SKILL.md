@@ -425,7 +425,7 @@ Based on your situation, I'll automatically:
 
 ### Stakeholder-Specific Customization
 
-I'll check `context-library/stakeholder-template.md` (and any profiles you add) and adapt:
+I'll check `brain/stakeholders/<slug>.md` (and any profiles you add) and adapt:
 
 **For detail-oriented stakeholders:**
 - Include more context and data
@@ -538,25 +538,25 @@ Slack lets you edit. Use it. Fix typos, clarify wording, add missing context.
 When the PM uses `/slack-message`, I automatically:
 
 ### 1. Pull Stakeholder Context
-**Source:** `context-library/stakeholder-template.md` + any stakeholder profiles
+**Source:** `brain/stakeholders/<slug>.md` + any stakeholder profiles
 - **What I look for:** Communication preferences, decision-making style, priorities, relationship history
 - **How I use it:** Adapt tone, detail level, and framing to the specific recipient
 - **Example:** If messaging a detail-oriented CFO, I'll include numbers and source links. If messaging a busy CEO, I'll use BLUF format.
 
 ### 2. Reference Writing Style
-**Source:** `context-library/writing-style-*.md`
+**Source:** `brain/style/writing.md`
 - **What I look for:** Your preferred communication voice (formal/casual/direct/collaborative)
 - **How I use it:** Match your authentic voice, not corporate-speak
 - **Example:** If your style is "conversational but professional," I won't use buzzwords like "leverage" or "synergize"
 
 ### 3. Check Recent Decisions & Context
-**Source:** `context-library/decisions/`, recent conversation history
+**Source:** `brain/decisions/`, recent conversation history
 - **What I look for:** Decisions that affect the message, strategic context, previous disagreements
 - **How I use it:** Reference decisions without re-explaining context, acknowledge past objections
 - **Example:** If you previously decided to prioritize retention over growth, I won't frame a new request around growth
 
 ### 4. Pull Meeting Notes for Specificity
-**Source:** `context-library/meetings/` + this chat thread
+**Source:** `brain/ingestion/meetings/` + this chat thread
 - **What I look for:** Specific meeting outcomes, action items, decisions, quotes
 - **How I use it:** Reference the actual meeting (date, attendees) rather than generic "our conversation"
 - **Example:** "From our Jan 28 roadmap review with Sarah..." instead of "We discussed this meeting"
@@ -584,4 +584,4 @@ Before presenting output to the PM, verify:
 - [ ] **Message has clear ask or action item:** The message contains a specific request, decision needed, or next step (not just information with no call to action)
 - [ ] **No corporate jargon or banned words:** The message does not contain "delve," "leverage," "utilize," "unlock," "harness," "synergize," or other banned words from the writing style guide
 - [ ] **Length appropriate for Slack:** The main message is 5 sentences or fewer; any additional detail is suggested as a thread reply or linked document
-- [ ] **Stakeholder communication style referenced:** If the recipient has a profile in `context-library/stakeholder-template.md`, their communication preferences (detail level, format, priorities) are reflected in the message
+- [ ] **Stakeholder communication style referenced:** If the recipient has a profile in `brain/stakeholders/<slug>.md`, their communication preferences (detail level, format, priorities) are reflected in the message

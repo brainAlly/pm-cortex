@@ -34,10 +34,10 @@ End-of-week synthesis reviewing what you accomplished, what you learned, and wha
 2. `outputs/daily-plans/` - Daily plans from this week (what actually happened)
 3. `outputs/prds/` - PRDs modified this week
 4. `outputs/meeting-notes/` - Meeting notes from past 7 days
-5. `context-library/launches/` - Launches that happened this week
-6. `context-library/decisions/` - Decisions made this week
+5. `brain/ingestion/adhoc/` - Launches that happened this week
+6. `brain/decisions/` - Decisions made this week
 7. `outputs/research-synthesis/` - Research conducted
-8. `context-library/strategy/` - Quarter goals (to track progress)
+8. `brain/knowledge/` - Quarter goals (to track progress)
 
 **MCP Queries (if available):**
 - **Linear/Jira MCP** - Tasks completed this week
@@ -84,12 +84,12 @@ If no weekly plan exists:
 
 **B. PRD Progress:**
 
-Scan `outputs/prds/` and `context-library/prds/`:
+Scan `outputs/prds/` and `brain/knowledge/product/features/`:
 
 Method 1 - File modification dates:
 ```bash
 # Files modified in the past 7 days
-find outputs/prds/ context-library/prds/ -name "*.md" -mtime -7
+find outputs/prds/ brain/knowledge/product/features/ -name "*.md" -mtime -7
 ```
 
 For each PRD touched this week:
@@ -113,7 +113,7 @@ git log --since="7 days ago" --name-only --pretty=format: | grep -E "prds/.*\.md
 
 **C. Feature Launches:**
 
-Check `context-library/launches/`:
+Check `brain/ingestion/adhoc/`:
 - Launches completed this week
 - Launch checklists finished
 - Post-launch monitoring started
@@ -141,7 +141,7 @@ For each meeting:
 - Extract date, attendees, topic
 - Look for: Decisions made, action items created, blockers identified
 
-Check `context-library/decisions/`:
+Check `brain/decisions/`:
 - Decision docs created this week
 - Link to related meetings
 
@@ -182,7 +182,7 @@ Initiative: [PRD Name]
 
 **F. User Research & Insights:**
 
-Check `context-library/research/`:
+Check `brain/ingestion/interviews/`:
 - New interview notes this week
 - Competitive analysis updates
 
@@ -234,7 +234,7 @@ For each PRD:
 
 **Strategic Alignment:**
 
-Read `context-library/strategy/` for quarter goals.
+Read `brain/knowledge/` for quarter goals.
 
 For each goal:
 - Which priorities/tasks contributed to it this week?
@@ -629,7 +629,7 @@ After generating review, prompt user with contextual suggestions:
 > - [Learning 1]
 > - [Learning 2]
 >
-> I'll surface these in future planning. Want me to add to `context-library/personal-context/lessons-learned.md`?"
+> I'll surface these in future planning. Want me to add to `brain/ingestion/adhoc/lessons-learned.md`?"
 
 **If metrics concerning:**
 > "⚠️ [Feature] metrics need attention:
@@ -650,7 +650,7 @@ After generating review, prompt user with contextual suggestions:
 
 **After `/weekly-review`:**
 - `/weekly-plan` - Plan next week based on this review
-- `/decision-doc` - Document key decisions made
+- `/decide` - Document key decisions made
 - `/status-update` - Share with stakeholders
 - `/feature-results` - Deep dive on launched features
 
@@ -701,7 +701,7 @@ After generating review, prompt user with contextual suggestions:
 **After this:**
 - `/weekly-plan` - Plan next week immediately after review
 - `/status-update` - Share summary with stakeholders
-- `/decision-doc` - Formalize key decisions made
+- `/decide` - Formalize key decisions made
 
 **Periodic use:**
 - `/feature-results` - Monthly deep dive on launched features

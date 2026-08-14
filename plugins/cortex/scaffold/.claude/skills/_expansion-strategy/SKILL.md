@@ -35,11 +35,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Business Info | `context-library/business-info-template.md` | pricing, tiers, plans, ACV, revenue model, monetization | Current pricing, tiers, customer segments, revenue targets |
-| Metrics/Analytics | `context-library/metrics/*.md` | NRR, "net revenue retention", expansion rate, upsell, churn, MRR | Existing expansion metrics, NRR benchmarks, churn by segment |
-| PRDs | `context-library/prds/*.md` | pricing, tier, feature gate, monetization | Feature decisions tied to monetization, pricing rationale |
-| Strategy | `context-library/strategy/*.md` | "growth", "expansion", "pricing", "positioning" | Strategic approach, customer segmentation, market positioning |
-| Meeting Notes | `context-library/meetings/*.md` | pricing, customer expansion, upsell, enterprise, segment, revenue | Sales conversations, customer upgrade opportunities, pricing feedback |
+| Business Info | `brain/knowledge/strategy.md` | pricing, tiers, plans, ACV, revenue model, monetization | Current pricing, tiers, customer segments, revenue targets |
+| Metrics/Analytics | `brain/knowledge/product/metrics.md` | NRR, "net revenue retention", expansion rate, upsell, churn, MRR | Existing expansion metrics, NRR benchmarks, churn by segment |
+| PRDs | `brain/knowledge/product/features/*.md` | pricing, tier, feature gate, monetization | Feature decisions tied to monetization, pricing rationale |
+| Strategy | `brain/knowledge/strategy.md` | "growth", "expansion", "pricing", "positioning" | Strategic approach, customer segmentation, market positioning |
+| Meeting Notes | `brain/ingestion/meetings/` | pricing, customer expansion, upsell, enterprise, segment, revenue | Sales conversations, customer upgrade opportunities, pricing feedback |
 
 **Context Priority:**
 1. Internal context FIRST (business info, existing metrics, PRDs)
@@ -58,11 +58,11 @@ When this skill is invoked, immediately check:
 Before diving into expansion tactics, let me check what you already know about your business...
 
 **Checking:**
-- `context-library/business-info-template.md` for current pricing and segments
-- `context-library/metrics/` for existing expansion metrics and NRR
-- `context-library/prds/` for monetization-related decisions
-- `context-library/strategy/` for revenue growth strategy
-- `context-library/meetings/` for sales conversations about expansion
+- `brain/knowledge/strategy.md` for current pricing and segments
+- `brain/knowledge/product/` for existing expansion metrics and NRR
+- `brain/knowledge/product/features/` for monetization-related decisions
+- `brain/knowledge/` for revenue growth strategy
+- `brain/ingestion/meetings/` for sales conversations about expansion
 
 **[If analytics MCP connected]:** "Let me also query [Amplitude/Mixpanel] for current expansion rates, NRR, and customer segment growth patterns."
 
@@ -221,7 +221,7 @@ Upgraded (10%) - completed expansion
 
 **Use this prompt:**
 ```
-Use /expansion-strategy and reference context-library/business-info-template.md
+Use /expansion-strategy and reference brain/knowledge/strategy.md
 
 Help me identify expansion opportunities:
 - Product: [describe your product]
@@ -565,10 +565,10 @@ Median days from signup to first upgrade
 
 **Strategy Documents:**
 - Save to: `outputs/analyses/expansion-strategy-[quarter].md`
-- When finalized: Move to `context-library/strategy/expansion-strategy-[quarter].md` for reference
+- When finalized: Move to `brain/knowledge/strategy.md` for reference
 
 **Pricing Changes & Experiments:**
-- Create PRD in `context-library/prds/` for any tier changes or feature gating
+- Create PRD in `brain/knowledge/product/features/` for any tier changes or feature gating
 - Link to this expansion strategy as context
 
 **Sales Playbooks:**
@@ -581,7 +581,7 @@ Median days from signup to first upgrade
 - `/prd-draft` - New tier/feature gating decisions reference expansion strategy
 - `/retention-analysis` - Expansion cohort performance data informs retention strategy
 - `/activation-analysis` - Activation rate by segment informs expansion readiness
-- `/write-prod-strategy` - Revenue model and pricing strategy
+- `/strategy-check` - Revenue model and pricing strategy
 - `/metrics-framework` - NRR, expansion rate as leading indicators of business health
 
 **Pulls from:**
@@ -678,7 +678,7 @@ When analyzing expansion opportunities, map your pricing against competitors:
 2. What features do competitors gate at each tier? (If a key feature is free at Competitor A but gated at your Business tier, that's churn risk)
 3. Is there a tier gap? (Price point where no option exists -- e.g., between $25 and $65/user, there's a $40 gap where users might feel stuck)
 
-Pull competitor pricing from `context-library/research/competitive-*.md` or `context-library/business-info-template.md` competitor sections.
+Pull competitor pricing from `brain/knowledge/market/competitors/` or `brain/knowledge/strategy.md` competitor sections.
 
 ---
 

@@ -3,16 +3,16 @@ description: Generate SQL queries from natural language — supports BigQuery, P
 argument-hint: "<what you want to know, in plain English>"
 ---
 
-# /write-query -- SQL Query Generator
+# /sql-queries
 
 Describe what data you need in plain English and get an optimized SQL query. Supports multiple dialects and can read your schema from uploaded files.
 
 ## Invocation
 
 ```
-/write-query Show me daily active users for the last 30 days, broken down by plan tier
-/write-query Find users who signed up last month but never completed onboarding
-/write-query [upload a schema diagram] What's the conversion rate from trial to paid by cohort?
+/sql-queries Show me daily active users for the last 30 days, broken down by plan tier
+/sql-queries Find users who signed up last month but never completed onboarding
+/sql-queries [upload a schema diagram] What's the conversion rate from trial to paid by cohort?
 ```
 
 ## Workflow

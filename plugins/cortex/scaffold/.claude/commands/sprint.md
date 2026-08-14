@@ -92,6 +92,8 @@ Apply the **sprint-plan** skill:
 
 Save to `outputs/<date>-sprint-plan-<slug>.md`.
 
+Update `brain/knowledge/product/roadmap.md` — mark features committed this sprint as `status: in-progress` and note the sprint goal.
+
 ---
 
 ### Retro Mode
@@ -149,6 +151,8 @@ Apply the **retro** skill:
 ```
 
 Save to `outputs/<date>-sprint-retro-<slug>.md`.
+
+Append a summary to `brain/ingestion/adhoc/<date>-retro-<slug>.md` — key commitments and top action item only.
 
 ---
 

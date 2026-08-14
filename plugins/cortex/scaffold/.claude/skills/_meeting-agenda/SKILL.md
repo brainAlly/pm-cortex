@@ -58,7 +58,7 @@ Week 2: Rapid updates + decisions (30 min)
 Week 3: Planning session (45 min)
 Week 4: Retro + learnings (30 min)
 ```
-For recurring meetings, check `context-library/meetings/` and `outputs/meeting-notes/` for previous agendas and notes. Reference what was discussed last time, carry over open items, and avoid repeating the same format every week.
+For recurring meetings, check `brain/ingestion/meetings/` and `outputs/meeting-notes/` for previous agendas and notes. Reference what was discussed last time, carry over open items, and avoid repeating the same format every week.
 
 **One-off meetings** need a clear single outcome and should default to 25 minutes. If you cannot define the single outcome, push back on scheduling it.
 
@@ -661,7 +661,7 @@ Meeting focuses on discussing concerns, not rehashing basics.
 **After the meeting:**
 - `/meeting-notes` - Document outcomes and action items
 - `/meeting-cleanup` - Process batch of meetings from one day
-- `/decision-doc` - Formalize decisions made in meeting
+- `/decide` - Formalize decisions made in meeting
 
 **Before the meeting:**
 - `/prd-draft` - Create spec to review in meeting
@@ -757,19 +757,19 @@ Remember: A great agenda is half the battle. The other half is actually sticking
 When the PM uses `/meeting-agenda`, I automatically:
 
 ### 1. Check Recent Meeting Context
-**Source:** `context-library/meetings/`, recent decisions and action items
+**Source:** `brain/ingestion/meetings/`, recent decisions and action items
 - **What I look for:** Related meetings, earlier discussions, open questions
 - **How I use it:** Reference previous context in pre-read section
 - **Example:** "You discussed pricing Thursday, this follow-up should assume people remember that"
 
 ### 2. Pull Stakeholder Communication Preferences
-**Source:** `context-library/stakeholder-template.md`
+**Source:** `brain/stakeholders/<slug>.md`
 - **What I look for:** How each stakeholder prefers communication, decision style
 - **How I use it:** Format agenda and pre-read to match their preferences
 - **Example:** "CFO prefers numbers first, I'll put financial data in pre-read"
 
 ### 3. Reference Relevant PRDs & Strategy
-**Source:** `context-library/prds/`, `context-library/strategy/`
+**Source:** `brain/knowledge/product/features/`, `brain/knowledge/`
 - **What I look for:** Strategic context that informs meeting purpose
 - **How I use it:** Add strategic rationale to meeting purpose statement
 - **Example:** "This decision affects H1 roadmap, reference that in purpose"
@@ -790,4 +790,4 @@ When the PM uses `/meeting-agenda`, I automatically:
 **Routing logic:**
 - After meeting: Use `/meeting-notes` to capture outcomes
 - Multiple meetings: Use `/meeting-cleanup` at end of day
-- Decision made in meeting: Route to `/decision-doc` if it needs formal documentation
+- Decision made in meeting: Route to `/decide` if it needs formal documentation

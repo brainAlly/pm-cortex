@@ -20,10 +20,10 @@ Plan your week forward with clear priorities tied to quarterly goals. Sets the f
 ## Context Routing
 
 **Check these files first:**
-1. `context-library/strategy/` - Quarter OKRs, North Star, strategic pillars
+1. `brain/knowledge/` - Quarter OKRs, North Star, strategic pillars
 2. `outputs/weekly-reviews/` - Last week's review (if exists)
 3. `outputs/prds/` - Active PRDs and their stages
-4. `context-library/launches/` - Upcoming launches
+4. `brain/ingestion/adhoc/` - Upcoming launches
 5. `outputs/weekly-plans/` - Previous weekly plans (for pattern analysis)
 
 **MCP Queries (if available):**
@@ -70,7 +70,7 @@ If doesn't exist:
 
 **A. Quarter Goals & North Star:**
 
-Read `context-library/strategy/`:
+Read `brain/knowledge/`:
 - Current quarter OKRs
 - North Star metric and target
 - Strategic pillars (usually 3-4 themes)
@@ -84,7 +84,7 @@ Extract:
 
 **B. Active PRD Pipeline:**
 
-Scan `outputs/prds/` and `context-library/prds/`:
+Scan `outputs/prds/` and `brain/knowledge/product/features/`:
 
 For each active PRD:
 - Current stage
@@ -106,7 +106,7 @@ Identify: Which PRDs need to advance this week?
 
 **C. Upcoming Launches:**
 
-Check `context-library/launches/`:
+Check `brain/ingestion/adhoc/`:
 - Features launching this week
 - Pre-launch checklists due
 - Post-launch monitoring needed
@@ -399,7 +399,7 @@ quarter: Q[X] YYYY
 
 **If Calendar MCP not connected:**
 - Ask: "What key meetings do you have next week?"
-- Note: "I can give better planning with calendar access. Run `/connect-mcps connect to google-calendar`"
+- Note: "I can give better planning with calendar access. Connect Google Calendar via Claude Desktop → Settings → MCP Servers."
 
 **If Linear/Jira MCP not connected:**
 - Manual task entry: "What key tasks need to happen for each priority?"
@@ -407,7 +407,7 @@ quarter: Q[X] YYYY
 
 **If strategy docs don't exist:**
 - Ask: "What are your top quarterly goals?"
-- Suggest: "Fill out `context-library/strategy/OKRs.md` for better alignment"
+- Suggest: "Fill out `brain/knowledge/strategy.md` for better alignment"
 
 ---
 
@@ -472,7 +472,7 @@ quarter: Q[X] YYYY
 
 Before presenting output to the PM, verify:
 
-- [ ] **Context was checked:** Reviewed `context-library/strategy/` for quarter OKRs, `outputs/prds/` for active PRDs, and `context-library/meetings/` for upcoming commitments
+- [ ] **Context was checked:** Reviewed `brain/knowledge/` for quarter OKRs, `outputs/prds/` for active PRDs, and `brain/ingestion/meetings/` for upcoming commitments
 - [ ] **Priorities aligned with strategic goals:** Each of the top 3 priorities explicitly references which quarter goal, OKR, or strategic pillar it advances
 - [ ] **LNO classification applied:** Key tasks are tagged as Leverage, Neutral, or Overhead to ensure the week is weighted toward high-leverage work
 - [ ] **Dependencies and blockers identified:** Each priority lists what it depends on (people, decisions, deliverables) and any known blockers with mitigation plans

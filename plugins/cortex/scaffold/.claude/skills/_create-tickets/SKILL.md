@@ -407,7 +407,7 @@ Remember: Great tickets save engineering hours. Invest time upfront to create cl
 When the PM uses `/create-tickets`, I automatically:
 
 ### 1. Extract Source Material Understanding
-**Source:** PRDs in `context-library/prds/`, or uploaded documents
+**Source:** PRDs in `brain/knowledge/product/features/`, or uploaded documents
 - **What I look for:** Acceptance criteria, technical requirements, design context
 - **How I use it:** Generate detailed tickets with full context
 - **Example:** "PRD says 'mobile-first', I'll note that in every ticket's technical notes"
@@ -419,7 +419,7 @@ When the PM uses `/create-tickets`, I automatically:
 - **Example:** "Epic 'Voice Feature' exists, I'll link all tickets to it automatically"
 
 ### 3. Check Dependencies Across Roadmap
-**Source:** `context-library/prds/`, related PRDs
+**Source:** `brain/knowledge/product/features/`, related PRDs
 - **What I look for:** What else is being built that might block this
 - **How I use it:** Surface dependency tickets
 - **Example:** "Notification system ships next sprint, Voice Feature depends on it"

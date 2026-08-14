@@ -1,6 +1,6 @@
 ---
-name: gtm-strategy
-description: Full GTM — ICP, positioning, channel selection, motion design (PLG/SLG/MLG), and success metrics. Updates brain/knowledge/market/landscape.md and strategy.md.
+description: Full GTM — ICP, positioning, channel selection, motion design (PLG/SLG/MLG), and success metrics
+argument-hint: "[product, feature, or segment]"
 ---
 
 # /gtm-strategy

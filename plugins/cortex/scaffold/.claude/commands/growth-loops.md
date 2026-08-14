@@ -1,6 +1,6 @@
 ---
-name: growth-loops
-description: Growth loop design and analysis — acquisition loop, engagement loop, and monetization loop. Updates brain/knowledge/strategy.md growth section.
+description: Design and analyze growth loops — acquisition, engagement, and monetization — for compounding traction
+argument-hint: "[product or growth challenge]"
 ---
 
 # /growth-loops

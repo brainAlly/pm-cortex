@@ -37,11 +37,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Research Plan | `context-library/research/*.md` | hypothesis, problem statement, target users | Current understanding of problem |
-| User Personas | `context-library/research/personas*.md` or stakeholder template | target segment, role, company size | Who to interview and their context |
-| PRDs | `context-library/prds/*.md` | problem statement, user pain | Problem framing for interview hypothesis |
-| Strategy | `context-library/strategy/*.md` | user segment, JTBD canvas | Jobs framework and strategic fit |
-| Previous Research | `context-library/research/interviews*.md` | similar problem area, past themes | Avoid revalidating, build on insights |
+| Research Plan | `brain/ingestion/interviews/` | hypothesis, problem statement, target users | Current understanding of problem |
+| User Personas | `brain/knowledge/users/personas.md` or stakeholder template | target segment, role, company size | Who to interview and their context |
+| PRDs | `brain/knowledge/product/features/*.md` | problem statement, user pain | Problem framing for interview hypothesis |
+| Strategy | `brain/knowledge/strategy.md` | user segment, JTBD canvas | Jobs framework and strategic fit |
+| Previous Research | `brain/ingestion/interviews/` | similar problem area, past themes | Avoid revalidating, build on insights |
 
 **Context Priority:**
 1. Current PRD and problem statement FIRST
@@ -53,7 +53,7 @@ When this skill is invoked, immediately check:
 - After interview → Link to `/user-interview` for processing transcripts
 - After interview → Link to `/user-research-synthesis` for deeper synthesis
 - If extracting insights → Link to `/user-research-synthesis` for analysis
-- If developing strategy from findings → Link to `/write-prod-strategy`
+- If developing strategy from findings → Link to `/strategy-check`
 - Note: `/interview-prep` is for PM job interviews, not user research
 
 ---
@@ -63,9 +63,9 @@ When this skill is invoked, immediately check:
 Before creating the guide, let me understand what you're trying to learn...
 
 **Checking:**
-- `context-library/prds/` for the feature or problem you're researching
-- `context-library/research/` for previous findings on this area
-- `context-library/strategy/` for strategic context
+- `brain/knowledge/product/features/` for the feature or problem you're researching
+- `brain/ingestion/interviews/` for previous findings on this area
+- `brain/knowledge/` for strategic context
 - Stakeholder profiles for interview target information
 
 **Based on what I find, I'll show you:**
@@ -99,7 +99,7 @@ Before creating the guide, let me understand what you're trying to learn...
 
 ## Step 0.5: Integrate Past Research
 
-**Before creating the guide, check `context-library/research/` for existing interview syntheses and findings.**
+**Before creating the guide, check `brain/ingestion/interviews/` for existing interview syntheses and findings.**
 
 Search for:
 - Previous interview synthesis files (`*interview*`, `*research*`, `*synthesis*`)
@@ -111,7 +111,7 @@ Search for:
 ```
 ## Research Foundation for This Interview Guide
 
-**Based on [N] previous interviews/syntheses found in context-library/research/:**
+**Based on [N] previous interviews/syntheses found in brain/ingestion/interviews/:**
 
 ### Well-Validated Themes (don't over-index here)
 These themes have strong evidence from prior research. Include 1-2 confirmation
@@ -135,7 +135,7 @@ Add open-ended discovery questions to surface new insights.
 **Add a note at the top of the generated guide:**
 > "Based on [N] previous interviews, we already know [validated themes summary]. This guide focuses on deepening [weak evidence areas] and exploring [new areas]. Avoid spending excessive time re-validating established findings."
 
-If no previous research is found, note: "No existing research found in context-library/research/. This is a discovery interview -- all questions are exploratory."
+If no previous research is found, note: "No existing research found in brain/ingestion/interviews/ This is a discovery interview -- all questions are exploratory."
 
 ---
 
@@ -323,7 +323,7 @@ Wrap up, ask for referrals
 
 **Interview guides:**
 - Active work: `outputs/interview-guides-[topic]-[date].md`
-- When finalized: Archive to `context-library/research/interview-guides/` for team reference
+- When finalized: Archive to `brain/ingestion/interviews/` for team reference
 - Use directly: Share with interviewing team before sessions
 
 ### Link to Other Work
@@ -332,18 +332,18 @@ After creating the guide:
 - **Share with team** - Use as standard guide for all interviews on this topic
 - **Synthesize findings** - After interviews, use `/user-research-synthesis`
 - **Update PRD** - If research validates hypothesis, update in `/prd-draft`
-- **Inform strategy** - If research reveals new insights, feed to `/write-prod-strategy`
+- **Inform strategy** - If research reveals new insights, feed to `/strategy-check`
 
 ### Cross-Skill Integration
 
 **Feeds into:**
 - `/user-research-synthesis` - After interviews, synthesize the raw notes
 - `/prd-draft` - Research findings go into Hypothesis section
-- `/write-prod-strategy` - Deep user research informs strategic decisions
+- `/strategy-check` - Deep user research informs strategic decisions
 
 **Pulls from:**
-- `context-library/research/` - Previous research on this topic
-- `context-library/strategy/` - Strategic context about this user problem
+- `brain/ingestion/interviews/` - Previous research on this topic
+- `brain/knowledge/` - Strategic context about this user problem
 - Stakeholder profiles - Information about target user segment
 
 ---
@@ -354,7 +354,7 @@ Before delivering the interview guide, verify:
 
 | Check | Criteria | Pass? |
 |-------|----------|-------|
-| **Past research checked** | Searched `context-library/research/` and categorized findings into validated/needs-evidence/unexplored | [ ] |
+| **Past research checked** | Searched `brain/ingestion/interviews/` and categorized findings into validated/needs-evidence/unexplored | [ ] |
 | **Guide reflects prior knowledge** | Questions focus on gaps, not re-validating what's already known | [ ] |
 | **Research foundation note included** | Top of guide states what's known and where this guide focuses | [ ] |
 | **No leading questions** | Every question is open-ended, not suggesting a desired answer | [ ] |
