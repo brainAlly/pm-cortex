@@ -104,7 +104,7 @@ Operator-facing verbs. Each command is a thin spec: input, files to load, files 
 
 | Verb | When to run it |
 | --- | --- |
-| [`/pm-brain`](./pm-brain.md) | Initialize or upgrade the PM Brain — scaffolds the full brain structure in the current directory |
+| `/pm-brain upgrade` | Built-in — upgrades the PM Brain scaffold to the latest version (no command file; runs directly) |
 
 ---
 

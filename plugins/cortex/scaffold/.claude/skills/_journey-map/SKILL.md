@@ -483,7 +483,7 @@ Revenue:  [MRR/ARR progression over time]
 
 **Feeds into:**
 - `/prd-draft` - Inform feature specs with journey insights
-- `/write-prod-strategy` - User/customer understanding in strategy
+- `/strategy-check` - User/customer understanding in strategy
 - `/activation-analysis` - Setup → Aha → Habit maps to journey phases
 - `/retention-analysis` - Journey reveals retention drivers
 
@@ -509,31 +509,31 @@ Remember: Journey maps are tools for empathy and alignment. A good journey map m
 When the PM uses `/journey-map`, I automatically:
 
 ### 1. Pull User Research for Personas & Pain Points
-**Source:** `context-library/research/`, user research MCPs (Dovetail, UserTesting)
+**Source:** `brain/ingestion/interviews/`, user research MCPs (Dovetail, UserTesting)
 - **What I look for:** User personas, quotes, pain points, behavior patterns
 - **How I use it:** Pre-populate persona sections with real research data
 - **Example:** Auto-pull quotes from interviews: "I always get stuck at the checkout step"
 
 ### 2. Extract Relevant Metrics & Analytics
-**Source:** Amplitude, Mixpanel, Posthog (if connected), `context-library/metrics/`
+**Source:** Amplitude, Mixpanel, Posthog (if connected), `brain/knowledge/product/`
 - **What I look for:** Conversion rates, drop-off points, time-in-flow metrics
 - **How I use it:** Quantify pain points with actual data
 - **Example:** "Phase 3 has a 45% drop-off rate (vs 12% in Phase 2)"
 
 ### 3. Align With Strategy & OKRs
-**Source:** `context-library/strategy/`, PRDs
+**Source:** `brain/knowledge/`, PRDs
 - **What I look for:** Current strategic focus, activation goals, retention goals
 - **How I use it:** Suggest which journey phases matter most for strategy
 - **Example:** "Since we're focused on retention, let's emphasize the habit-formation phase"
 
 ### 4. Cross-Reference Customer Lifecycle
-**Source:** Sales/CS data, past customer journey maps in `context-library/`
+**Source:** Sales/CS data, past customer journey maps in `brain/`
 - **What I look for:** Typical customer progression, expansion patterns
 - **How I use it:** Build customer journey map that aligns with business model
 - **Example:** For PLG model, include activation → expansion → advocacy phases
 
 ### 5. Identify Cross-Functional Stakeholders
-**Source:** `context-library/stakeholder-template.md`
+**Source:** `brain/stakeholders/<slug>.md`
 - **What I look for:** Who owns different journey phases (sales, product, CS, success)
 - **How I use it:** Suggest who to involve in journey mapping workshop
 - **Example:** "Phase 3 (onboarding) involves Product + CS, should workshop together"
@@ -541,7 +541,7 @@ When the PM uses `/journey-map`, I automatically:
 ### 6. Route for Action
 **Routing logic:**
 - **User journey map:** Feeds into `/prd-draft` and design decisions
-- **Customer journey map:** Feeds into GTM strategy and `/write-prod-strategy`
+- **Customer journey map:** Feeds into GTM strategy and `/strategy-check`
 - **Activation journey:** Maps to `/activation-analysis` framework
 - **Retention journey:** Maps to `/retention-analysis` cohorts
 
@@ -552,8 +552,8 @@ When the PM uses `/journey-map`, I automatically:
 Before presenting output to the PM, verify:
 
 - [ ] **File saved to correct location:** Output saved to `outputs/journey-maps/[journey-name]-[date].md`
-- [ ] **Context routing table was checked:** Reviewed `context-library/research/` for user research, interview transcripts, and persona data before building the map
+- [ ] **Context routing table was checked:** Reviewed `brain/ingestion/interviews/` for user research, interview transcripts, and persona data before building the map
 - [ ] **Every stage has all four elements:** Each journey phase includes actions, thoughts, emotions, and pain points (no empty or missing sections)
-- [ ] **User quotes from research included:** Where available, real user quotes from `context-library/research/` are embedded in relevant journey stages (not fabricated quotes)
+- [ ] **User quotes from research included:** Where available, real user quotes from `brain/ingestion/interviews/` are embedded in relevant journey stages (not fabricated quotes)
 - [ ] **Opportunities linked to specific product improvements:** Each opportunity names a concrete product change (e.g., "add progress bar to onboarding step 3"), not generic advice like "improve the experience"
 - [ ] **Emotional journey shows highs and lows:** The emotional arc across stages is not flat; it includes at least one high point and one low point with explanations for the shifts

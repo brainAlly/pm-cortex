@@ -36,11 +36,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Strategy Docs | `context-library/strategy/*.md` | feature name from chat | Strategic pillar alignment |
-| Related PRDs | `context-library/prds/*.md` | feature dependencies | Related features and cross-functional impact |
-| User Research | `context-library/research/*.md` | problem related to feature | User pain points, quotes, validation |
-| Business Model | `context-library/business-info-template.md` | pricing, revenue, metrics | Revenue impact, North Star alignment |
-| Competitor Analysis | `context-library/research/competitive-*.md` | feature name | Competitive positioning if relevant |
+| Strategy Docs | `brain/knowledge/strategy.md` | feature name from chat | Strategic pillar alignment |
+| Related PRDs | `brain/knowledge/product/features/*.md` | feature dependencies | Related features and cross-functional impact |
+| User Research | `brain/ingestion/interviews/` | problem related to feature | User pain points, quotes, validation |
+| Business Model | `brain/knowledge/strategy.md` | pricing, revenue, metrics | Revenue impact, North Star alignment |
+| Competitor Analysis | `brain/knowledge/market/competitors/` | feature name | Competitive positioning if relevant |
 | Stakeholder Context | Stakeholder profiles | key stakeholders for this feature | Who to involve, communication style |
 
 **Context Priority:**
@@ -53,7 +53,7 @@ When this skill is invoked, immediately check:
 - If user problem not validated → Link to `/interview-guide` and `/user-research-synthesis`
 - If impact unclear → Link to `/impact-sizing` for user/revenue impact
 - If success metrics unclear → Link to `/feature-metrics` for STEDII framework
-- If strategic fit unclear → Link to `/write-prod-strategy` for context
+- If strategic fit unclear → Link to `/strategy-check` for context
 
 ---
 
@@ -62,10 +62,10 @@ When this skill is invoked, immediately check:
 Before we draft, let me check what context exists...
 
 **Checking:**
-- `context-library/prds/` for any related feature PRDs
-- `context-library/strategy/` for strategic alignment
-- `context-library/research/` for user validation
-- `context-library/business-info-template.md` for business context
+- `brain/knowledge/product/features/` for any related feature PRDs
+- `brain/knowledge/` for strategic alignment
+- `brain/ingestion/interviews/` for user validation
+- `brain/knowledge/strategy.md` for business context
 - Stakeholder profiles for who needs to be involved
 
 ### Context Health Check
@@ -82,7 +82,7 @@ Want to:
 ```
 
 **If strategy docs are empty/missing:**
-Flag this and suggest `/write-prod-strategy` or `/strategy-sprint` first.
+Flag this and suggest `/strategy-check` or `/strategy-check` first.
 
 **Based on what I find, I'll show you:**
 
@@ -153,7 +153,7 @@ Before I draft anything, I need to understand the initiative. Don't worry about 
 5. Is this an A/B test or full launch?
 6. What are the non-goals? (What are we explicitly NOT doing?)
 7. What are the success metrics? (How will we know this worked?)
-8. Who are the key stakeholders? (@ mention them if you have profiles in `context-library/stakeholder-template.md` or similar)
+8. Who are the key stakeholders? (@ mention them if you have profiles in `brain/stakeholders/<slug>.md` or similar)
 
 **AI-specific (if applicable):**
 9. What are example prompts or user inputs?
@@ -379,7 +379,7 @@ If [scenario], we will [specific action].
 ### Writing Guidelines for the Draft
 
 **Tone:**
-- Use the appropriate writing style from `context-library/writing-style-*.md`
+- Use the appropriate writing style from `brain/style/writing.md`
 - Write like the PM would write (human, not AI-generated)
 - Be direct and crisp
 
@@ -655,7 +655,7 @@ Great work! Your PRD is ready for review.
 
 **PRD documents:**
 - Active work: `outputs/prds/[feature-name]-[stage].md`
-- When finalized: Move to `context-library/prds/[feature-name].md` for historical reference
+- When finalized: Move to `brain/knowledge/product/features/<slug>.md` for historical reference
 - Evolve through stages: Team Kickoff → Planning Review → XFN Kickoff → Solution Review → Launch → Impact
 
 ### Link to Other Work
@@ -678,7 +678,7 @@ After creating PRD:
 - `/user-research-synthesis` - User quotes and insights populate Hypothesis
 - `/impact-sizing` - Usage estimates and revenue impact go into Strategic Fit
 - `/interview-guide` - User research that validated the problem
-- `context-library/strategy/` - Strategic pillar and alignment context
+- `brain/knowledge/` - Strategic pillar and alignment context
 - `/define-north-star` - Ensure feature's success metrics ladder to North Star
 
 ---
@@ -690,16 +690,16 @@ After creating PRD:
 Before presenting the PRD draft to the PM, verify:
 
 - [ ] **Filename follows convention:** `[feature-name-kebab-case]-[stage].md` (e.g., `voice-task-capture-team-kickoff.md`)
-- [ ] **Saved to correct location:** `outputs/prds/` (NOT `context-library/prds/`)
+- [ ] **Saved to correct location:** `outputs/prds/` (NOT `brain/knowledge/product/features/`)
 - [ ] **Word count matches stage:** Check against the Stage-Specific Length Guidance table
 - [ ] **Hypothesis is testable:** Contains a clear "If we... then... because..." statement
-- [ ] **Strategic fit references actual strategy:** Cites specific goals from `context-library/strategy/`, not generic strategy language
+- [ ] **Strategic fit references actual strategy:** Cites specific goals from `brain/knowledge/`, not generic strategy language
 - [ ] **Non-goals are specific:** Each non-goal explains WHY it's excluded, not just what it is
 - [ ] **Success metrics have baselines and targets:** Not just "increase X" but "X from [current] to [target] by [date]"
 - [ ] **Kill criteria are realistic:** Would the team actually pull the plug at this threshold?
 - [ ] **Behavior Examples vs Solution Overview:** AI features have the behavior table; non-AI features have the solution overview
 - [ ] **Sounds human:** Read it aloud -- does it sound like the PM wrote it, or like an AI generated it?
-- [ ] **User quotes included:** If user research exists in `context-library/research/`, at least one real quote is referenced
+- [ ] **User quotes included:** If user research exists in `brain/ingestion/interviews/`, at least one real quote is referenced
 - [ ] **Open questions have owners:** Every open question has a @stakeholder assigned
 
 ---

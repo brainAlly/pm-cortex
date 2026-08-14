@@ -15,7 +15,7 @@ argument-hint: "<product or business stage>"
 ## Quick Start
 
 1. Tell me: "Help me define our North Star metric" (or "Validate our current North Star")
-2. I will check `context-library/business-info-template.md` and `context-library/strategy/` for your business model, growth stage, and existing metrics
+2. I will check `brain/knowledge/strategy.md` and `brain/knowledge/` for your business model, growth stage, and existing metrics
 3. I will ask about your core value, retention drivers, and business model to narrow candidates
 4. We work through: Core Value identification, Metric formula (Frequency x Core Action x Breadth), Validation tests, Input metrics, and Guardrails
 5. Output goes to `outputs/analyses/north-star-[quarter].md`
@@ -29,11 +29,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Strategy Docs | `context-library/strategy/*.md` | objective, business goal, success metric | Current metric direction, if any |
-| Business Model | `context-library/business-info-template.md` | revenue model, growth focus, metrics | What drives the business |
-| Metrics History | `context-library/metrics/*.md` | baseline, trends, retention data | Current metric baselines and movement |
-| Meetings | `context-library/meetings/*.md` | "North Star", "KPI", "success metric" | Stakeholder expectations |
-| PRDs | `context-library/prds/*.md` | success metric, target | Feature-level success indicators |
+| Strategy Docs | `brain/knowledge/strategy.md` | objective, business goal, success metric | Current metric direction, if any |
+| Business Model | `brain/knowledge/strategy.md` | revenue model, growth focus, metrics | What drives the business |
+| Metrics History | `brain/knowledge/product/metrics.md` | baseline, trends, retention data | Current metric baselines and movement |
+| Meetings | `brain/ingestion/meetings/` | "North Star", "KPI", "success metric" | Stakeholder expectations |
+| PRDs | `brain/knowledge/product/features/*.md` | success metric, target | Feature-level success indicators |
 
 **Context Priority:**
 1. Business model and revenue drivers FIRST
@@ -42,7 +42,7 @@ When this skill is invoked, immediately check:
 4. Stakeholder expectations FOURTH
 
 **Cross-Skill Links:**
-- If building strategy → Link to `/write-prod-strategy` which uses North Star
+- If building strategy → Link to `/strategy-check` which uses North Star
 - If defining feature metrics → Link to `/feature-metrics` which should ladder to North Star
 - If analyzing retention → Link to `/retention-analysis` to identify leading indicators
 - If setting up metrics framework → Link to `/metrics-framework`
@@ -54,10 +54,10 @@ When this skill is invoked, immediately check:
 Before defining your North Star, let me understand where you are...
 
 **Checking:**
-- `context-library/business-info-template.md` for your business model
-- `context-library/strategy/` for strategic direction
-- `context-library/metrics/` for baseline metrics and trends
-- `context-library/meetings/` for stakeholder priorities
+- `brain/knowledge/strategy.md` for your business model
+- `brain/knowledge/` for strategic direction
+- `brain/knowledge/product/` for baseline metrics and trends
+- `brain/ingestion/meetings/` for stakeholder priorities
 
 **Based on what I find, I'll show you:**
 
@@ -208,7 +208,7 @@ Answer these questions:
 
 Use this prompt:
 ```
-Use /define-north-star and reference context-library/business-info-template.md
+Use /define-north-star and reference brain/knowledge/strategy.md
 
 Help me identify our core value:
 - Product: [describe your product]
@@ -558,13 +558,13 @@ Without guardrails, teams will find ways to game the North Star that hurt the bu
 
 **North Star definition:**
 - Active work: `outputs/analyses/north-star-[quarter].md` (your working definition)
-- When finalized: Move to `context-library/metrics/north-star-[year].md` for reference
+- When finalized: Move to `brain/knowledge/strategy.md` for reference
 - Share widely: This becomes the basis for all team metrics
 
 ### Link to Other Work
 
 After defining North Star:
-- **Reference in strategy** - "Our North Star metric is [X]" in `/write-prod-strategy`
+- **Reference in strategy** - "Our North Star metric is [X]" in `/strategy-check`
 - **Guide PRDs** - All feature PRDs should explain how they support North Star
 - **Inform roadmap** - Roadmap priorities are evaluated by North Star impact
 - **Dashboard anchor** - North Star sits at top of your metrics dashboard
@@ -572,14 +572,14 @@ After defining North Star:
 ### Cross-Skill Integration
 
 **Feeds into:**
-- `/write-prod-strategy` - North Star becomes the Objective component
+- `/strategy-check` - North Star becomes the Objective component
 - `/metrics-framework` - North Star is your lagging metric anchor
 - `/feature-metrics` - Feature success metrics should ladder to North Star
 - `/status-update` - Progress toward North Star is tracked in updates
 
 **Pulls from:**
-- `context-library/business-info-template.md` - Business model informs what matters
-- `context-library/metrics/` - Historical data validates metric choices
+- `brain/knowledge/strategy.md` - Business model informs what matters
+- `brain/knowledge/product/` - Historical data validates metric choices
 - `/retention-analysis` - Understand what drives long-term success
 - `/activation-analysis` - Early indicators of North Star movement
 
@@ -591,7 +591,7 @@ After defining North Star:
 - `/feature-metrics` - Choose experiment metrics that ladder to North Star
 - `/metrics-framework` - Understand leading vs lagging metrics
 - `/retention-analysis` - Measure what drives retention and North Star
-- `/write-prod-strategy` - Connect North Star to strategy
+- `/strategy-check` - Connect North Star to strategy
 
 ---
 

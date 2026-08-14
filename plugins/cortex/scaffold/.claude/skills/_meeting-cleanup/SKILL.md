@@ -30,12 +30,12 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Business Info | `context-library/business-info-template.md` | company, product, team | Company context for interpreting discussions |
-| Stakeholder Profiles | `context-library/stakeholder-template.md` | attendees' names | Communication preferences, roles, decision authority |
-| Active PRDs | `context-library/prds/*.md` | features discussed | Link action items to active PRDs |
-| Previous Meetings | `context-library/meetings/*.md`, `outputs/meeting-notes/` | same meeting name, same attendees | Carry-over items, open questions from last time |
-| Strategy | `context-library/strategy/*.md` | strategic pillars, OKRs | Align decisions to strategic context |
-| Decisions | `context-library/decisions/*.md` | related decisions | Check for conflicts with past decisions |
+| Business Info | `brain/knowledge/strategy.md` | company, product, team | Company context for interpreting discussions |
+| Stakeholder Profiles | `brain/stakeholders/<slug>.md` | attendees' names | Communication preferences, roles, decision authority |
+| Active PRDs | `brain/knowledge/product/features/*.md` | features discussed | Link action items to active PRDs |
+| Previous Meetings | `brain/ingestion/meetings/`, `outputs/meeting-notes/` | same meeting name, same attendees | Carry-over items, open questions from last time |
+| Strategy | `brain/knowledge/strategy.md` | strategic pillars, OKRs | Align decisions to strategic context |
+| Decisions | `brain/decisions/` | related decisions | Check for conflicts with past decisions |
 
 **Context Priority:**
 1. Previous meeting notes for same recurring meetings FIRST
@@ -88,7 +88,7 @@ For each meeting processed, verify:
 2. **All action items have deadlines** -- if an action item lacks a date, assign a reasonable default and flag it: "No deadline stated -- defaulting to [date], confirm?"
 3. **No duplicate action items across meetings** -- if the same action appears in multiple meetings, consolidate into one entry and note which meetings referenced it
 4. **Conflicting decisions across meetings are flagged** -- if Meeting 1 decided "launch in March" and Meeting 3 discussed "push to April," flag the conflict explicitly
-5. **Strategic alignment is noted for each decision** -- tie decisions to strategic pillars from `context-library/strategy/` when relevant
+5. **Strategic alignment is noted for each decision** -- tie decisions to strategic pillars from `brain/knowledge/` when relevant
 
 ### Step 3: Update Systems (5 min)
 
@@ -235,7 +235,7 @@ When the PM uses `/meeting-cleanup`, I automatically:
 ### 2. Identify Decisions Made
 **Source:** All meeting transcripts
 - **What I look for:** Decisions that came out of meetings
-- **How I use it:** Flag for `/decision-doc` if significant
+- **How I use it:** Flag for `/decide` if significant
 - **Example:** "Multiple meetings discuss same decision, consolidate for formal decision-doc"
 
 ### 3. Route Action Items to Right Systems
@@ -259,7 +259,7 @@ When the PM uses `/meeting-cleanup`, I automatically:
 ### 6. Route for Follow-Up
 **Routing logic:**
 - **Action items created:** Tag owners, set due dates
-- **Decisions identified:** Suggest `/decision-doc` for formal documentation
+- **Decisions identified:** Suggest `/decide` for formal documentation
 - **Cross-functional blockers:** Flag for escalation
 - **Team patterns:** Suggest process improvements to leadership
 

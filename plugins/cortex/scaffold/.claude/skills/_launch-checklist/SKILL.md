@@ -35,10 +35,10 @@ Generate comprehensive launch checklist ensuring nothing falls through the crack
 ## Context Routing
 
 **Check these files first:**
-1. `outputs/prds/` or `context-library/prds/` - PRD for feature details
-2. `context-library/launches/` - Past launch checklists (learn from history)
-3. `context-library/strategy/` - GTM approach, stakeholders
-4. `context-library/stakeholder-*.md` - Who needs to be involved
+1. `outputs/prds/` or `brain/knowledge/product/features/` - PRD for feature details
+2. `brain/ingestion/adhoc/` - Past launch checklists (learn from history)
+3. `brain/knowledge/` - GTM approach, stakeholders
+4. `brain/stakeholders/<slug>.md` - Who needs to be involved
 5. `templates/launch-checklist-template.md` - Base template (if exists)
 
 ---
@@ -357,7 +357,7 @@ WARNING: Any delay in this chain delays launch by the same amount.
 **Before `/launch-checklist`:**
 - `/prd-draft` - Define what's launching
 - `/prd-review-panel` - Ensure PRD is solid
-- `/prototype` - Validate solution before building
+- Build a prototype or low-fi mockup to validate the solution before building
 
 **After `/launch-checklist`:**
 - `/create-tickets` - Convert to Linear/Jira tasks

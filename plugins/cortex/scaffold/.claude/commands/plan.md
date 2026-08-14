@@ -13,6 +13,7 @@ An objective statement. Example: `/plan reduce onboarding drop-off by 20% in Q3`
 
 ## Loads
 
+- Schema files before any validated-dir write: `brain/decisions/_SCHEMA.md`, `brain/hypotheses/_SCHEMA.md`
 - `brain/knowledge/strategy.md` (priorities, non-goals, north-star, tensions)
 - `brain/knowledge/product/metrics.md` (current values, definitions)
 - `brain/knowledge/product/features/` filtered to ones touching the objective

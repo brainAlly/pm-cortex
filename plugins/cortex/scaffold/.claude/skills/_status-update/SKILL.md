@@ -32,11 +32,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Recent PRDs | `context-library/prds/*.md` | feature being updated | Feature status and changes |
-| Meeting Notes | `context-library/meetings/*.md` | this week's meetings | Decisions, action items, blockers |
-| Action Items | `context-library/meetings/` | completed / in progress / blocked | Track completion of commitments |
-| Strategy | `context-library/strategy/*.md` | strategic pillars | Tie accomplishments to strategy |
-| Metrics | `context-library/metrics/*.md` | baseline, trends | Metric movement and progress |
+| Recent PRDs | `brain/knowledge/product/features/*.md` | feature being updated | Feature status and changes |
+| Meeting Notes | `brain/ingestion/meetings/` | this week's meetings | Decisions, action items, blockers |
+| Action Items | `brain/ingestion/meetings/` | completed / in progress / blocked | Track completion of commitments |
+| Strategy | `brain/knowledge/strategy.md` | strategic pillars | Tie accomplishments to strategy |
+| Metrics | `brain/knowledge/product/metrics.md` | baseline, trends | Metric movement and progress |
 | Stakeholder Profiles | Stakeholder templates | your audience | Communication style for audience |
 
 **Context Priority:**
@@ -58,10 +58,10 @@ When this skill is invoked, immediately check:
 Before drafting, let me gather what happened...
 
 **Checking:**
-- `context-library/meetings/` for recent meetings this week/period
-- `context-library/prds/` for features you're working on
-- `context-library/metrics/` for recent metric changes
-- `context-library/strategy/` for strategic context
+- `brain/ingestion/meetings/` for recent meetings this week/period
+- `brain/knowledge/product/features/` for features you're working on
+- `brain/knowledge/product/` for recent metric changes
+- `brain/knowledge/` for strategic context
 - Stakeholder profiles for communication style of audience
 
 **Based on what I find, I'll show you:**
@@ -818,7 +818,7 @@ Given the extra time, we could:
 
 **Status updates:**
 - Weekly/recurring: Save to `outputs/status-updates/[date]-[audience].md`
-- Archive: Move finalized updates to `context-library/meetings/status-updates/` for historical record
+- Archive: Move finalized updates to `brain/ingestion/meetings/` for historical record
 - Share: Send directly or paste into Slack/email
 
 ### Link to Other Work
@@ -843,7 +843,7 @@ After creating status update:
 - `/prd-draft` - Feature status and progress on PRDs
 - `/feature-results` - Shipped feature performance
 - `/metrics-framework` - Current metric values and movement
-- `context-library/strategy/` - Strategic context and goals
+- `brain/knowledge/` - Strategic context and goals
 
 ---
 

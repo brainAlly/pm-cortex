@@ -13,6 +13,10 @@ Process raw interview transcripts into structured insight cards — pain points,
 /user-interview   → Paste transcript(s) and research goal; I'll extract insights
 ```
 
+## Schema
+
+Load `brain/hypotheses/_SCHEMA.md` before updating any hypothesis file.
+
 ## Brain Context
 
 Load if available:

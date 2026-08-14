@@ -17,11 +17,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Current PRD | `context-library/prds/*.md` | feature name from chat | User impact, problem severity |
-| User Research | `context-library/research/*.md` | feature problem, user quotes | Addressable users, pain severity |
-| Business Model | `context-library/business-info-template.md` | pricing, revenue model, TAM | Revenue impact drivers |
-| Historical Data | `context-library/metrics/*.md` | similar features, baseline conversion | Reference adoption rates |
-| Strategy | `context-library/strategy/*.md` | feature strategic fit | Resource availability, priority context |
+| Current PRD | `brain/knowledge/product/features/*.md` | feature name from chat | User impact, problem severity |
+| User Research | `brain/ingestion/interviews/` | feature problem, user quotes | Addressable users, pain severity |
+| Business Model | `brain/knowledge/strategy.md` | pricing, revenue model, TAM | Revenue impact drivers |
+| Historical Data | `brain/knowledge/product/metrics.md` | similar features, baseline conversion | Reference adoption rates |
+| Strategy | `brain/knowledge/strategy.md` | feature strategic fit | Resource availability, priority context |
 
 **Context Priority:**
 1. Feature definition and user impact FIRST
@@ -32,7 +32,7 @@ When this skill is invoked, immediately check:
 **Cross-Skill Links:**
 - If sizing is unclear → Link to `/impact-sizing` (this skill)
 - If comparing options → Use this to inform `/experiment-decision`
-- If building business case → Reference in PRD and `/write-prod-strategy`
+- If building business case → Reference in PRD and `/strategy-check`
 - If identifying leading metrics → Connect to `/feature-metrics` and `/metrics-framework`
 
 ---
@@ -42,10 +42,10 @@ When this skill is invoked, immediately check:
 Before we estimate impact, let me check what context exists...
 
 **Checking:**
-- `context-library/prds/` for the feature definition
-- `context-library/research/` for user research on this problem
-- `context-library/business-info-template.md` for business model context
-- `context-library/metrics/` for comparable feature data
+- `brain/knowledge/product/features/` for the feature definition
+- `brain/ingestion/interviews/` for user research on this problem
+- `brain/knowledge/strategy.md` for business model context
+- `brain/knowledge/product/` for comparable feature data
 
 **Based on what I find, I'll show you:**
 
@@ -234,7 +234,7 @@ Feature: [Name]
 **Impact sizing analysis:**
 - Active work: `outputs/analyses/impact-sizing-[feature-name]-[date].md`
 - When finalized: Reference in PRD in `Strategic Fit` section
-- Archive: Move to `context-library/prds/` as historical reference when feature ships
+- Archive: Move to `brain/knowledge/product/features/` as historical reference when feature ships
 
 ### Link to Other Work
 
@@ -248,15 +248,15 @@ After sizing impact:
 
 **Feeds into:**
 - `/prd-draft` - Impact sizing goes into "Strategic Fit" section
-- `/write-prod-strategy` - Feature impact informs strategic pillar priorities
+- `/strategy-check` - Feature impact informs strategic pillar priorities
 - `/feature-metrics` - Usage estimates inform what metrics can detect changes
 - `/experiment-decision` - Impact size determines experiment duration/sample size
 
 **Pulls from:**
-- `context-library/research/` - User pain and adoption patterns
+- `brain/ingestion/interviews/` - User pain and adoption patterns
 - `/user-research-synthesis` - Qualitative insights about addressable users
-- `context-library/business-info-template.md` - Business model and growth drivers
-- `context-library/metrics/` - Historical data on similar features
+- `brain/knowledge/strategy.md` - Business model and growth drivers
+- `brain/knowledge/product/` - Historical data on similar features
 
 ---
 
@@ -275,10 +275,10 @@ After sizing impact:
 Before presenting output to the PM, verify:
 
 - [ ] **File saved to correct location:** Output saved to `outputs/analyses/impact-sizing-[feature-name]-[date].md`
-- [ ] **Context routing table was checked:** Reviewed `context-library/business-info-template.md`, `context-library/strategy/`, and `context-library/metrics/` for relevant context
+- [ ] **Context routing table was checked:** Reviewed `brain/knowledge/strategy.md`, `brain/knowledge/`, and `brain/knowledge/product/` for relevant context
 - [ ] **Driver tree has specific numbers:** Every node in the driver tree contains actual estimates (not placeholders like "[X]" or "[number]")
 - [ ] **Confidence levels assigned:** Each assumption in the confidence assessment table has a High/Med/Low rating with justification
 - [ ] **Revenue/user impact calculated with clear methodology:** Impact estimates show the math (e.g., "10,000 eligible users x 30% adoption x $5 ARPU = $15,000/month"), not just final numbers
 - [ ] **De-risking actions identified:** Every Low-confidence assumption has a specific, actionable de-risking step (not generic "do more research")
-- [ ] **Impact tied to strategic goal:** The recommendation section explicitly references a strategic goal or OKR from `context-library/strategy/`
+- [ ] **Impact tied to strategic goal:** The recommendation section explicitly references a strategic goal or OKR from `brain/knowledge/`
 - [ ] **Sensitivity analysis included:** Output shows best-case, worst-case, and expected-case scenarios with the key variable that drives the range

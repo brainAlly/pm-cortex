@@ -24,10 +24,10 @@ Catches gaps, challenges assumptions, and surfaces conflicts before stakeholder 
 
 **Check these files first:**
 1. `outputs/prds/` - Active PRDs to review
-2. `context-library/prds/` - Reference PRDs and past reviews
+2. `brain/knowledge/product/features/` - Reference PRDs and past reviews
 3. `sub-agents/` - The 7 reviewer personas
-4. `context-library/strategy/` - Strategic context for executive review
-5. `context-library/research/` - User research for UXR validation
+4. `brain/knowledge/` - Strategic context for executive review
+5. `brain/ingestion/interviews/` - User research for UXR validation
 
 **Sub-agents available:**
 1. **engineer-reviewer.md** - Technical feasibility, complexity, dependencies
@@ -45,7 +45,7 @@ Catches gaps, challenges assumptions, and surfaces conflicts before stakeholder 
 ### Step 1: PRD Selection
 
 1. **If user specified PRD name:**
-   - Look for it in `outputs/prds/` and `context-library/prds/`
+   - Look for it in `outputs/prds/` and `brain/knowledge/product/features/`
    - If found: Proceed
    - If not found: List available PRDs, ask user to choose
 
@@ -190,7 +190,7 @@ PRD Content:
 [Full PRD text]
 
 Strategic Context:
-[Include content from context-library/strategy/ if available]
+[Include content from brain/knowledge/ if available]
 
 Review framework:
 1. Strategic Alignment
@@ -279,7 +279,7 @@ PRD Content:
 [Full PRD text]
 
 User Research Context:
-[Include recent research from context-library/research/ if relevant]
+[Include recent research from brain/ingestion/interviews/ if relevant]
 
 Review framework:
 1. Research Validation
@@ -710,7 +710,7 @@ agents: [engineer, designer, executive, legal, uxr, skeptic, customer]
 3. **Before next stage:** [What must be done]
 
 **Recommended:**
-- Run `/decision-doc` for conflicting perspectives
+- Run `/decide` for conflicting perspectives
 - Update PRD to address blockers
 - Schedule follow-up review after fixes (if needed)
 
@@ -740,7 +740,7 @@ agents: [engineer, designer, executive, legal, uxr, skeptic, customer]
 
 3. **Offer next steps:**
    - If blockers exist: "Want me to help update the PRD to address blockers?"
-   - If conflicts exist: "Run `/decision-doc` to document the [Conflict] decision?"
+   - If conflicts exist: "Run `/decide` to document the [Conflict] decision?"
    - If ready: "PRD looks solid! Ready for stakeholder review."
    - Always: "Review synthesis saved to [file path]"
 
@@ -754,9 +754,9 @@ agents: [engineer, designer, executive, legal, uxr, skeptic, customer]
 - `/impact-sizing` - Quantify expected value
 
 **After `/prd-review-panel`:**
-- `/decision-doc` - Document decisions on conflicting perspectives
+- `/decide` - Document decisions on conflicting perspectives
 - `/prd-draft` - Update PRD based on feedback
-- `/prototype` - Build prototype for validation
+- Build a prototype to validate key assumptions before shipping
 - `/launch-checklist` - Plan the launch
 
 **Iterative use:**
@@ -795,8 +795,8 @@ agents: [engineer, designer, executive, legal, uxr, skeptic, customer]
 - `/impact-sizing` - Quantify value
 
 **After this:**
-- `/decision-doc` - Document key decisions
-- `/prototype` - Build based on feedback
+- `/decide` - Document key decisions
+- Build a prototype based on the review feedback
 - `/launch-checklist` - Prepare for launch
 
 **Complements:**

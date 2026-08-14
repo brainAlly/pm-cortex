@@ -1,6 +1,6 @@
 ---
-name: outcome-roadmap
-description: Outcome-based roadmap with now/next/later structured around measurable outcomes. Updates brain/knowledge/product/roadmap.md.
+description: Build an outcome-based now/next/later roadmap anchored to measurable outcomes, not features
+argument-hint: "[quarter or planning horizon]"
 ---
 
 # /outcome-roadmap

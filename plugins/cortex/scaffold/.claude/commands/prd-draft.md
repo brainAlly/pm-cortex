@@ -16,6 +16,10 @@ Write a modern, AI-era PRD grounded in your brain context — strategy alignment
 /prd-draft --ai                     → Include AI behavior specification sections
 ```
 
+## Schema
+
+Load `brain/knowledge/product/features/_SCHEMA.md` before creating the feature file.
+
 ## Brain Context
 
 Load if available:
@@ -48,7 +52,7 @@ Use brain context to pre-populate: strategic fit from `strategy.md`, user quotes
 
 ### Step 3: Save Output
 
-Save to `outputs/<YYYY-MM-DD>-prd-<feature-slug>.md`.
+Save to `outputs/prds/<feature-slug>-<stage>.md`.
 
 Auto-write: create `brain/knowledge/product/features/<feature-slug>.md` as a lightweight feature entry linking to this PRD.
 

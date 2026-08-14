@@ -20,6 +20,7 @@ If shape is ambiguous, ask one question. Don't guess.
 
 ## Loads
 
+- Schema files before any write to a validated dir: `brain/decisions/_SCHEMA.md`, `brain/hypotheses/_SCHEMA.md`, `brain/stakeholders/_SCHEMA.md`, `brain/knowledge/product/features/_SCHEMA.md`
 - `brain/knowledge/strategy.md`
 - The matching area for the inferred shape: `brain/knowledge/users/insights.md` (interview), `brain/stakeholders/<slug>.md` (meeting), `brain/knowledge/market/` (market), nothing extra (adhoc)
 - Active `brain/hypotheses/<slug>.md` files that the artifact might touch

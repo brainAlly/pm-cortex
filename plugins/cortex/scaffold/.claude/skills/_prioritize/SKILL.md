@@ -419,7 +419,7 @@ Ask yourself weekly:
 
 ## Related Skills
 
-- `/strategy-sprint` - Leverage strategy work
+- `/strategy-check` - Leverage strategy work
 - `/prd-draft` - Leverage through great PRDs
 - `/activation-analysis` - Leverage through product improvements
 - `/user-research-synthesis` - Leverage through insights
@@ -440,7 +440,7 @@ Ask yourself weekly:
 
 **Rules:**
 - **Leverage tasks:** Generally do these yourself. They are your highest-value contribution.
-- **Neutral tasks:** For each, ask: "Could someone on my team do this at B- quality?" If yes, delegate. Reference names from stakeholder profiles in `context-library/stakeholder-template.md`.
+- **Neutral tasks:** For each, ask: "Could someone on my team do this at B- quality?" If yes, delegate. Reference names from stakeholder profiles in `brain/stakeholders/<slug>.md`.
 - **Overhead tasks:** Always delegate, automate, or eliminate. If you cannot delegate, timebox aggressively (set a hard stop).
 
 ---
@@ -470,7 +470,7 @@ After classifying tasks, check total estimated hours against available time:
 When the PM uses `/prioritize`, I automatically:
 
 ### 1. Analyze Your Task List Against Strategy
-**Source:** `context-library/strategy/`, OKRs, quarterly goals
+**Source:** `brain/knowledge/`, OKRs, quarterly goals
 - **What I look for:** Strategic priorities vs. your task list
 - **How I use it:** Classify tasks against declared strategy
 - **Example:** "Strategy says focus on retention, but you're 60% on new feature work → recalibrate"
@@ -501,7 +501,7 @@ When the PM uses `/prioritize`, I automatically:
 
 ### 6. Route for Action
 **Routing logic:**
-- **Define leverage work:** Link to `/prd-draft`, `/write-prod-strategy`
+- **Define leverage work:** Link to `/prd-draft`, `/strategy-check`
 - **Create blockers list:** Use `/slack-message` to request overhead elimination
 - **Track time:** Suggest time-blocking strategies to protect leverage time
 - **Weekly audit:** Use this weekly to course-correct
@@ -518,4 +518,4 @@ Before delivering the prioritization output, verify:
 - [ ] **Capacity check done:** Total Leverage hours are compared against available deep work time. If over capacity, specific recommendations are provided.
 - [ ] **Actionable recommendations:** At least 2-3 specific overhead tasks are flagged for elimination or delegation, with a suggested alternative (who to delegate to, or why it can be skipped).
 - [ ] **Calendar blocking suggested:** Specific time blocks are recommended for Leverage work (e.g., "Block Monday 9-12 for PRD writing").
-- [ ] **Strategy alignment checked:** Leverage tasks are validated against current strategic priorities from `context-library/strategy/`. If a Leverage task does not connect to strategy, flag it.
+- [ ] **Strategy alignment checked:** Leverage tasks are validated against current strategic priorities from `brain/knowledge/`. If a Leverage task does not connect to strategy, flag it.

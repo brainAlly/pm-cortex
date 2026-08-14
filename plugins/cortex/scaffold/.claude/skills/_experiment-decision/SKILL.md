@@ -358,13 +358,13 @@ Before delivering the experiment decision, verify:
 When the PM uses `/experiment-decision`, I automatically:
 
 ### 1. Check Historical Reversibility Precedent
-**Source:** `context-library/decisions/`, past decisions
+**Source:** `brain/decisions/`, past decisions
 - **What I look for:** Similar decisions, how reversibility was judged
 - **How I use it:** Ensure consistent reversibility assessment
 - **Example:** "Last time we shipped CSS changes without testing; this is similar"
 
 ### 2. Extract Success Metrics Framework
-**Source:** `context-library/metrics/`, active PRDs
+**Source:** `brain/knowledge/product/`, active PRDs
 - **What I look for:** What metrics you typically measure, variance patterns
 - **How I use it:** Calculate minimum detectable effect (MDE) more accurately
 - **Example:** "Based on your metrics history, conversion rate variance is 3%, so MDE = 2%"
@@ -376,7 +376,7 @@ When the PM uses `/experiment-decision`, I automatically:
 - **Example:** "Now that you've decided to test, let's pick the right metrics using STEDII"
 
 ### 4. Check Stakeholder Consensus on Risk
-**Source:** `context-library/stakeholder-template.md`, recent discussions
+**Source:** `brain/stakeholders/<slug>.md`, recent discussions
 - **What I look for:** Stakeholder risk tolerance, veto power
 - **How I use it:** Surface if high-risk decision needs executive approval
 - **Example:** "CEO is risk-averse, so even medium-risk decisions should be tested"

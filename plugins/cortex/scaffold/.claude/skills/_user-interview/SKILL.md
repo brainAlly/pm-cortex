@@ -55,11 +55,11 @@ When this skill is invoked, immediately check:
 
 | Source | What to Check | Priority |
 |--------|---------------|----------|
-| context-library/research/ | Previous interview syntheses, existing themes | High |
-| context-library/prds/ | Active PRDs that this interview relates to | High |
-| context-library/stakeholder-template.md | If interviewee is a known stakeholder/customer | Medium |
-| context-library/business-info-template.md | Company context, product positioning | Medium |
-| context-library/launches/ | Recent launches the interviewee might reference | Low |
+| brain/ingestion/interviews/ | Previous interview syntheses, existing themes | High |
+| brain/knowledge/product/features/ | Active PRDs that this interview relates to | High |
+| brain/stakeholders/<slug>.md | If interviewee is a known stakeholder/customer | Medium |
+| brain/knowledge/strategy.md | Company context, product positioning | Medium |
+| brain/ingestion/adhoc/ | Recent launches the interviewee might reference | Low |
 
 **Context Priority:**
 1. Existing research and validated themes FIRST
@@ -71,7 +71,7 @@ When this skill is invoked, immediately check:
 - Before interviews → `/interview-guide` for question preparation
 - After processing → `/user-research-synthesis` for deeper analysis
 - If insights inform a feature → `/prd-draft` to reference findings
-- If insights reveal strategic shifts → `/write-prod-strategy`
+- If insights reveal strategic shifts → `/strategy-check`
 
 ---
 
@@ -88,10 +88,10 @@ When this skill is invoked, immediately check:
 
 **Before processing new interviews, check existing context:**
 
-1. Search `context-library/research/` for previous interview syntheses and findings
+1. Search `brain/ingestion/interviews/` for previous interview syntheses and findings
 2. Identify validated themes from prior research
 3. Note which PRDs or strategic initiatives these interviews relate to
-4. Check `context-library/business-info-template.md` for product positioning context
+4. Check `brain/knowledge/strategy.md` for product positioning context
 
 **For each theme that emerges in the new interviews:**
 - If it matches a previous finding: "This **validates** theme X from [previous research file]. Now supported by [N total] interviews."
@@ -101,7 +101,7 @@ When this skill is invoked, immediately check:
 **Show the PM a brief summary:**
 ```
 ## Existing Research Context
-- Found [N] previous interview syntheses in context-library/research/
+- Found [N] previous interview syntheses in brain/ingestion/interviews/
 - Validated themes from prior research: [list]
 - Active PRDs this research relates to: [list]
 - New themes to watch for: [will identify during analysis]
@@ -398,7 +398,7 @@ Dovetail is purpose-built for research synthesis:
 ### Continuous Research
 
 **Build a repository:**
-- All past interviews in `context-library/research/`
+- All past interviews in `brain/ingestion/interviews/`
 - Searchable by theme/topic
 - Updated quote bank
 - Trend tracking over time
@@ -455,7 +455,7 @@ Dovetail is purpose-built for research synthesis:
 ### Build Search System
 
 **Using Claude Code:**
-- Keep all transcripts in `context-library/research/interviews/`
+- Keep all transcripts in `brain/ingestion/interviews/`
 - Query anytime: "Search all interviews for mentions of [topic]"
 - Get instant insights from entire history
 
@@ -501,12 +501,12 @@ Before delivering the final research synthesis, verify:
 
 | Check | Criteria | Pass? |
 |-------|----------|-------|
-| **Existing research referenced** | Cross-referenced with `context-library/research/` findings | [ ] |
+| **Existing research referenced** | Cross-referenced with `brain/ingestion/interviews/` findings | [ ] |
 | **Themes labeled correctly** | Each theme marked as VALIDATED, CHALLENGED, or NEW vs. prior research | [ ] |
 | **Quotes are real** | Every quote is directly from a transcript (not paraphrased or invented) | [ ] |
 | **Pain points quantified** | Each pain point shows how many users mentioned it + severity | [ ] |
 | **Actionable recommendations** | At least 3 specific next steps with owners and timelines | [ ] |
-| **PRD linkage** | Insights connected to relevant active PRDs in `context-library/prds/` | [ ] |
+| **PRD linkage** | Insights connected to relevant active PRDs in `brain/knowledge/product/features/` | [ ] |
 | **Segments identified** | At least 2 distinct user archetypes with unique needs called out | [ ] |
 | **Surprises captured** | At least 1 unexpected finding or challenged assumption noted | [ ] |
 | **Scope boundary stated** | User knows when to use this skill vs /user-research-synthesis | [ ] |

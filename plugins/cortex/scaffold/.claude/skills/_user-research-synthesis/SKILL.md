@@ -17,11 +17,11 @@ When this skill is invoked, immediately check:
 
 | Source | Files/Folders | Search Terms | What to Extract |
 |--------|---------------|--------------|-----------------|
-| Existing Research | `context-library/research/*.md` | topic from chat, user segments | Previous findings to avoid duplication |
-| Related PRDs | `context-library/prds/*.md` | problem related to interviews | Problem framing and hypothesis |
-| Strategy Context | `context-library/strategy/*.md` | user segment, strategic fit | How findings ladder to strategy |
+| Existing Research | `brain/ingestion/interviews/` | topic from chat, user segments | Previous findings to avoid duplication |
+| Related PRDs | `brain/knowledge/product/features/*.md` | problem related to interviews | Problem framing and hypothesis |
+| Strategy Context | `brain/knowledge/strategy.md` | user segment, strategic fit | How findings ladder to strategy |
 | Previous Synthesis | `outputs/research-synthesis/` | topic name | Past research to build on |
-| Interview Guides | `context-library/research/interview-guides/` | topic | What questions were asked |
+| Interview Guides | `brain/ingestion/interviews/` | topic | What questions were asked |
 
 **Context Priority:**
 1. Raw interview data FIRST (always use verbatim quotes)
@@ -33,7 +33,7 @@ When this skill is invoked, immediately check:
 - After synthesis → Link to `/prd-draft` to turn insights into feature spec
 - If about competitor mentions → Link to `/competitor-analysis`
 - If about retention → Link to `/retention-analysis` for churn patterns
-- If informing strategy → Link to `/write-prod-strategy`
+- If informing strategy → Link to `/strategy-check`
 
 ---
 
@@ -42,8 +42,8 @@ When this skill is invoked, immediately check:
 Before we synthesize, let me understand what you've learned...
 
 **Checking:**
-- `context-library/research/` for previous findings on this topic
-- `context-library/prds/` for the problem statement
+- `brain/ingestion/interviews/` for previous findings on this topic
+- `brain/knowledge/product/features/` for the problem statement
 - Interview guides used: what were you trying to validate?
 - Previous synthesis on related topics
 
@@ -536,14 +536,14 @@ I'll remind you:
 
 **Research synthesis:**
 - Active work: `outputs/research-synthesis/[topic]-[date].md`
-- When finalized: Archive to `context-library/research/[topic]-synthesis.md` for future reference
+- When finalized: Archive to `brain/ingestion/interviews/<slug>-synthesis.md` for future reference
 - Executive summary: Can be shared directly with stakeholders
 
 ### Link to Other Work
 
 After synthesis:
 - **Create PRD** - Use `/prd-draft` to turn top themes into feature spec
-- **Inform strategy** - If findings affect multiple features, feed to `/write-prod-strategy`
+- **Inform strategy** - If findings affect multiple features, feed to `/strategy-check`
 - **Update roadmap** - Which themes map to Q# priorities?
 - **Competitive context** - If competitor mentions appear, link to `/competitor-analysis`
 
@@ -551,15 +551,15 @@ After synthesis:
 
 **Feeds into:**
 - `/prd-draft` - Auto-populate Hypothesis with user quotes and insights
-- `/write-prod-strategy` - Themes inform strategic pillars
+- `/strategy-check` - Themes inform strategic pillars
 - `/status-update` - Key research findings go in stakeholder updates
 - `/competitor-analysis` - If competitors mentioned, extract those mentions
 
 **Pulls from:**
-- `context-library/research/` - What questions were asked?
-- `context-library/prds/` - What was the original problem hypothesis?
+- `brain/ingestion/interviews/` - What questions were asked?
+- `brain/knowledge/product/features/` - What was the original problem hypothesis?
 - `/interview-guide` - Questions asked in the interview
-- `context-library/meetings/` - Past conversations about this problem
+- `brain/ingestion/meetings/` - Past conversations about this problem
 
 ---
 
@@ -623,7 +623,7 @@ When synthesis is complete, I'll create:
 
 All files will be saved to:
 - `outputs/research-synthesis/[topic]-[date].md`
-- `context-library/personal-context-pm-background.md` (updated)
+- `brain/knowledge/strategy.md` (updated)
 
 ---
 
@@ -650,7 +650,7 @@ Remember: User research isn't about validation. It's about discovery. The goal i
 Before presenting output to the PM, verify:
 
 - [ ] **File saved to correct location:** Output saved to `outputs/research-synthesis/[topic]-[date].md`
-- [ ] **Context routing table was checked:** Reviewed `context-library/research/` for past findings, `context-library/prds/` for related problem statements, and `context-library/strategy/` for strategic fit
+- [ ] **Context routing table was checked:** Reviewed `brain/ingestion/interviews/` for past findings, `brain/knowledge/product/features/` for related problem statements, and `brain/knowledge/` for strategic fit
 - [ ] **Themes backed by 2+ sources:** Every theme in the synthesis is supported by observations from at least 2 different interview participants (not a single anecdote)
 - [ ] **Direct user quotes included:** Each key finding includes at least one verbatim user quote with attribution (participant name or identifier)
 - [ ] **Insight severity/frequency rated:** Every theme has a frequency count (e.g., "6 out of 8 users") and a severity rating (High/Medium/Low)
