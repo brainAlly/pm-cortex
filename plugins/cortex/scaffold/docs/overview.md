@@ -1,4 +1,4 @@
-# PM Brain
+# PM Cortex
 
 A durable reasoning and memory architecture for a product operator — a PM, product lead, founder, or anyone accountable for one product or initiative with judgment-heavy work and scattered inputs.
 
