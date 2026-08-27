@@ -134,6 +134,7 @@ Highlights:
 - `rules/discovery.md`, `rules/data.md` — from Batch D Q1-2.
 - `CLAUDE.md § Operating preferences` — autonomy mode + maintenance cadence (Batch E Q1-2).
 - `CLAUDE.md § Off-limits` — Batch E Q3.
+- `.gitignore` — Batch E Q4 audit-trail sharing. `brain/ingestion/` is always tracked (never ignored) — do not add an ignore block for it. The scaffold ships the **Synthesis only** default (`brain/source/` contents ignored). If the PM chose **Full audit trail**, delete the `# ── brain/source/ ──` block so raw sources are tracked too. Leave the OS, Python, `outputs/`, and `maintenance/log/` blocks untouched. Keep every `.gitkeep` regardless.
 - `brain/style/writing.md`, `brain/style/frameworks.md`, `brain/style/patterns.md` — PM's output style, preferred frameworks, and thinking patterns (Batch F).
 
 For schema-templated files: copy the schema structure as-is, fill in what the interview provided, leave the rest with the placeholder comments intact.

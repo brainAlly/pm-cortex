@@ -29,6 +29,9 @@ In migration mode, **skip batches already covered by source artifacts** and ask 
 1. Autonomy level: should the system **act and tell** (default), or **propose and wait**? Recommend "act and tell" for anything reversible. Stored in `CLAUDE.md § Operating preferences § Autonomy mode`.
 2. Maintenance cadence preference: weekly review? on-demand only? both? Stored in `CLAUDE.md § Operating preferences § Maintenance cadence`.
 3. Anything explicitly **off-limits** beyond the defaults? Defaults: avoid PII (addresses, phone numbers, financial details, government IDs, medical info). Synthetic names, work emails, and organizational context are allowed. Stored in `CLAUDE.md § Off-limits`.
+4. **Audit-trail sharing.** Your synthesized working memory (`brain/ingestion/`) always travels with the repo — durable knowledge claims link to it via `[ingestion/...]`, so ignoring it would break every claim's provenance on clone. The choice is only about your **raw sources** (`brain/source/` — the verbatim transcripts). What should happen to those when you push or clone? Stored by adjusting `.gitignore`; default is Synthesis only.
+   - **Synthesis only (default)** — keep `source/` (raw transcripts, possible PII) local; track `ingestion/` and everything else. `[ingestion/...]` links resolve on any clone; `[source/...]` links stay local. Smaller, more private repo.
+   - **Full audit trail** — track `source/` too. Every provenance link, down to the verbatim transcript, resolves on any clone. Best for a team; choose only for a private repo you trust, since raw transcripts get version-controlled.
 
 ## Batch F — Style & Preferences
 1. Preferred output format and length — structured vs narrative, how long is "too long" for a response?
@@ -60,6 +63,7 @@ In migration mode, **skip batches already covered by source artifacts** and ask 
 | E | Q1 autonomy | `CLAUDE.md § Operating preferences § Autonomy mode` |
 | E | Q2 maintenance cadence | `CLAUDE.md § Operating preferences § Maintenance cadence` |
 | E | Q3 off-limits | `CLAUDE.md § Off-limits` |
+| E | Q4 audit-trail sharing | `.gitignore` — `ingestion/` always tracked; default ("Synthesis only") keeps `source/` ignored; "Full audit trail" un-ignores `source/` too |
 | F | Q1 output format/length | `brain/style/writing.md` |
 | F | Q2 preferred frameworks | `brain/style/frameworks.md` |
 | F | Q3 communication style | `brain/style/patterns.md` |

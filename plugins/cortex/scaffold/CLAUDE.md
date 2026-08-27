@@ -285,6 +285,8 @@ Tag provenance on: hypothesis evidence rows, decision evidence rows, promoted kn
 
 Before synthesizing any ingested artifact, copy it verbatim to `brain/source/[kind]/YYYY-MM-DD-[slug].md`. This is the audit anchor. It is never edited after creation. Every synthesized claim must link back to its source file. Skipping this step makes the brain epistemically unfalsifiable.
 
+**Local vs. shared.** The source file is always written locally — this rule never changes. `ingestion/` always travels with the repo (durable claims link to it via `[ingestion/...]`, so it can never be ignored). The only setup choice (`.gitignore`, Batch E Q4) is whether the raw `source/` transcripts travel too: Synthesis only (default) keeps them local; Full audit trail shares them. On a shared repo a `[source/...]` link resolves for others only under Full audit trail; the audit trail is always complete on the PM's own machine regardless.
+
 ---
 
 ## Knowledge Hygiene

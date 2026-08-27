@@ -16,6 +16,9 @@ __pycache__/
 # ── brain/source/ ────────────────────────────────────────────────────────────
 # Raw artifacts — immutable originals. Large files, sensitive transcripts.
 # Directories are tracked via .gitkeep; contents are not.
+# DEFAULT = "Synthesis only": raw transcripts stay local; ingestion/ (which the
+# claim links depend on) is always tracked. /pm-brain removes this whole block if
+# the PM chose "Full audit trail" at setup (Batch E Q4). See CLAUDE.md § Source Preservation.
 brain/source/interviews/*
 !brain/source/interviews/.gitkeep
 brain/source/meetings/*
@@ -25,17 +28,9 @@ brain/source/market/*
 brain/source/adhoc/*
 !brain/source/adhoc/.gitkeep
 
-# ── brain/ingestion/ ─────────────────────────────────────────────────────────
-# Working memory — synthesized observations, not yet promoted.
-# Directories are tracked via .gitkeep; contents are not.
-brain/ingestion/interviews/*
-!brain/ingestion/interviews/.gitkeep
-brain/ingestion/meetings/*
-!brain/ingestion/meetings/.gitkeep
-brain/ingestion/market/*
-!brain/ingestion/market/.gitkeep
-brain/ingestion/adhoc/*
-!brain/ingestion/adhoc/.gitkeep
+# NOTE: brain/ingestion/ is intentionally NOT ignored. Durable knowledge claims
+# link to it via `[ingestion/...]` (the highest-trust provenance tag); ignoring it
+# would leave every claim's primary link dangling on clone. It always travels.
 
 # ── outputs/ ─────────────────────────────────────────────────────────────────
 # Generated deliverables — PRDs, plans, etc. Not source of truth.
