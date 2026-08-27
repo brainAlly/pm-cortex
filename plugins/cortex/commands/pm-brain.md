@@ -44,24 +44,22 @@ Load `prompts/interview.md`. Ask the 6 batches (greenfield) or only the gaps not
 
 #### 4a. Find the plugin directory
 
-The scaffold lives inside the plugin's cached installation. Locate it before copying.
+The scaffold lives inside the plugin's cached installation. **The cache is version-keyed** — the real path looks like `~/.claude/plugins/cache/pm-cortex/cortex/<version>/scaffold/`, so searching for a directory named `cortex` lands you on the parent of a version folder, not on the scaffold. Search for the `scaffold/` directory itself instead, and take the highest version if more than one is installed.
 
-**macOS — run both, use whichever returns a path:**
+**macOS / Linux:**
 
 ```bash
-find ~/Library/Application\ Support/Claude -type d -name "cortex" 2>/dev/null | head -5
-find ~/.claude/plugins -type d -name "cortex" 2>/dev/null | head -5
+find ~/.claude/plugins ~/Library/Application\ Support/Claude -type d -path "*cortex*/scaffold" 2>/dev/null | sort -V | tail -1
 ```
 
 **Windows — run in PowerShell:**
 
 ```powershell
-Get-ChildItem -Path "$env:APPDATA\Claude" -Recurse -Directory -Filter "cortex" -ErrorAction SilentlyContinue | Select-Object -First 5 FullName
+Get-ChildItem -Path "$env:USERPROFILE\.claude\plugins","$env:APPDATA\Claude" -Recurse -Directory -Filter "scaffold" -ErrorAction SilentlyContinue |
+  Where-Object { $_.FullName -match "cortex" } | Sort-Object FullName | Select-Object -Last 1 -ExpandProperty FullName
 ```
 
-Verify the found path contains a `scaffold/` subdirectory (`ls <found-path>/scaffold/` or `dir <found-path>\scaffold\`). If `scaffold/` is absent, check parent and sibling directories. The plugin directory always contains `plugin.json` alongside `scaffold/`, `commands/`, and `prompts/`.
-
-Set `PLUGIN_DIR` to the confirmed path.
+This returns the `scaffold/` path directly. Confirm it holds `CLAUDE.md` and `.claude/` (`ls <scaffold-path>` / `dir <scaffold-path>`). Set `PLUGIN_DIR` to its **parent** — the version directory that contains `scaffold/`, `commands/`, `prompts/`, and `plugin.json`. (`PLUGIN_DIR="$(dirname "<scaffold-path>")"`.)
 
 **If the plugin cannot be found:** stop and tell the PM: "I could not locate the PM Cortex plugin in the Claude Desktop cache. Please confirm the plugin is installed (`claude plugin list`) and retry /pm-brain."
 
@@ -76,11 +74,13 @@ Use the form of copy that picks up dotfiles by default:
 
 **After copying, run this verification checklist. Every item must pass before proceeding.**
 
+These are **presence and shape** checks, not exact-count checks. The failure this guards against — a failed copy where Claude regenerates a structure from memory — produces the *wrong shape* (brain folders at root, empty command dir), not an off-by-one file count. Do not gate on exact counts: they drift every release and cause false aborts on a correct install. Approximate numbers below are sanity hints, not pass/fail thresholds.
+
 Root-level files and folders:
 - [ ] `.claude/` directory exists
-- [ ] `.claude/commands/` exists and contains 45 `.md` files
-- [ ] `.claude/skills/` exists and contains 54 subdirectories (each with a `SKILL.md`)
-- [ ] `.claude/sub-agents/` exists and contains 7 `.md` files
+- [ ] `.claude/commands/` exists and is populated with command `.md` files (`INDEX.md` plus ~45 commands — not empty)
+- [ ] `.claude/skills/` exists and is populated with skill subdirectories, each containing a `SKILL.md` (~50)
+- [ ] `.claude/sub-agents/` exists and is populated with sub-agent `.md` files (7)
 - [ ] `.claude/hooks/validate_brain_file.py` exists
 - [ ] `.claude/settings.json` exists
 - [ ] `.gitignore` exists
@@ -91,7 +91,7 @@ Root-level files and folders:
 - [ ] `maintenance/` exists
 - [ ] `outputs/` exists
 - [ ] `rules/` exists
-- [ ] `templates/` exists and contains 6 `.md` files
+- [ ] `templates/` exists and is populated with output-starter `.md` files (~6)
 
 Brain subdirectories (all must be **inside `brain/`**, never at project root):
 - [ ] `brain/decisions/`
@@ -244,8 +244,8 @@ pm-brain/
 │   ├── .claude/              # Per-brain Claude Code config
 │   │   ├── hooks/
 │   │   │   └── validate_brain_file.py   # PostToolUse schema validator
-│   │   ├── commands/         # 45 slash commands (local to project)
-│   │   ├── skills/           # 8 standalone skills (local to project)
+│   │   ├── commands/         # ~45 slash commands + INDEX.md (local to project)
+│   │   ├── skills/           # ~52 skill packages (8 standalone + command-backing), each a dir with SKILL.md
 │   │   ├── sub-agents/       # 7 sub-agents (local to project)
 │   │   └── settings.json     # Wires the hook to Write|Edit
 │   ├── .gitignore            # Ignores source/, ingestion/, outputs/, maintenance/log/
