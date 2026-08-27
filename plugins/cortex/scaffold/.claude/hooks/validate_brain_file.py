@@ -1,13 +1,25 @@
 #!/usr/bin/env python3
 """
-Brain file schema validator. Fires via PostToolUse hook on every Write/Edit.
-Validates files in decisions/, hypotheses/, stakeholders/, knowledge/product/features/.
+Brain file schema validator. Fires via a PostToolUse hook on Write|Edit.
+
+Because PostToolUse runs *after* the tool, the file is already on disk — this
+hook does not prevent a bad write, it catches it. On a schema violation it
+writes the problem to stderr and exits 2, the code that feeds stderr back to
+Claude, so the model sees the error and rewrites the file with the correct
+fields. A clean file exits 0 and is silent.
+
+Validates decisions/, hypotheses/, stakeholders/, and knowledge/product/features/.
 Free-form dirs (ingestion/, source/, style/, outputs/) are silently skipped.
+
+Input: the PostToolUse JSON payload on stdin (written path at
+`tool_input.file_path`). A path argument is also accepted, so the script stays
+runnable by hand for tests and manual sweeps.
 """
 
 import sys
 import os
 import re
+import json
 
 
 VALIDATED_DIRS = {
@@ -126,13 +138,36 @@ def validate(path: str) -> list[str]:
     return errors
 
 
+def resolve_path() -> str:
+    """Resolve the file to validate.
+
+    An explicit path argument wins (manual runs, tests). Otherwise read the
+    PostToolUse JSON payload from stdin and take `tool_input.file_path`. Any
+    parse failure resolves to "" — the hook then no-ops rather than wedging
+    every write in the session (fail open, never fail closed).
+    """
+    if len(sys.argv) >= 2 and sys.argv[1].strip():
+        return sys.argv[1]
+
+    try:
+        raw = sys.stdin.read()
+    except Exception:
+        return ""
+    if not raw.strip():
+        return ""
+    try:
+        payload = json.loads(raw)
+    except (json.JSONDecodeError, ValueError):
+        return ""
+    return (payload.get("tool_input", {}) or {}).get("file_path", "") or ""
+
+
 def main():
-    if len(sys.argv) < 2:
-        sys.exit(0)
+    path = resolve_path()
+    if not path:
+        sys.exit(0)  # nothing to validate (no path, or not a hook invocation)
 
-    path = sys.argv[1]
     errors = validate(path)
-
     if not errors:
         sys.exit(0)
 
@@ -145,14 +180,16 @@ def main():
         kind = "Brain file"
         schema = "brain/"
 
-    print(f"\n[PM Cortex] Write blocked — schema validation failed for {kind} file: {path}")
-    print(f"Schema reference: {schema}")
-    print("Missing required fields:")
+    # The write already landed (PostToolUse). Report to stderr and exit 2 so
+    # Claude receives this and rewrites the file — do not claim it was blocked.
+    print(f"\n[PM Cortex] Schema violation written to disk — {kind} file: {path}", file=sys.stderr)
+    print(f"Schema reference: {schema}", file=sys.stderr)
+    print("Missing required fields:", file=sys.stderr)
     for e in errors:
-        print(f"  - {e}")
-    print("\nFix the missing fields and retry the write.\n")
+        print(f"  - {e}", file=sys.stderr)
+    print("\nFix the missing fields and rewrite the file to match the schema.\n", file=sys.stderr)
 
-    sys.exit(1)
+    sys.exit(2)
 
 
 if __name__ == "__main__":
