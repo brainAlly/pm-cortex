@@ -51,7 +51,7 @@ In migration mode, **skip batches already covered by source artifacts** and ask 
 | B | Q1 stakeholders | `brain/stakeholders/<slug>.md` (one per person), `brain/stakeholders/INDEX.md` (roster) |
 | B | Q2 friction/leverage | `brain/stakeholders/<slug>.md § Snapshot` (influence + friction), `brain/stakeholders/INDEX.md` |
 | B | Q3 cadence | `brain/knowledge/org/rituals.md` |
-| C | Q1 active features | `brain/knowledge/product/features/<slug>.md` (one per feature), `brain/knowledge/product/roadmap.md § Now` |
+| C | Q1 active features | `brain/knowledge/product/features/<slug>.md` (one per feature), `brain/knowledge/product/roadmap.md § Now` (Owner: the PM; Due: `unscheduled` — the interview collects no owners/dates, and the Now rule forbids fabricating them) |
 | C | Q2 next big bet | `brain/knowledge/product/roadmap.md § Next` |
 | C | Q3 recent shipped | `brain/knowledge/product/roadmap.md § Now` (with status: measuring), feature file |
 | D | Q1 data sources | `brain/knowledge/org/tools.md`, `rules/data.md § Source of truth per metric` |

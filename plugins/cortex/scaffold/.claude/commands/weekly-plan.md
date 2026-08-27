@@ -38,7 +38,7 @@ Load `rules/prioritization.md` for team-specific LNO norms that govern which wee
 
 Apply the **weekly-plan** skill.
 
-Use brain strategy context to validate that each priority advances a declared goal. Use PRD pipeline to surface stage-blocking work. Reference last week's review to surface carry-overs. Pull open `roadmap.md § Now` rows into the week's priorities — an owned item with a due date this week is committed work, not a backlog suggestion.
+Use brain strategy context to validate that each priority advances a declared goal. Use PRD pipeline to surface stage-blocking work. Reference last week's review to surface carry-overs. Pull open `roadmap.md § Now` rows into the week's priorities — an owned item with a due date this week is committed work, not a backlog suggestion. For any `Due: unscheduled` row (e.g. features seeded at setup), prompt the PM to give it a real date or defer it — unscheduled work should not sit unscheduled indefinitely.
 
 ### Step 3: Save Output
 

@@ -127,7 +127,7 @@ Highlights:
 
 - `brain/knowledge/strategy.md` — north-star metric, priorities (Batch A). Stays `Tier: stated`. Non-goals start empty if PM didn't volunteer them; flag in next moves.
 - `brain/knowledge/product/features/<slug>.md` — one file per active feature (Batch C Q1), populated from the feature schema.
-- `brain/knowledge/product/roadmap.md` — Now / Next sections from Batch C.
+- `brain/knowledge/product/roadmap.md` — Now / Next sections from Batch C. Each active feature (Batch C Q1) becomes a `§ Now` row. The interview does not collect owners or dates, so seed **`Owner:` the PM** (they own their own active work by default; they can reassign later) and **`Due:` `unscheduled`** — the explicit "in flight, not yet timeboxed" state the Now rule allows. Do not invent deadlines. Flag in next moves that these rows need real due dates.
 - `brain/stakeholders/<slug>.md` — one file per stakeholder (Batch B Q1); influence + friction tagged from Batch B Q2.
 - `brain/knowledge/org/team.md`, `brain/knowledge/org/rituals.md`, `brain/knowledge/org/tools.md` — from Batch B Q3 + Batch D Q1.
 - `brain/knowledge/market/landscape.md` and/or `trends.md` — from Batch D Q3.
