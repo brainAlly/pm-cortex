@@ -30,19 +30,25 @@ VALIDATED_DIRS = {
         "schema": "brain/decisions/_SCHEMA.md",
     },
     "hypotheses": {
+        # Substrings must match what brain/hypotheses/_SCHEMA.md actually
+        # emits, lowercased. The field is `**Decision trigger:**` (a space,
+        # not a hyphen) — the old `decision-trigger:` form blocked every
+        # conformant hypothesis write.
         "required_fields": [
             "confidence:",
             "status:",
-            "decision-trigger:",
+            "decision trigger:",
         ],
         "name": "Hypothesis",
         "schema": "brain/hypotheses/_SCHEMA.md",
     },
     "stakeholders": {
+        # `**Last touched:**` (a space, not a hyphen). The old
+        # `last-touched:` form blocked every conformant stakeholder write.
         "required_fields": [
             "role:",
             "influence:",
-            "last-touched:",
+            "last touched:",
         ],
         "name": "Stakeholder",
         "schema": "brain/stakeholders/_SCHEMA.md",
@@ -53,9 +59,13 @@ FEATURE_DIR_PATTERN = re.compile(
     r"brain[/\\]knowledge[/\\]product[/\\]features[/\\](?!_SCHEMA\.md).+\.md$"
 )
 
+# Substrings must match what brain/knowledge/product/features/_SCHEMA.md
+# actually emits, lowercased. The hypothesis part is a `## Hypothesis`
+# section header, not a `hypothesis:` field — the old `hypothesis:` form
+# blocked every conformant feature write.
 FEATURE_REQUIRED_FIELDS = [
     "status:",
-    "hypothesis:",
+    "## hypothesis",
 ]
 
 
