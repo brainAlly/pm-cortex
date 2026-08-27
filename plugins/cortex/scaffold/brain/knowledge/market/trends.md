@@ -2,6 +2,9 @@
 
 > Macro and category-level trends relevant to product strategy. Updated by /competitor-analysis and /ingest (market signals).
 
+**Tier:** stated
+<!-- A trend starts `stated` (single signal or operator read). It becomes `confirmed` when 3+ independent sources corroborate it. Stated trends rank below direct customer evidence. See ../../../CLAUDE.md § Evidence Hierarchy. -->
+
 ---
 
 ## Active Trends

@@ -121,9 +121,11 @@ Brain subdirectories (all must be **inside `brain/`**, never at project root):
 
 Walk the copied files and substitute interview answers. Use the full **Batch → file mapping** in [`prompts/interview.md § What the answers feed`](./prompts/interview.md) — that table is the canonical destination map. Every Batch answer has a documented home; do not silently drop any.
 
+**Everything seeded from the interview is `Tier: stated`.** The interview is a single source — the operator. Leave every evidence-bearing knowledge file (`strategy.md`, `users/*`, `market/*`) at its shipped `Tier: stated` marker. Do **not** promote any seeded content to `Tier: confirmed`; it has one source and has not been validated against customers, analytics, or third-party data. This is the load-bearing fix from the design review: seeded operator assertions must not masquerade as confirmed knowledge, or they will outrank the first real customer. `/review` promotes them to `confirmed` later, as independent external evidence arrives. Say so in the handoff (§ 8): the brain starts as the operator's stated model of the world, to be confirmed by evidence.
+
 Highlights:
 
-- `brain/knowledge/strategy.md` — north-star metric, priorities (Batch A). Non-goals start empty if PM didn't volunteer them; flag in next moves.
+- `brain/knowledge/strategy.md` — north-star metric, priorities (Batch A). Stays `Tier: stated`. Non-goals start empty if PM didn't volunteer them; flag in next moves.
 - `brain/knowledge/product/features/<slug>.md` — one file per active feature (Batch C Q1), populated from the feature schema.
 - `brain/knowledge/product/roadmap.md` — Now / Next sections from Batch C.
 - `brain/stakeholders/<slug>.md` — one file per stakeholder (Batch B Q1); influence + friction tagged from Batch B Q2.

@@ -28,7 +28,7 @@ Load if available:
 
 Load `brain/knowledge/users/insights.md` to know what's already promoted. Load active hypotheses to weight evidence against them. This ensures the synthesis surfaces what's genuinely new or contradictory rather than re-confirming known patterns.
 
-Check: are there 3+ independent observations of the same theme? If so, surface a knowledge promotion candidate.
+Check: are there 3+ *independent* observations of the same theme? Count independence honestly — same-population signals count once, and operator assertions are not evidence for a user claim (see `CLAUDE.md § Evidence Hierarchy`). If 3+ independent sources hold, surface a candidate to promote to `Tier: confirmed` in `insights.md`. If the theme rests on one or two sources, it stays a `Tier: stated` finding (in `ingestion/` or a stated file), not a confirmed insight — and if it *contradicts* an existing stated claim in `strategy.md`, flag that the stated claim should yield to this customer evidence, not the reverse.
 
 ### Step 2: Apply the Skill
 

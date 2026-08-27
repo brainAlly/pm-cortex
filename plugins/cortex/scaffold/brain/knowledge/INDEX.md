@@ -1,8 +1,14 @@
 # Knowledge Index
 
-Promoted durable state. Everything here has been confirmed across 3+ independent observations or is decision/strategy-relevant. Load from here before any execution task.
+Durable product state. Load from here before any execution task.
 
-For working memory (not yet promoted), see `../ingestion/`. For raw source artifacts, see `../source/`.
+Evidence-bearing files (strategy, users, market) carry a `Tier:` marker:
+- **`Tier: stated`** — operator-asserted or single-source; not yet verified. Everything seeded at setup starts here. Ranks *below* direct customer evidence.
+- **`Tier: confirmed`** — backed by 3+ independent external sources. What the system trusts by default.
+
+`/review` promotes `stated → confirmed` as evidence accumulates. Descriptive/state files (`product/metrics.md`, `product/roadmap.md`, `org/*`, `product/features/*`) hold data or plans, not competing claims, and carry no tier. See `../../CLAUDE.md § Evidence Hierarchy` and `§ Memory Promotion`.
+
+For working memory (not yet durable), see `../ingestion/`. For raw source artifacts, see `../source/`.
 
 ---
 

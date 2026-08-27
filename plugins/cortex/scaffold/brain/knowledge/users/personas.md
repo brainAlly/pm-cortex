@@ -2,6 +2,9 @@
 
 > Durable user archetypes. Updated by /user-research-synthesis and promoted from insights when a coherent segment emerges across 3+ independent sources.
 
+**Tier:** stated
+<!-- Archetypes seeded from the operator's initial picture start `stated`. A persona becomes `confirmed` only when research backs it across 3+ independent sources (per the promotion path above). Stated personas rank below direct customer evidence. See ../../../CLAUDE.md § Evidence Hierarchy. -->
+
 ---
 
 ## Active Personas

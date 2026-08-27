@@ -33,7 +33,9 @@ If shape is ambiguous, ask one question. Don't guess.
 - One or more durable destinations per the cognition pipeline: `brain/knowledge/`, `brain/hypotheses/`, `brain/decisions/`, `brain/stakeholders/`
 - Maintenance log if structural (a new persona, a new competitor, a new stakeholder)
 
-Promotion to durable layers follows the memory promotion bar in `CLAUDE.md § Memory promotion`. One-off observations stay in `ingestion/` until they accumulate.
+Promotion to durable layers follows the memory promotion bar in `CLAUDE.md § Memory Promotion`. One-off observations stay in `ingestion/` until they accumulate.
+
+**Respect the tier when writing to an evidence-bearing `knowledge/` file** (strategy, users, market). A claim entering knowledge on a single source — including anything the operator asserts — is written under `Tier: stated`. Only promote a file (or claim) to `Tier: confirmed` when 3+ *independent, external* sources back it; operator reiteration and same-population signals do not count (see `CLAUDE.md § Evidence Hierarchy`). `knowledge/users/insights.md` is confirmed-only — a single new interview theme goes to `ingestion/` and accumulates there until it clears the bar, it does not land in insights.md as a lone observation.
 
 ## Surfaces
 

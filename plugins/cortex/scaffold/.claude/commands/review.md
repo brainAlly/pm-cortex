@@ -33,10 +33,23 @@ The six standard checks, with counts and the top item in each:
 2. **Stale evidence** — market past 30-60 days, interviews past 90, strategy assumptions past quarterly
 3. **Hypothesis and decision hygiene** — active hypotheses with no evidence in 30+ days, promoted hypotheses without decisions, triggered "what would reverse this" conditions, and decision debt reported as **the unblocked frontier vs. blocked decisions** (see § Decision frontier), never as an age-sorted list
 4. **Stakeholder cadence and strategy tensions** — high-influence stakeholders not touched in 3+ weeks, drift between recent decisions and strategy
-5. **Knowledge synthesis (compression)** — recurring patterns, recurring contradictions, candidates for `strategy.md § Tensions`
+5. **Knowledge synthesis (compression) and tier promotion** — recurring patterns, recurring contradictions, candidates for `strategy.md § Tensions`, and `Tier: stated` claims that have earned promotion to `Tier: confirmed` or been contradicted by evidence (see § Tier promotion)
 6. **Archival sweep** — shipped features past 90 days, resolved hypotheses, old market intel
 
 Compression is additive. Minority signals are preserved. Archive extracts durable lessons before removing.
+
+## Tier promotion — stated → confirmed
+
+Every evidence-bearing `knowledge/` file carries a `Tier:` marker (`stated` = operator-asserted / single-source; `confirmed` = 3+ independent external sources — see `CLAUDE.md § Memory Promotion`). The sweep keeps those markers honest, because a `stated` claim silently treated as `confirmed` is how the operator's own assumptions come to outrank real customers.
+
+For each `Tier: stated` knowledge file (or stated claim within one):
+
+1. **Count independent external sources** in the ingestion/ record that now support it. Apply the independence rules from `CLAUDE.md § Evidence Hierarchy`: same-population signals count once, and **operator reiteration never counts** — the founder restating a belief in three places is one source. Customer interviews, analytics, and third-party data are what count.
+2. **If 3+ independent external sources now back it** → propose promotion to `Tier: confirmed`: flip the marker, add the named evidence rows, cross-link the sources. One-line confirmation per `CLAUDE.md § Auto-Update Rules`.
+3. **If direct customer evidence contradicts it** → this is the case the whole tier system exists for. Do not file it as a symmetric tension that leaves the stated claim standing. Surface it as: "stated claim '[X]' is contradicted by [customer source] — revise the claim, or gather evidence to confirm it." The stated claim yields to the evidence; it does not win by seniority.
+4. **If it has sat `stated` with no new supporting evidence for a long time** → flag as an unvalidated assumption worth either testing or dropping, and (per § Converting findings to work) convert "validate or drop stated assumption '[X]'" into a Now row with an owner.
+
+Never auto-promote to `confirmed` on operator reiteration alone, and never let a `stated` claim outrank a customer just because it was written down first.
 
 ## Decision frontier — waiting vs. stuck
 

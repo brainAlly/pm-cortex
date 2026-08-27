@@ -2,6 +2,9 @@
 
 > Competitive and market context. Updated by /competitor-analysis, /ingest (market signals), and /review.
 
+**Tier:** stated
+<!-- An initial market picture (operator or desk research) starts `stated`. It becomes `confirmed` when 3+ independent sources corroborate it. Stated market claims rank below direct customer evidence. See ../../../CLAUDE.md § Evidence Hierarchy. -->
+
 ---
 
 ## Market Definition

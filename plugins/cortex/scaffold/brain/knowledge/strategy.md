@@ -2,6 +2,9 @@
 
 > Canonical home for north star, priorities, OKRs, and strategic tensions. Load this file for any prioritization, planning, or review task.
 
+**Tier:** stated
+<!-- Operator-asserted / single-source; not yet verified. Everything seeded here at setup starts stated. Ranks BELOW direct customer evidence — a customer contradicting a stated claim means revise it. /review promotes a claim to `confirmed` once 3+ independent external sources back it. See ../../CLAUDE.md § Evidence Hierarchy. -->
+
 ---
 
 ## North Star Metric

@@ -2,6 +2,9 @@
 
 > Promoted user-level patterns. Each insight requires 3+ independent observations before appearing here. Updated by /ingest, /user-research-synthesis, and /review.
 
+**Tier:** confirmed
+<!-- Confirmed-only home: every entry has 3+ independent external sources. Nothing `stated` belongs in this file — single-source user beliefs stay in ../ingestion/ (or a stated file) until they clear the bar. See ../../../CLAUDE.md § Memory Promotion. -->
+
 ---
 
 ## Active Themes

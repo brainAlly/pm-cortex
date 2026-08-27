@@ -61,6 +61,10 @@ Always surface these three first, in this order:
 
 These are not optional. The system dies when these don't happen.
 
+### Name the stated → confirmed arc
+
+Say one honest sentence about what the brain currently *is*: "Everything I just seeded is `Tier: stated` — your model of the world, from one source: this interview. None of it is confirmed yet." Then point at the arc: the three habit actions above are how stated assumptions become confirmed knowledge — real customer evidence is what promotes them, and until it arrives, a customer who contradicts a stated claim wins. This is the antidote to the failure the operator most likely flagged in `brain/style/patterns.md` (gathering references instead of talking to users): the system is built so that talking to users is what upgrades the brain, and reference-collecting is not. Do not oversell the seeded brain as if it were established fact.
+
 ### Then: 2-3 scaffold gaps (secondary)
 
 After the three habit actions, surface a small number of concrete completion gaps. Specific, actionable, never more than 3:

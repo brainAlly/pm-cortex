@@ -22,7 +22,7 @@ PM Cortex is a unified product management operating system — one plugin, one b
 │  ├── ingestion/      │  ├── Sprint (14)      │  ├── executive         │
 │  │   synthesized     │  ├── Occasional (11)  │  ├── legal-advisor     │
 │  └── knowledge/      │  └── Strategic (6)    │  ├── customer-voice    │
-│      promoted        │                       │  ├── skeptic           │
+│      tiered          │                       │  ├── skeptic           │
 │                      │  8 auto-skills        │  └── uxr-analyst       │
 │  hypotheses/         │  (agent-invoked)      │                        │
 │  decisions/          │                       │  Suggested after       │
@@ -44,10 +44,10 @@ Immutable raw copies of every artifact. Never edited. Serves as the audit trail.
 Synthesized, provenance-tagged observations. Each artifact is classified by shape (interview, meeting, market signal, adhoc) and routed here after `/ingest`.
 
 **Promotion Gate**
-Observations in ingestion are promoted to the knowledge tier only after 3+ independent sources confirm the same pattern. This prevents a single data point from corrupting durable knowledge.
+Knowledge claims carry a `Tier:` marker. Operator assertions and single-source signals enter as `Tier: stated`; a claim is promoted to `Tier: confirmed` only after 3+ *independent, external* sources confirm the same pattern (operator reiteration and same-population signals don't count). The gate governs *confirmation*, not entry — so a stated claim never masquerades as verified, and in the evidence hierarchy it ranks below direct customer evidence.
 
 **Tier 3 — `brain/knowledge/`**
-Durable synthesized state — strategy, product, users, market, org. This is what commands draw on when generating outputs.
+Durable synthesized state — strategy, product, users, market, org. Evidence-bearing files are tagged `Tier: stated` or `Tier: confirmed`. This is what commands draw on when generating outputs.
 
 **Supporting Layers**
 - **`brain/hypotheses/`** — Feature-level risk scores across 5 areas (value, usability, feasibility, viability, other), with confidence 0–1 and decision triggers
@@ -113,7 +113,7 @@ brain/source/ ← immutable copy
          ↓
 brain/ingestion/ ← synthesis + provenance tags
          ↓
-    Promotion Gate (3+ sources)
+    Promotion Gate (stated → confirmed, 3+ independent sources)
          ↓
   ┌──────┴────────┬──────────┬──────────────┐
   ↓               ↓          ↓              ↓
@@ -140,7 +140,7 @@ your-product-brain/                (scaffolded by /pm-brain)
 │   │   ├── meetings/
 │   │   ├── market/
 │   │   └── adhoc/
-│   ├── knowledge/                 (durable promoted state)
+│   ├── knowledge/                 (durable state; Tier: stated / confirmed)
 │   │   ├── strategy.md
 │   │   ├── product/
 │   │   ├── users/
@@ -190,7 +190,7 @@ The previous architecture required installing PM Brain and then choosing from 9 
 
 ### Why Three Memory Tiers?
 
-The promotion gate prevents premature knowledge calcification. A single customer quote should not update your core strategy. Three independent observations represent a pattern worth trusting. The system enforces this automatically.
+The promotion gate prevents premature knowledge calcification, and the `stated`/`confirmed` tier keeps it honest in both directions. A single customer quote should not, by itself, rewrite your core strategy — but neither should a `stated` assumption you typed in at setup outrank that customer. Three independent external observations represent a pattern worth trusting (`confirmed`); until then, a claim stays `stated` and yields to direct customer evidence. The system enforces both automatically.
 
 ## Next Steps
 

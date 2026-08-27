@@ -18,14 +18,15 @@ PM Brain was designed specifically to avoid both.
 
 ### 1. Epistemic boundaries
 
-Most systems never define what counts as evidence, what counts as interpretation, what deserves promotion into durable knowledge, or when the agent should escalate. PM Brain does, along two orthogonal axes:
+Most systems never define what counts as evidence, what counts as interpretation, what deserves promotion into durable knowledge, or when the agent should escalate. PM Brain does, along three orthogonal axes:
 
 - **Epistemic type:** every piece of content is tagged as one of **observation**, **interpretation**, **hypothesis**, **assumption**, **decision**.
 - **Provenance:** every load-bearing claim wears a tag from a small enum — `[ingestion/...]`, `[source/...]`, `(stakeholder-verbal, <name>, <date>)`, `(intuition, PM, <date>)`, `(industry-knowledge)`, `(chat, no artifact)`.
+- **Verification tier:** every evidence-bearing knowledge file is tagged `Tier: stated` (operator-asserted / single-source, not yet verified) or `Tier: confirmed` (3+ independent external sources). This is what stops the operator's own assertions from outranking real customers: a `stated` claim sits *below* direct customer evidence in the hierarchy, and only becomes `confirmed` when independent evidence — not the operator repeating themselves — clears the bar.
 
 The provenance axis is what keeps the brain honest when work is messy. PM intuitions, off-the-record stakeholder conversations, and industry priors are legitimate inputs — they just have to wear their actual provenance. The system enforces the **vocabulary**, not the workflow.
 
-A Slack comment is not automatically truth. A customer quote is not automatically strategy. The system preserves provenance, confidence, and contradictions instead of pretending certainty exists where it doesn't.
+A Slack comment is not automatically truth. A customer quote is not automatically strategy. And an assertion the operator typed in at setup is not automatically confirmed knowledge — it is `stated` until evidence says otherwise. The system preserves provenance, confidence, tier, and contradictions instead of pretending certainty exists where it doesn't.
 
 ### 2. A maintenance model that actually runs
 

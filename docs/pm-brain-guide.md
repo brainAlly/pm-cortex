@@ -23,7 +23,7 @@ brain/
 │   ├── market/
 │   └── adhoc/
 │
-├── knowledge/           Tier 3 — Promoted, durable state
+├── knowledge/           Tier 3 — Durable state (tagged Tier: stated / confirmed)
 │   ├── strategy.md      North-star, priorities, tensions
 │   ├── product/         Features, metrics, roadmap
 │   ├── users/           Personas, segments, insights
@@ -36,9 +36,14 @@ brain/
 └── style/               PM's writing and thinking patterns
 ```
 
-### Promotion Gate
+### Tiers of Knowledge: Stated vs. Confirmed
 
-Observations in `brain/ingestion/` are promoted to `brain/knowledge/` only after **3+ independent sources** confirm the same pattern. This prevents a single data point from corrupting durable knowledge. The system enforces this automatically — you confirm once, it handles the rest.
+Durable knowledge carries a `Tier:` marker so the system can weight it honestly:
+
+- **`Tier: stated`** — asserted by you or resting on a single source, not yet verified. Everything seeded at setup starts here — it is your model of the world, not established fact.
+- **`Tier: confirmed`** — the same claim after **3+ independent, external sources** back it (customer interviews, analytics, third-party data). Your own restatements don't count; three versions of your own opinion are still one source.
+
+This matters because of the evidence hierarchy: **direct customer evidence outranks a `stated` claim.** When a customer contradicts something you stated at setup, the customer wins and the stated claim gets revised — the system will never quietly keep your assumption on top just because you wrote it down first. Only `confirmed` knowledge, which already cleared the evidence bar, outranks a fresh customer signal. `/review` promotes `stated → confirmed` as the evidence accumulates.
 
 ### Provenance System
 
@@ -251,7 +256,7 @@ Don't launder intuition through fake `[ingestion/...]` tags. If it's a hunch, ta
 
 ### 4. Promote Deliberately
 
-The promotion gate handles this automatically. Don't manually add things to `brain/knowledge/` — let the gate enforce pattern confirmation across 3+ sources.
+Anything you assert directly into `brain/knowledge/` lands as `Tier: stated` — useful working context, but not confirmed. Let `/review` promote it to `Tier: confirmed` only once 3+ independent external sources back it. Don't hand-flip a claim to confirmed to make it feel settled; that reintroduces the exact bias the tiers exist to prevent.
 
 ### 5. Archive Regularly
 

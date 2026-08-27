@@ -37,7 +37,7 @@ Central routing map. Start here for any task that spans multiple areas.
 
 - **Working memory** → `ingestion/` (interviews, meetings, market, adhoc)
 - **Immutable source** → `source/` (raw copies, never edited)
-- **Long-term memory** → `knowledge/` (promoted patterns, 3+ independent observations)
+- **Long-term memory** → `knowledge/` (durable state; evidence-bearing files tagged `Tier: stated` (operator-asserted, 1 source) or `Tier: confirmed` (3+ independent sources) — see `../CLAUDE.md § Memory Promotion`)
 
 ## Personalization
 

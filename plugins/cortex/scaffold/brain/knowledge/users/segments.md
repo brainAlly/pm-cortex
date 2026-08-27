@@ -2,6 +2,9 @@
 
 > How the user base is divided for analysis, prioritization, and targeting. Updated by /user-research-synthesis and /retention-analysis.
 
+**Tier:** stated
+<!-- An initial division of the user base starts `stated`. It becomes `confirmed` when 3+ independent sources (research, analytics) validate the segmentation. Stated segments rank below direct customer evidence. See ../../../CLAUDE.md § Evidence Hierarchy. -->
+
 ---
 
 ## Segments

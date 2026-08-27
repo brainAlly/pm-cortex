@@ -34,7 +34,7 @@ The brain lives at `brain/` in the project root. Load from the right tier for th
 |---|---|---|
 | `brain/source/` | Immutable raw copies of every ingested artifact. Never edited after creation. | Only when PM needs to verify original wording |
 | `brain/ingestion/` | Synthesized observations from source artifacts. Provenance-tagged. Working memory. | When a task involves recent signals, interviews, or meetings |
-| `brain/knowledge/` | Promoted durable state — patterns confirmed across 3+ independent sources | Before any execution task (PRD, strategy, ideation, risk) |
+| `brain/knowledge/` | Durable state. Evidence-bearing files (strategy, users, market) are tagged `Tier: stated` (operator-asserted, single-source) or `Tier: confirmed` (3+ independent sources) — weight them accordingly (see § Evidence Hierarchy) | Before any execution task (PRD, strategy, ideation, risk) |
 | `brain/knowledge/strategy.md` | North Star, priorities, tensions, OKRs | Every prioritization, planning, or review task |
 | `brain/knowledge/product/` | Features, roadmap, metrics | PRDs, sprint planning, launch tasks |
 | `brain/knowledge/users/` | Personas, segments, promoted insights | User-facing decisions, research synthesis |
@@ -165,8 +165,8 @@ Apply immediately without asking the PM:
 
 ### One-Line Confirmation (ask before writing)
 Surface a single yes/no prompt before updating — maximum one per skill run:
-- Promoting a pattern to `knowledge/` when 3+ independent observations are reached: *"Promote '[insight]' to knowledge/users/insights.md? (y/n)"*
-- Updating `knowledge/strategy.md` with a new North Star or expansion direction
+- Promoting a claim from `Tier: stated` to `Tier: confirmed` when 3+ independent external observations are reached — flip the marker and add the named evidence rows: *"Promote '[insight]' to Tier: confirmed (3 independent sources)? (y/n)"*
+- Updating `knowledge/strategy.md` with a new North Star or expansion direction — these enter as `Tier: stated` (operator-asserted); they do not become `confirmed` without independent evidence
 - Updating competitor file with a significant new development
 - Logging a scope decision to `decisions/` when one crystallized during PRD work
 - Adding an open-work row to `knowledge/product/roadmap.md § Now` when a task surfaces an action that needs an owner: *"Add '[item]' to Now — owner [X], due [date]? (y/n)"*. `/review` writes these directly without asking (see its § Converting findings to work).
@@ -218,38 +218,47 @@ Sub-agent files live in `.claude/sub-agents/`. Invoke by reading the relevant fi
 ## Evidence Hierarchy
 
 When sources conflict, weight in this order:
-1. Explicit PM decisions (`decisions/`)
-2. `knowledge/strategy.md`
+1. Explicit PM decisions (`decisions/`) — committed choices, governed by their own reversal conditions
+2. **Confirmed knowledge** — `knowledge/` claims tagged `Tier: confirmed` (backed by 3+ independent sources; see § Memory Promotion)
 3. Direct customer evidence (interviews, support tickets, verbatim quotes)
 4. Product analytics
-5. Stakeholder opinions
-6. Market / competitor signals
-7. Internal speculation
+5. **Stated knowledge** — `knowledge/` claims tagged `Tier: stated` (operator-asserted strategy and assumptions, single-source) — peer with stakeholder opinions
+6. Stakeholder opinions
+7. Market / competitor signals
+8. Internal speculation
 
-Do not silently overwrite higher-confidence sources with lower-confidence signals. When a lower-confidence signal challenges a higher one, surface it as a tension — do not auto-resolve.
+**Stated knowledge is not high-confidence knowledge.** An operator assertion sitting in `knowledge/` — a North Star typed in at setup, a priority the PM believes — is `Tier: stated` until evidence confirms it. It ranks *below* direct customer evidence, not above. So when a customer interview contradicts a `stated` claim, that is the evidence doing its job: surface it as **"a stated assumption was just contradicted — revise it, or gather the evidence to confirm it,"** not as a symmetric tension that leaves the operator's assertion on top. Only `Tier: confirmed` knowledge (rank 2) outranks fresh customer evidence, and only because it already passed the same evidentiary bar.
+
+Do not silently overwrite higher-confidence sources with lower-confidence signals. When a lower-confidence signal challenges a higher one, surface it as a tension — do not auto-resolve. The one asymmetry: customer evidence challenging a `stated` claim is not "lower challenging higher" — it is the stronger source, and the stated claim yields.
 
 **Recency bias correction.** Recent signals are not automatically stronger. Prefer repeated patterns over fresh anecdotes. A single new interview does not outweigh a confirmed hypothesis — it adds evidence, not a verdict.
 
 **Correlational vs. causal.** An analytics snapshot or exit survey is correlational by default. Before using it to raise a hypothesis confidence score, check: sample size, confounders, and same-population independence (two channels reporting the same theme from the same users are not two independent sources). When in doubt, record as a watch item with its caveats.
 
+**Operator independence.** The operator restating a belief does not make it independent evidence. The same claim from the setup interview, a later chat, and a doc the PM wrote is *one* source, not three — exactly as two channels from the same users count once. This matters most when the operator is also the top stakeholder (founder-PM): their `(stakeholder-verbal, …)` remark and their `(intuition, PM, …)` hunch are the same person, and neither is external validation of the other. Promotion from `Tier: stated` to `Tier: confirmed` requires 3+ *independent, external* sources — customer interviews, analytics, third-party data. Operator reiteration, however emphatic, never clears that bar on its own.
+
 ---
 
-## Memory Promotion — Working vs. Long-Term
+## Memory Promotion — Stated vs. Confirmed
 
-Raw ingestion is not durable knowledge by default. Items in `ingestion/` promote to `knowledge/` when they are:
+Every evidence-bearing `knowledge/` file (strategy, users, market) carries a `Tier:` marker, so the Evidence Hierarchy can weight it honestly. Descriptive/state files — `product/metrics.md`, `product/roadmap.md`, `org/*`, `product/features/*` — hold data or plans, not competing claims, and carry no tier.
 
-- **Confirmed across 3+ independent observations** — the same theme from 3 different interviews, sessions, or sources. Same-population signals (e.g. two channels from the same user base) do not count as independent.
-- **Decision-relevant** — directly informed a decision or hypothesis update
-- **Strategy-relevant** — affects priorities, non-goals, or tensions
+- **`Tier: stated`** — asserted by the operator or resting on a single source. Not yet verified. This is where every claim starts, including everything seeded at setup. Stated claims are useful working context, but they rank *below* direct customer evidence — they are beliefs about the world, not established facts.
+- **`Tier: confirmed`** — the same claim after it clears the bar: **3+ independent, external observations** (the same theme from 3 different interviews, sessions, or sources; same-population and operator-reiteration signals do not count — see § Evidence Hierarchy § Operator independence). Confirmed claims are what the system trusts by default.
 
-**Where promotion lands:**
-- User-level pattern → `knowledge/users/insights.md` under `## Active themes`, with one evidence row per source (each provenance-tagged)
-- Persona claim → `knowledge/users/personas.md`
+**Two distinct events:**
+
+1. **Entry** — a claim first lands in `knowledge/`. Operator assertions and single-source signals enter as `Tier: stated`. Raw one-off observations stay in `ingestion/` until they are at least decision- or strategy-relevant enough to state.
+2. **Confirmation** — a `stated` claim is promoted to `Tier: confirmed` once 3+ independent external sources support it. This is the only event that raises a claim's rank in the hierarchy. `/review` runs this sweep; any skill may propose it via the one-line confirmation in § Auto-Update Rules.
+
+**Where a claim lands (both tiers use the same homes):**
+- User-level pattern → `knowledge/users/insights.md` — a **confirmed-only** home; nothing `stated` belongs here. Single-source user beliefs stay in `ingestion/` (or a stated file) until they clear the bar. One evidence row per source.
+- Persona / segment claim → `knowledge/users/personas.md` / `knowledge/users/segments.md`
 - Product pattern → `knowledge/product/metrics.md` or `knowledge/product/features/[slug].md`
 - Market/competitive pattern → `knowledge/market/landscape.md` or `knowledge/market/competitors/[slug].md`
-- Strategic tension → `knowledge/strategy.md § Tensions` (higher bar: recurring + high-confidence + decision-relevant)
+- Strategic assertion or tension → `knowledge/strategy.md` (tensions carry a higher bar: recurring + high-confidence + decision-relevant)
 
-When promoting, complete the full audit trail in the same turn: named evidence rows (not summarized counts), dissent rows for same-population non-supporters, cross-link back to source files.
+When promoting a claim from `stated` to `confirmed`, complete the full audit trail in the same turn: flip the `Tier:` marker, add named evidence rows (not summarized counts), record dissent rows for same-population non-supporters, and cross-link back to source files.
 
 ---
 
@@ -267,6 +276,8 @@ Every claim that drives downstream work carries a provenance tag. The vocabulary
 | `(chat, no artifact)` | Low | Synthesized in conversation, nothing written down |
 
 Tag provenance on: hypothesis evidence rows, decision evidence rows, promoted knowledge insights, stakeholder concerns. Do not tag every note — only claims that drive downstream work.
+
+**Provenance and Tier are different axes.** A provenance tag records *how one claim was captured* (its source type). A knowledge file's `Tier` records *whether the claim is verified* (`stated` vs `confirmed`). A `Tier: confirmed` insight is built from 3+ independent provenance-tagged rows; a `Tier: stated` claim usually rests on one. **Trust level in the table above is not independence:** three `(stakeholder-verbal, …)` remarks from the same person, or a `(stakeholder-verbal, …)` plus an `(intuition, PM, …)` from the operator, are one source, not several (see § Evidence Hierarchy § Operator independence). Capture method does not manufacture corroboration.
 
 ---
 
