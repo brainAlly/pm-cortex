@@ -47,6 +47,20 @@ Link walking proves a link points somewhere. It does not prove the right links e
 
 Coverage gaps are surfaced as immediate next moves (§ 3), not as scaffolding failures. The point is to make missing wiring visible, not to block.
 
+## 2c. Schema self-test and conformance sweep
+
+Two mechanical checks that catch the failure modes the validation hook can miss:
+
+```bash
+python3 .claude/hooks/validate_brain_file.py --selftest   # schemas satisfy their own validator
+python3 .claude/hooks/validate_brain_file.py --all         # every seeded brain file conforms
+```
+
+- **`--selftest`** asserts each `_SCHEMA.md` emits the exact field literals its validator requires. This is the guard against schema/validator drift — the defect that repeatedly broke conformant writes. A failure here is a plugin bug: report it and do not try to paper over it by editing brain files.
+- **`--all`** validates every file just seeded (features, stakeholders, hypotheses seeded from the interview may have been written via Bash and never hit the `Write|Edit` hook). Fix any file it names to match its schema before the receipt.
+
+Both should exit 0 on a clean init. Record the result in the self-test receipt (§ 5).
+
 ## 3. Surface the habit loop (primary) + scaffold gaps (secondary)
 
 The day-one risk isn't an incomplete scaffold. It's the operator never returning to use the system. Frame next moves as habit-forming actions first, not scaffold completion.
@@ -100,6 +114,7 @@ Print a 3-5 line visible block that proves the self-test ran:
 Self-test receipt:
 - Ingestion shapes routed: 4/4.
 - Commands resolved: 6/6 (ingest, prep, review, ideate, risk, plan).
+- Schema self-test: pass (schemas satisfy their validators). Conformance sweep: 15/15 files conform.
 - Links walked: 47. Broken: 3. Fixed: 3.
 - Coverage checks: 6/6 categories scanned. 2 gaps flagged as next moves.
 - TODO fields (PM-fillable): 12 across 8 files (see list).

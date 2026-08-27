@@ -38,6 +38,16 @@ The six standard checks, with counts and the top item in each:
 
 Compression is additive. Minority signals are preserved. Archive extracts durable lessons before removing.
 
+## Schema conformance sweep (catch Bash-authored files)
+
+The `validate_brain_file.py` hook fires only on `Write|Edit`. A file authored through Bash (`cat > file`, redirects) never triggers it, so a schema violation can land silently. As the first action of every `/review`, sweep the whole brain for stragglers:
+
+```bash
+python3 .claude/hooks/validate_brain_file.py --all
+```
+
+Report any non-conformant files it names, and fix each to match its schema (`brain/<dir>/_SCHEMA.md`) in this run — a schema-invalid decision, hypothesis, stakeholder, or feature file is memory corruption, not cosmetic. Exit 0 means the brain conforms; exit 1 lists the files to fix. (Prefer `Write`/`Edit` over Bash when authoring brain files so the hook validates them in-loop; this sweep is the backstop for anything that slipped through.)
+
 ## Tier promotion — stated → confirmed
 
 Every evidence-bearing `knowledge/` file carries a `Tier:` marker (`stated` = operator-asserted / single-source; `confirmed` = 3+ independent external sources — see `CLAUDE.md § Memory Promotion`). The sweep keeps those markers honest, because a `stated` claim silently treated as `confirmed` is how the operator's own assumptions come to outrank real customers.

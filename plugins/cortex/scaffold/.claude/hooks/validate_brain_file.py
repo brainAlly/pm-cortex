@@ -14,6 +14,12 @@ Free-form dirs (ingestion/, source/, style/, outputs/) are silently skipped.
 Input: the PostToolUse JSON payload on stdin (written path at
 `tool_input.file_path`). A path argument is also accepted, so the script stays
 runnable by hand for tests and manual sweeps.
+
+Subcommands (do not fire from the hook — run manually or from /review):
+  --all [root]       Validate every brain file in the validated dirs. Catches
+                     files authored via Bash, which Write|Edit hooks never see.
+  --selftest [root]  Assert every _SCHEMA.md emits the literals its own
+                     validator requires — a guard against schema/validator drift.
 """
 
 import sys
@@ -162,7 +168,93 @@ def resolve_path() -> str:
     return (payload.get("tool_input", {}) or {}).get("file_path", "") or ""
 
 
+def iter_schema_rules(root="."):
+    """Yield (schema_path, required_fields, name) for every validated type."""
+    for _, rules in VALIDATED_DIRS.items():
+        yield (os.path.join(root, rules["schema"]), rules["required_fields"], rules["name"])
+    yield (
+        os.path.join(root, "brain/knowledge/product/features/_SCHEMA.md"),
+        FEATURE_REQUIRED_FIELDS,
+        "Feature",
+    )
+
+
+def run_selftest(root=".") -> int:
+    """Assert every _SCHEMA.md emits the literals its own validator requires.
+
+    Guards against validator/schema drift — the defect class behind the
+    hyphen-vs-space field bugs. _SCHEMA.md files are exempt from runtime
+    validation, so nothing else checks this. Returns a process exit code.
+    """
+    drift = []
+    for schema_path, fields, name in iter_schema_rules(root):
+        if not os.path.exists(schema_path):
+            drift.append(f"{name}: schema not found at {schema_path}")
+            continue
+        try:
+            with open(schema_path, "r", encoding="utf-8") as f:
+                content = f.read().lower()
+        except Exception as e:
+            drift.append(f"{name}: could not read {schema_path}: {e}")
+            continue
+        for field in fields:
+            if field.lower() not in content:
+                drift.append(f"{name}: {schema_path} does not emit required literal {field!r}")
+
+    if drift:
+        print("[PM Cortex] Schema/validator drift — a schema fails its own rules:", file=sys.stderr)
+        for d in drift:
+            print(f"  - {d}", file=sys.stderr)
+        print("\nAlign the required_fields literal and the schema so they match.\n", file=sys.stderr)
+        return 1
+    print("[PM Cortex] selftest OK — every _SCHEMA.md satisfies its own validator.")
+    return 0
+
+
+def run_validate_all(root=".") -> int:
+    """Validate every existing brain file in the validated dirs.
+
+    Catches files authored outside Write/Edit (e.g. via Bash), which the
+    PostToolUse hook never sees. Meant to be run as a /review step and by hand.
+    Returns a process exit code (1 if any file fails).
+    """
+    dirs = [os.path.join(root, f"brain/{k}") for k in VALIDATED_DIRS]
+    dirs.append(os.path.join(root, "brain/knowledge/product/features"))
+    failures = []
+    checked = 0
+    for d in dirs:
+        if not os.path.isdir(d):
+            continue
+        for dirpath, _, filenames in os.walk(d):
+            for fn in filenames:
+                if not fn.endswith(".md"):
+                    continue
+                p = os.path.join(dirpath, fn)
+                if is_schema_file(p) or is_index_file(p):
+                    continue
+                checked += 1
+                errs = validate(p)
+                if errs:
+                    failures.append((p, errs))
+
+    if failures:
+        print(f"[PM Cortex] Schema sweep — {len(failures)} of {checked} file(s) non-conformant:", file=sys.stderr)
+        for p, errs in failures:
+            print(f"  {p}", file=sys.stderr)
+            for e in errs:
+                print(f"    - {e}", file=sys.stderr)
+        print("\nRewrite the files above to match their schema, then re-run.\n", file=sys.stderr)
+        return 1
+    print(f"[PM Cortex] Schema sweep OK — {checked} file(s) conform.")
+    return 0
+
+
 def main():
+    # Subcommands (manual / /review / self-test) — intercepted before the hook path.
+    if len(sys.argv) >= 2 and sys.argv[1] in ("--all", "--selftest"):
+        root = sys.argv[2] if len(sys.argv) >= 3 else "."
+        sys.exit(run_selftest(root) if sys.argv[1] == "--selftest" else run_validate_all(root))
+
     path = resolve_path()
     if not path:
         sys.exit(0)  # nothing to validate (no path, or not a hook invocation)

@@ -311,7 +311,7 @@ Validated directories require schema-conforming writes. Load the area's `_SCHEMA
 
 Free-form (no schema enforcement): `brain/ingestion/`, `brain/source/`, `brain/style/`, `outputs/`
 
-The validation hook (`validate_brain_file.py`) fires on every write to validated directories and rejects non-conforming writes.
+The validation hook (`validate_brain_file.py`) fires on every `Write`/`Edit` to a validated directory: a schema violation is written to stderr and the tool exits 2, so you see it and rewrite the file. **Author brain files with `Write`/`Edit`, not Bash** (`cat > file`, redirects) — Bash writes bypass the hook and land unvalidated. `/review` runs `validate_brain_file.py --all` as a backstop to catch anything authored outside the hook.
 
 ---
 
