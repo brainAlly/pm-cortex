@@ -184,20 +184,35 @@ Read `.pm-os-version` from the project root. If not found, treat as `v0.0.0` and
 
 Use the same find commands as the init flow (step 4a above) to locate the `cortex` plugin directory in the Claude Desktop cache. Confirm the path contains `UPGRADE_MANIFEST.md`. Set `PLUGIN_DIR` to that path.
 
-### 3. Read the manifest
+### 3. Read the manifest and changelog (internal working data)
 
-Read `$PLUGIN_DIR/UPGRADE_MANIFEST.md`. Find all version sections with version numbers greater than the current `.pm-os-version`.
+Read `$PLUGIN_DIR/UPGRADE_MANIFEST.md` and `$PLUGIN_DIR/CHANGELOG.md`. Find all version sections above the current `.pm-os-version`. **This is your working data for making precise edits in step 5 — do not dump the raw manifest or the full changelog on the PM.** Step 4 turns it into a short overview instead.
 
-### 4. Show the changelog
+### 4. Preview the changes and get the go-ahead
 
-Before applying any changes, read `$PLUGIN_DIR/CHANGELOG.md` and display the release notes for all versions being applied. Ask the PM to confirm: "Ready to apply these updates? (y/n)"
+Give the PM a **scannable overview**, not a firehose. The goal is that they can see at a glance what is being added, updated, and removed — and which files — without reading every line. Synthesize the changelog (the *what/why*) and the manifest (the *which files*) into three short groups; list names with at most a one-line description each, and omit any group that's empty:
+
+- **➕ Added** — new commands, skills, sub-agents, or files (e.g. "`/foo` — new command for X")
+- **✏️ Updated** — changed files, by name (e.g. "`/review` — now computes the decision frontier")
+- **➖ Removed** — deleted files or dropped commands
+
+Do **not** print per-line diffs or the manifest's file-by-file copy/replace instructions — those are yours for step 5.
+
+**Then run the local-overwrite check (required).** The manifest uses **Replace** semantics on managed files, so a PM who edited one locally would lose that edit silently. Prevent that:
+
+1. Locate the **currently installed** version's copy in the cache — the sibling version directory named by `.pm-os-version` (e.g. `.../cortex/<current-version>/`).
+2. For each file the manifest will Replace or Copy over, diff the PM's on-disk copy against that currently-installed shipped copy. If they differ, the PM has modified it locally.
+3. List every such file under a clear **"⚠️ Your local edits to these files will be overwritten"** heading.
+4. If the currently-installed version isn't in the cache (no baseline to diff against), say so plainly and list the managed files being replaced, so the PM can eyeball them — never overwrite silently on an unknown baseline.
+
+Then ask: **"Apply these updates? Your local edits to any files listed above will be replaced. (y / n — or name a file to keep and I'll skip it.)"** Wait for a clear yes. If the PM names files to keep, skip their Replace in step 5 and note them in the final report.
 
 ### 5. Apply manifest instructions
 
 For each version above current, in order from oldest to newest:
 
 - **Copy**: Copy the specified file from `$PLUGIN_DIR` to the PM's project directory. Create parent directories if they don't exist.
-- **Replace**: Overwrite the existing file in the PM's project directory with the version from `$PLUGIN_DIR`.
+- **Replace**: Overwrite the existing file in the PM's project directory with the version from `$PLUGIN_DIR` — **unless the PM named it as one to keep in step 4**, in which case skip it and record it as retained.
 - **Create directory**: Create the specified directory if it does not already exist.
 - **CLAUDE.md update**: Replace only the content between `<!-- PM-OS:START -->` and `<!-- PM-OS:END -->` markers in the project's `CLAUDE.md`. Never touch content outside those markers — it is the PM's own.
 
@@ -209,12 +224,11 @@ Write the new version number to `.pm-os-version`.
 
 ### 7. Report
 
-Tell the PM exactly what changed:
-- New commands added (list them)
-- Commands updated (list them)
-- New skills or sub-agents
-- Any scaffold changes
-- "Your brain data was not touched."
+Confirm what actually happened, mirroring the step 4 overview so it's easy to reconcile:
+- **➕ Added / ✏️ Updated / ➖ Removed** — the same grouped lists, now as "done."
+- **Local files** — any managed files that were overwritten (the PM accepted) and any that were **retained** at the PM's request (skipped — note these still differ from the shipped version and may miss the update).
+- Version moved from `<old>` → `<new>` (`.pm-os-version` updated).
+- "Your brain data was not touched." (`brain/…` data dirs and `outputs/` are never modified.)
 
 ---
 
