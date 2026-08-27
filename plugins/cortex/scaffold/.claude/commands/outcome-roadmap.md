@@ -7,7 +7,7 @@ argument-hint: "[quarter or planning horizon]"
 
 Usage: `/outcome-roadmap`
 
-Produces an outcome-based roadmap that communicates direction without committing to specific features or dates prematurely. Updates the canonical roadmap file.
+Produces an outcome-based roadmap that communicates direction without committing to specific features or dates prematurely. Reframes the `## Next` / `## Later` sections of the canonical roadmap file and never touches its `## Now` open-work table.
 
 ## Execution
 
@@ -15,7 +15,7 @@ Produces an outcome-based roadmap that communicates direction without committing
 
 - `brain/knowledge/strategy.md` — OKRs, North Star, and strategic priorities
 - `templates/roadmap-template.md` — output structure (if present)
-- `brain/knowledge/product/roadmap.md` — current roadmap state
+- `brain/knowledge/product/roadmap.md` — current roadmap state. Its `## Now` table is the canonical home for **open work** (owned rows written by `/review` and `/sprint` — see `CLAUDE.md § Canonical Ownership`). This command **reads** those rows for context but **never rewrites the `## Now` table**. It reshapes only the `## Next` and `## Later` framing.
 - `brain/knowledge/product/features/` — features in progress or planned
 - `brain/hypotheses/INDEX.md` — confidence levels for planned bets
 - `brain/knowledge/users/insights.md` — user needs driving the roadmap
@@ -37,7 +37,7 @@ Produce the appropriate version or ask which to create first.
 Organize into three horizons. Do not use quarters or months as primary organizing units — use outcomes.
 
 **Now (current quarter / sprint cycle):**
-Work the team is doing right now. Specific and committed.
+Work the team is doing right now. Specific and committed. This is a *communication* view — derive it by reading the owned rows already in `roadmap.md § Now` (each row's `Target outcome` column) plus in-progress features. It restates that work as outcomes for the shareable version; it does not replace or re-author the `§ Now` table.
 - Outcome: [what we expect to be measurably different when this ships]
 - Evidence: [hypothesis confidence + user evidence supporting the bet]
 - Anchor features (if naming features): [1–2 named features — no more]
@@ -82,8 +82,13 @@ For each item in "Now" and "Next":
 
 Ask: "Update `brain/knowledge/product/roadmap.md` with this outcome roadmap? (y/n)"
 
-On yes: write the roadmap in the above structure to `knowledge/product/roadmap.md`. Preserve any existing sprint commitments and feature statuses — only update the now/next/later framing.
+On yes, update the brain file under two hard rules:
 
-Save a shareable version (without hypothesis scores and brain references) to `outputs/YYYY-MM-DD-roadmap-[audience].md`.
+- **Never rewrite the `## Now` table.** It is the canonical home for open work — owned rows (`Item · Owner · Due · Status · Source · Target outcome`) written by `/review` and `/sprint`. Rewriting it here would silently drop tracked, owned work (`CLAUDE.md § Canonical Ownership`). Leave it byte-for-byte intact. The outcome "Now" you built in Step 3 is a communication view — it lives in the shareable copy below, not in this table.
+- **Update only the `## Next` and `## Later` sections** with the reframed outcomes, preserving those sections' existing table columns. Do not touch `## Recently Shipped` or `## Archived`, and preserve any existing sprint commitments and feature statuses.
 
-Report: "Roadmap updated in `brain/knowledge/product/roadmap.md`. Shareable version saved to `outputs/`."
+If the reframe cannot be expressed without rewriting `## Now`, stop and surface that to the PM rather than overwriting it.
+
+Save the full outcome roadmap — including the Step 3 "Now" communication view — as a shareable version (without hypothesis scores and brain references) to `outputs/YYYY-MM-DD-roadmap-[audience].md`.
+
+Report: "Roadmap `## Next` / `## Later` reframed in `brain/knowledge/product/roadmap.md` (`## Now` work table left untouched). Shareable version saved to `outputs/`."
