@@ -37,18 +37,20 @@ Your strategic communication tool for aligning teams and stakeholders.
 
 ### NOW (This Quarter)
 
-**Theme 1: [Strategic Theme]**
-*Why: [Business rationale]*
-*OKR: [Which OKR this supports]*
+The NOW table mirrors the canonical work table in `brain/knowledge/product/roadmap.md § Now` — the single home for open work. Use the **same columns** so a row copies straight across in either direction, and `/review` and `/sprint` (which own that table) keep it current. Every row needs an `Owner` and a `Due` (a date, or the literal `unscheduled`); `Source` links back to the finding that created it.
 
-**Initiatives:**
-| Initiative | Description | Impact | Status | Owner |
-|------------|-------------|--------|--------|-------|
-| [Feature 1] | [What it does] | [Expected impact] | In Progress | [Name] |
-| [Feature 2] | [What it does] | [Expected impact] | Planning | [Name] |
+**Theme 1: [Strategic Theme]** *(optional grouping — keep the columns below)*
+*Why: [Business rationale]* · *OKR: [Which OKR this supports]*
+
+| Item | Owner | Due | Status | Source | Target outcome |
+|---|---|---|---|---|---|
+| [Feature 1] | [Owner] | [YYYY-MM-DD or unscheduled] | todo | [hypothesis slug / decision file / review log] | [what will be measurably different] |
+| [Feature 2] | [Owner] | [YYYY-MM-DD or unscheduled] | in-progress | [source link] | [target outcome] |
+
+`Status` is one of `todo` · `in-progress` · `blocked` · `done`.
 
 **Theme 2: [Strategic Theme]**
-[Same structure]
+[Same table structure]
 
 **NOW Success Criteria:**
 - [Metric 1 target]
