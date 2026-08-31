@@ -1,192 +1,178 @@
-# Voice Notes to Task Creation (AI Feature)
+# Voice-to-Task Capture (AI-Assisted)
 
 **Stage:** Solution Review  
-**Last Updated:** January 5, 2026  
-**Owner:** Sarah Chen  
+**Last Updated:** January 9, 2026  
+**Owner:** Maya Rodriguez  
 **Status:** In Review
 
 ---
 
-## Hypothesis
+## Problem & Bet
 
-**Problem:** PMs waste 45 minutes daily converting meeting notes, Slack threads, and voice memos into structured tasks. This creates a backlog of "I should write that down" items that never make it into the system.
+**The problem:** A product manager burns close to 45 minutes a day turning meeting notes, Slack threads, and phone memos into structured tasks. What doesn't get written down piles up as a mental backlog of "I really should log that," and most of it never reaches the task system at all.
 
-**If we** add AI-powered voice-to-task creation,  
-**then** PMs will capture 3x more action items from meetings and conversations,  
-**because** the friction of manual task creation disappears—they just talk and it's done.
+**Our bet:**
+**If we** ship AI-assisted voice-to-task capture,  
+**then** PMs will record roughly 3x more action items out of meetings and hallway conversations,  
+**because** the work of shaping a raw thought into a task disappears — they speak, and it's filed.
 
-**Supporting Evidence:**
-- User interview (Marcus, PM at Spotify): "I have 47 voice memos on my phone that are just 'remember to follow up with design about X.' I never convert them."
-- Data: 68% of tasks created in our app come from copy-paste of existing text. Only 12% are created via voice.
-- Survey: 83% of PMs say they "lose track of action items from casual conversations."
-
----
-
-## Strategic Fit
-
-**Why this? Why now?**
-
-This directly supports our Q1 goal of "Make task capture effortless" by removing the biggest friction point: structuring the task.
-
-**Impact Sizing:**
-- Users affected: 100% of active PMs (12,000 users)
-- Revenue impact: Expected to reduce churn by 8-12% (tasks not captured = product not providing value)
-- Strategic value: **High** - This is a wedge into our AI-first roadmap
-
-**Alternatives Considered:**
-- **Just improve the manual task creation form** - Doesn't solve the core problem of friction
-- **Transcription-only feature** - Requires the user to still structure the task themselves
-- **Integration with Otter.ai or Fireflies** - Adds external dependency, doesn't integrate into our workflow
+**What supports this:**
+- Interview (Marcus, PM at Spotify): "I've got 47 voice memos on my phone that are basically 'remember to follow up with design on X.' I never turn a single one into a task."
+- Product data: 68% of the tasks created in our app are pasted in from text that already exists. Only 12% start from voice.
+- Survey: 83% of PMs told us they "lose track of action items that come out of informal conversations."
 
 ---
 
-## Non-Goals
+## Why This, Why Now
 
-What we are explicitly NOT doing in v1:
-- **Automatic task assignment** - User still picks who it goes to (AI might get this wrong)
-- **Task prioritization** - AI won't suggest priority level (too context-dependent)
-- **Retroactive processing** - Won't process old voice memos/notes (just new ones going forward)
-- **Team-wide voice commands** - This is personal productivity, not team collaboration (yet)
+This is the sharpest lever on our Q1 objective, "Make task capture effortless," because it attacks the single biggest source of friction: structuring the task itself.
 
-**Trade-offs Made:**
-- **Accuracy vs Speed** - We're optimizing for speed. 80% accuracy that the user can quickly edit > 95% accuracy that takes 10 seconds.
-- **Mobile-first** - Launching on mobile only. Desktop can wait until we validate usage.
+**Sizing the impact:**
+- Reach: every active PM — all 12,000 users
+- Revenue: we expect an 8-12% reduction in churn (an action item that never gets captured is the product failing to deliver value)
+- Strategic value: **High** — this is our foot in the door for an AI-first roadmap
 
----
-
-## Success Metrics
-
-**Primary Metric:** Tasks created via voice input
-- Current: 12% of tasks created
-- Target: 40% of tasks created within 8 weeks of launch
-- Timeline: Measure weekly, expect slow ramp in week 1-2
-
-**Guardrail Metrics:** (Must not harm)
-- Task completion rate: Must stay >65% (concern: AI-created tasks are lower quality, don't get done)
-- Task edit rate: Must stay <40% (concern: users have to fix AI mistakes too often)
-- App crashes: <0.1% (voice processing could destabilize the app)
-
-**Kill Criteria:**
-If task completion rate drops below 60% OR task edit rate exceeds 50%, we will rollback and reassess.
+**What we considered instead:**
+- **Polish the manual task form** — leaves the real problem (friction) untouched
+- **Transcription only** — hands the user a wall of text and still makes them structure it
+- **Plug into Otter.ai or Fireflies** — bolts on an external dependency and never lives inside our workflow
 
 ---
 
-## Rollout Plan
+## Out of Scope (v1)
 
-**Approach:** A/B Test (50/50 split)
+Deliberately not in the first release:
+- **Auto-assigning tasks** — the user still chooses the owner (the AI could easily pick wrong)
+- **Priority suggestions** — we won't guess a priority level; it's too situational
+- **Backfilling old audio** — only new captures going forward, not the memo archive
+- **Shared/team voice commands** — this is personal capture, not team collaboration (for now)
 
-**Phase 1:** 5% of iOS users, Week 1-2
-- Passing criteria: >20% of those users create at least 1 voice task. Edit rate <50%. No major crashes.
-
-**Phase 2:** 50% of iOS users (A/B test), Week 3-6
-- Passing criteria: Primary metric >35%. Guardrails holding. Qualitative feedback is positive.
-
-**Phase 3:** 100% of iOS users, Week 7-8
-- Passing criteria: Primary metric >40%. Plan Android launch.
-
-**Rollback Plan:**
-If crashes exceed 0.5% or edit rate exceeds 60%, we will disable the feature remotely and roll out a hotfix within 24 hours.
+**Trade-offs we accepted:**
+- **Speed over perfect accuracy** — we're tuning for fast capture. 80% accuracy the user can fix in a tap beats 95% accuracy that costs ten seconds.
+- **Mobile only** — we launch on phones and validate real usage before touching desktop.
 
 ---
 
-## Behavior Examples
+## How We'll Measure Success
 
-### Core Experience
+**Primary metric:** share of tasks created by voice
+- Today: 12% of tasks
+- Target: 40% of tasks within 8 weeks of launch
+- Cadence: measured weekly; expect a slow ramp in weeks 1-2
 
-**User flow:**
-1. User taps microphone icon (new placement: bottom-right FAB, always visible)
-2. Speaks naturally: "Remind me to follow up with Jake about the pricing page redesign after he gets back from vacation"
-3. AI processes and shows preview:
-   - Task: "Follow up with Jake about pricing page redesign"
-   - Assignee: Jake Martinez (matched from team directory)
-   - Due date: Jan 15 (inferred "after vacation" from Jake's OOO calendar)
-   - Project: Pricing Redesign (matched from existing projects)
-4. User taps "Create" or edits any field
-5. Task created in <2 seconds total
+**Guardrails (must not regress):**
+- Task completion rate: stay above 65% (worry: voice-created tasks are lower quality and go undone)
+- Task edit rate: stay under 40% (worry: users constantly correcting the AI)
+- Crash rate: under 0.1% (worry: voice processing destabilizes the app)
 
-### Good/Bad/Reject Table
-
-| Scenario | User Input (Voice) | Expected Behavior | Notes |
-|----------|-------------------|-------------------|-------|
-| **Happy path** | "Set up 1:1 with Maria next Tuesday to discuss Q2 roadmap" | Task: "1:1 with Maria - Q2 roadmap"<br>Due: Next Tuesday<br>Assignee: Maria Lopez<br>Project: Q2 Planning | Matches team member, infers date, assigns to relevant project |
-| **Ambiguous date** | "Follow up with the design team sometime next week" | Task: "Follow up with design team"<br>Due: Next Monday (default to start of range)<br>Assignee: Blank (multiple people in "design team")<br>Note: Shows "Did you mean: [Design Team] tag?" | Handles ambiguity gracefully. Defaults to earliest date in range. Asks for clarification on group. |
-| **Complex action** | "I need to analyze the user research from last sprint and put together a summary for the exec team and also schedule a working session with Priya and Tom to go through the themes" | Creates 2 tasks:<br>1. "Analyze user research from Sprint 12 and create exec summary"<br>2. "Schedule working session with Priya and Tom - research themes"<br>Shows: "I heard 2 tasks. Correct?" | Intelligently splits compound requests. Asks for confirmation. |
-| **Unclear context** | "Add that thing we talked about yesterday" | Shows: "I didn't catch enough detail. Can you say more about what you want to do?" | Rejects vague input. Asks user to clarify. |
-| **Should reject** | "Delete all my tasks" | Shows: "I can't do destructive actions via voice. Please use the menu." | Never allows deletion, editing existing tasks, or bulk changes via voice (too risky) |
-| **Should reject** | "Change the due date on the API migration task to next Friday" | Shows: "I can only create new tasks via voice. To edit existing tasks, tap on them." | V1 is creation-only. No editing existing tasks. |
-
-### Edge Cases to Handle
-
-**Named entity recognition:**
-- "Set up time with Chris" → Disambiguate if multiple "Chris" on team
-- "Message Sarah Chen" → Correctly maps to Sarah in Engineering, not Sarah in Marketing
-
-**Date/time parsing:**
-- "Tomorrow" → Correct date
-- "End of week" → Friday of current week
-- "After the holidays" → First Monday after company holiday calendar
-
-**Project/tag inference:**
-- If user mentions "pricing page," auto-tag with `Pricing` project if it exists
-- If uncertain, leave blank rather than guessing wrong
-
-**Multi-language support:**
-- V1: English only
-- Reject other languages with: "Voice tasks are currently English-only. Type your task instead?"
+**When we pull the plug:**
+If completion falls below 60%, OR edit rate climbs past 50%, we roll back and reassess.
 
 ---
 
-## Technical Constraints
+## Release Plan
+
+**Approach:** A/B test, 50/50 split
+
+**Phase 1 — 5% of iOS users (Weeks 1-2)**
+- Advance if: >20% of those users create at least one voice task, edit rate stays under 50%, and there are no major crashes.
+
+**Phase 2 — 50% of iOS users, A/B (Weeks 3-6)**
+- Advance if: the primary metric clears 35%, guardrails hold, and qualitative feedback trends positive.
+
+**Phase 3 — 100% of iOS users (Weeks 7-8)**
+- Advance if: the primary metric clears 40%. Begin planning the Android build.
+
+**Rollback:**
+If crashes pass 0.5% or the edit rate passes 60%, we disable the feature remotely and ship a hotfix inside 24 hours.
+
+---
+
+## How It Works
+
+### The core flow
+
+1. The user taps the mic (new spot: a persistent bottom-right FAB)
+2. They speak plainly: "Remind me to circle back with Elena about the onboarding revamp once she's back from leave"
+3. The AI parses it and shows a preview:
+   - Task: "Follow up with Elena on the onboarding revamp"
+   - Assignee: Elena Park (matched from the team directory)
+   - Due date: Jan 15 (inferred from Elena's OOO calendar)
+   - Project: Onboarding Revamp (matched to an existing project)
+4. The user taps "Create," or edits any field
+5. Task filed in under 2 seconds end to end
+
+### Scenario matrix
+
+| Case | What they say | What the app does | Why it matters |
+|------|---------------|-------------------|----------------|
+| **Clean case** | "Set up a 1:1 with Maria next Tuesday to talk Q2 roadmap" | Task: "1:1 with Maria — Q2 roadmap" · Due: next Tuesday · Assignee: Maria Lopez · Project: Q2 Planning | Resolves the person, infers the date, files under the right project |
+| **Fuzzy date** | "Follow up with the design team sometime next week" | Task: "Follow up with design team" · Due: next Monday (start of the range) · Assignee: blank (a group) · Prompt: "Did you mean the [Design Team] tag?" | Degrades gracefully; defaults to the earliest date; asks about the group |
+| **Compound request** | "Analyze last sprint's user research and write an exec summary, and also set up a working session with Priya and Tom to walk the themes" | Splits into two tasks — (1) "Analyze Sprint 12 research and draft exec summary," (2) "Schedule working session with Priya and Tom — research themes" — and asks "I heard 2 tasks. Right?" | Breaks apart bundled asks and confirms before filing |
+| **Too vague** | "Add that thing we discussed yesterday" | Prompt: "I didn't catch enough to go on — can you say a bit more about what you want to do?" | Refuses thin input and asks for detail |
+| **Must refuse** | "Delete all my tasks" | Prompt: "I can't do destructive actions by voice. Please use the menu." | Never deletes, edits existing items, or does bulk changes by voice — too risky |
+| **Must refuse** | "Move the API migration task to next Friday" | Prompt: "Voice only creates new tasks. To edit an existing one, tap it." | v1 is create-only; no editing existing tasks |
+
+### Edge cases to handle
+
+- **Resolving names:** "set up time with Chris" → disambiguate if there are two people named Chris; "message Sarah Chen" → map to Sarah in Engineering, not Sarah in Marketing
+- **Parsing dates:** "tomorrow" → the correct date; "end of week" → this Friday; "after the holidays" → the first Monday past the company holiday calendar
+- **Inferring project/tag:** mention of "pricing page" auto-tags the `Pricing` project if it exists; when unsure, leave it blank rather than guess wrong
+- **Language:** English only in v1; other languages get "Voice tasks are English-only for now — type it instead?"
+
+---
+
+## Platform & Privacy Constraints
 
 **Platform:**
-- iOS 16+ (uses native Speech Recognition framework)
-- Android v2 (different speech API, separate implementation)
+- iOS 16+ (built on the native Speech Recognition framework)
+- Android is v2 (a different speech API and a separate build)
 
 **Performance:**
-- Task preview must appear in <2 seconds (95th percentile)
-- Voice processing happens on-device where possible (privacy)
-- Falls back to cloud for complex parsing (with user consent)
+- The task preview must render in under 2 seconds (95th percentile)
+- Parsing runs on-device wherever possible (for privacy)
+- Complex requests fall back to the cloud, with the user's consent
 
 **Privacy:**
-- Voice data is NOT stored after task creation
-- User must opt-in to cloud processing (required for complex requests)
+- Voice data is discarded once the task is created
+- Cloud processing is opt-in (and only needed for complex requests)
 - Audio never leaves the device without explicit permission
 
 ---
 
 ## Open Questions
 
-- [ ] Should we allow voice task creation from the widget? - @iOS Team
-- [ ] Do we need a tutorial/onboarding for this feature? - @Design
-- [ ] What's the accessibility story for users who can't use voice? - @Accessibility Lead
-- [ ] Should we integrate with Siri Shortcuts? - @iOS Team (deprioritized for v1, but flag for v2)
+- [ ] Should the home-screen widget support voice capture too? — @iOS Team
+- [ ] Does this feature need its own onboarding/tutorial? — @Design
+- [ ] What's the story for users who can't use voice at all? — @Accessibility Lead
+- [ ] Do we hook into Siri Shortcuts? — @iOS Team (parked for v1, flagged for v2)
 
 ---
 
 ## Appendix
 
-### User Research Quotes
+### Voices from research
 
 **Marcus (PM, Spotify):**
-> "I have 47 voice memos on my phone that are just tasks I need to do. But converting them into my task manager is such a pain that I never do it. Then I forget about them."
+> "There are 47 voice memos on my phone that are just tasks. But moving them into my task manager is such a slog that I never bother — and then I forget them entirely."
 
-**Priya (PM, Notion):**
-> "Half my tasks come from casual hallway conversations. 'Hey can you check on that API thing?' And I'm like, yeah sure. Then 3 days later I'm like... wait, what API thing?"
+**Devin (PM, Figma):**
+> "Half my tasks come out of quick hallway chats. Someone says 'hey, can you check that API thing?' and I say sure — and three days later I'm going, wait, which API thing?"
 
-**Jake (PM, Asana):**
-> "I love the idea of voice tasks, but I tried using Siri and it's so bad at understanding context. If it just creates a task that says 'follow up with design' with no other details, that's useless to me."
+**Tomás (PM, Dropbox):**
+> "I want to love voice tasks, but every time I try Siri it misses the context. A task that just says 'follow up with design' and nothing else is useless to me."
 
-### Competitive Landscape
+### Competitive landscape
 
-- **Todoist** - Has voice input but doesn't parse context (just transcribes)
-- **Things 3** - No voice input at all
-- **Linear** - Planning to ship voice commands in Q2 (per their public roadmap)
-- **Asana** - Beta testing voice task creation (invite-only)
+- **Todoist** — has voice input but doesn't understand context (it only transcribes)
+- **Things 3** — no voice input at all
+- **Linear** — voice commands are on their public roadmap for Q2
+- **Asana** — voice task creation is in an invite-only beta
 
 ### Prototype
 
-[Link to Figma prototype: voice-task-flow-v3]
+[Figma prototype: voice-task-flow-v3]
 
-### Technical Spec
+### Technical spec
 
-[Link to engineering spec: voice-task-technical-design.md]
+[Engineering spec: voice-task-technical-design.md]

@@ -42,7 +42,7 @@ Load `brain/knowledge/strategy.md` to establish strategic fit. Load relevant `br
 
 Check `brain/decisions/` for any committed decisions that constrain this feature's scope — surface them as non-goals or constraints.
 
-Load `templates/prd-template.md` for the output structure. Load `docs/examples/` (blinkit-group-order-prd.md, example_prd.md) for style and format reference. Load `rules/discovery.md` for any team-specific discovery norms that affect the PRD's assumptions section.
+Load `templates/prd-template.md` for the output structure. Load `docs/examples/` (instacart-group-order-prd.md, example_prd.md) for style and format reference. Load `rules/discovery.md` for any team-specific discovery norms that affect the PRD's assumptions section.
 
 ### Step 2: Apply the Skill
 
