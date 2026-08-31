@@ -37,14 +37,18 @@ VALIDATED_DIRS = {
     "decisions": {
         # Substrings must match the section headers/fields the schema actually
         # emits (see brain/decisions/_SCHEMA.md), lowercased. "what we are
-        # deciding" and "reversal condition" are section headers, not `field:`
-        # labels — matching the earlier `question:` / `reversal-condition:`
-        # forms blocked every conformant decision write.
+        # deciding", "## decision", and "reversal condition" are section
+        # headers, not `field:` labels — matching the earlier `question:` /
+        # `reversal-condition:` forms blocked every conformant decision write.
+        # "## decision" anchors on the `## Decision` section heading, not the
+        # `# Decision:` title's colon — a valid file with a differently-worded
+        # H1 (e.g. `# Q3 pricing`) still has the `## Decision` section, so the
+        # old `decision:` literal used to fail it spuriously.
         "required_fields": [
             "status:",
             "driver:",
             "what we are deciding",
-            "decision:",
+            "## decision",
             "reversal condition",
             "blocked by:",
             "blocks:",
