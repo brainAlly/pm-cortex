@@ -25,7 +25,7 @@ Catches gaps, challenges assumptions, and surfaces conflicts before stakeholder 
 **Check these files first:**
 1. `outputs/prds/` - Active PRDs to review
 2. `brain/knowledge/product/features/` - Reference PRDs and past reviews
-3. `sub-agents/` - The 7 reviewer personas
+3. `.claude/agents/` - The 7 registered reviewer subagents (delegate via `subagent_type`)
 4. `brain/knowledge/` - Strategic context for executive review
 5. `brain/ingestion/interviews/` - User research for UXR validation
 
@@ -91,9 +91,9 @@ Catches gaps, challenges assumptions, and surfaces conflicts before stakeholder 
 
 ### Step 3: Spawn 7 Sub-Agents in Parallel
 
-**CRITICAL: Use single message with multiple Task tool calls for parallel execution.**
+**CRITICAL: Use a single message with multiple Task tool calls for parallel execution.**
 
-For each sub-agent, create Task with:
+Delegate to each registered subagent in `.claude/agents/` via the Task tool, passing its name as `subagent_type` (e.g. `subagent_type: engineer-reviewer`). Each agent already carries its own review rubric; the frameworks below are the reference for what each covers and what to pass in. For each subagent, create a Task with:
 
 **Agent 1: Engineering Reviewer**
 ```

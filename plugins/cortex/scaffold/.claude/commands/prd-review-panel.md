@@ -36,16 +36,16 @@ Load the selected PRD in full. Load relevant brain context for each sub-agent pe
 
 Apply the **prd-review-panel** skill.
 
-Invoke sub-agents from `sub-agents/`:
-1. `engineer-reviewer.md` — technical feasibility, complexity, dependencies
-2. `designer-reviewer.md` — UX/UI feedback, user experience gaps
-3. `executive-reviewer.md` — strategic alignment, business impact
-4. `legal-advisor.md` — compliance, risk, regulatory concerns
-5. `uxr-analyst.md` — user research validation
-6. `skeptic.md` — devil's advocate, assumption challenges
-7. `customer-voice.md` — simulated user perspective
+Delegate to each reviewer as a registered subagent through the Agent/Task tool, using its name as `subagent_type`. Issue the requested reviewers' Task calls **in a single turn** so they run in parallel. Each is a read-only reviewer defined in `.claude/agents/`:
+1. `engineer-reviewer` — technical feasibility, complexity, dependencies
+2. `designer-reviewer` — UX/UI feedback, user experience gaps
+3. `executive-reviewer` — strategic alignment, business impact
+4. `legal-advisor` — compliance, risk, regulatory concerns
+5. `uxr-analyst` — user research validation
+6. `skeptic` — devil's advocate, assumption challenges
+7. `customer-voice` — simulated user perspective
 
-Use brain stakeholder profiles to make each reviewer's concerns realistic rather than generic.
+Pass each subagent the full PRD text plus the relevant brain context (stakeholder profiles, strategy, insights) so its concerns are realistic rather than generic. Then synthesize the returned reviews into one consolidated report.
 
 ### Step 3: Save Output
 

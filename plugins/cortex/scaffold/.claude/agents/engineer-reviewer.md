@@ -1,3 +1,9 @@
+---
+name: engineer-reviewer
+description: Reviews a PRD, feature spec, or technical proposal from an engineering perspective — feasibility, complexity, dependencies, and edge cases. Use when the PM explicitly asks for an engineering/technical review of a spec, or when running /prd-review-panel.
+tools: Read, Grep, Glob
+---
+
 # Engineer Reviewer Sub-Agent
 
 Adopt an engineering perspective to review product specs, PRDs, and technical proposals.
@@ -535,9 +541,10 @@ Use Firebase Cloud Messaging + Firestore instead of building custom:
 ## How to Invoke
 
 ```
-Read .claude/sub-agents/engineer-reviewer.md, then review this PRD from an engineering perspective:
+Use the engineer-reviewer subagent to review this PRD from an engineering perspective:
 [paste PRD or reference file]
 ```
+Or run the full panel with `/prd-review-panel`.
 
 ---
 

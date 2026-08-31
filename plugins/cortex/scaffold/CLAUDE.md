@@ -211,7 +211,7 @@ After producing a significant output (PRD, strategy document, decision record, e
 2. PM responds with which agents to run (or `/prd-review-panel` to run all 7 simultaneously).
 3. Never auto-run sub-agents. Never suggest sub-agents for routine outputs (plans, notes, messages).
 
-Sub-agent files live in `.claude/sub-agents/`. Invoke by reading the relevant file: *"Read .claude/sub-agents/engineer-reviewer.md, then review this PRD..."*
+Sub-agents are registered Claude Code agents in `.claude/agents/`. Invoke one by delegating to it through the Agent/Task tool with its name as the `subagent_type` (e.g. `subagent_type: engineer-reviewer`), passing the artifact to review — not by reading its file inline. They are read-only reviewers (`Read, Grep, Glob`); they never write to the brain. To run several at once, issue their Task calls in a single turn so they execute in parallel.
 
 ---
 
@@ -458,7 +458,7 @@ When the PM runs `/pm-brain upgrade`:
 2. Read `UPGRADE_MANIFEST.md` from the plugin directory.
 3. Apply all version sections above the current version in order.
 4. Report: which files were added, which were updated, which brain directories were changed.
-5. The `brain/` directory is never touched by upgrades. Only `.claude/commands/`, `.claude/skills/`, `.claude/sub-agents/`, `.claude/hooks/`, and the PM-OS system sections of this `CLAUDE.md` are updated.
+5. The `brain/` directory is never touched by upgrades. Only `.claude/commands/`, `.claude/skills/`, `.claude/agents/`, `.claude/hooks/`, and the PM-OS system sections of this `CLAUDE.md` are updated.
 
 System sections of this file are marked with `<!-- PM-OS:START -->` and `<!-- PM-OS:END -->`. Content outside these markers is the PM's own — it is never overwritten by upgrades.
 <!-- PM-OS:END -->

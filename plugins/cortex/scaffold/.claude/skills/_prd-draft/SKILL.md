@@ -497,11 +497,12 @@ Just let me know which perspectives would be helpful.
 
 When the PM requests review:
 
-1. **Invoke each sub-agent explicitly:**
+1. **Delegate to each reviewer subagent explicitly:**
    ```
    I'll review this from [Engineer / Designer / Executive] perspective.
-   Reading from `sub-agents/[agent-name].md`...
+   Delegating to the `[agent-name]` subagent (via the Task tool, subagent_type: [agent-name])...
    ```
+   The reviewers are registered agents in `.claude/agents/`; for the full panel, prefer `/prd-review-panel`, which runs them in parallel.
 
 2. **For each agent, provide:**
    - ✅ What looks good

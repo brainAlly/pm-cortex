@@ -158,7 +158,7 @@ your-product-brain/                (scaffolded by /pm-brain)
 └── .claude/
     ├── commands/                  (45 command files)
     ├── skills/                    (54 skill directories)
-    └── sub-agents/                (7 sub-agent files)
+    └── agents/                (7 sub-agent files)
 ```
 
 ```

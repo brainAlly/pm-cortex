@@ -258,10 +258,11 @@ Seven reviewer personas. Never auto-run — Claude suggests the relevant ones af
 | `skeptic` | Devil's advocate | Assumption stress-testing, problem validation, scope creep |
 | `uxr-analyst` | UX researcher | Research quality, validation gaps, evidence vs. assumption |
 
-Invoke any sub-agent by reading its file:
+Invoke any sub-agent by delegating to it as a registered subagent (via the Agent/Task tool, `subagent_type` = the agent name):
 ```
-Read .claude/sub-agents/engineer-reviewer.md, then review this PRD: [paste PRD]
+Use the engineer-reviewer subagent to review this PRD: [paste PRD]
 ```
+Or run the whole panel in parallel with `/prd-review-panel`.
 
 ---
 
@@ -288,7 +289,7 @@ pm-cortex/
     │   ├── .claude/
     │   │   ├── commands/         # 45 slash commands (local to project)
     │   │   ├── skills/           # 52 skill files (8 standalone + methodology)
-    │   │   ├── sub-agents/       # 7 reviewer personas
+    │   │   ├── agents/           # 7 reviewer subagents (registered)
     │   │   └── hooks/
     │   │       └── validate_brain_file.py   # PostToolUse schema validator
     │   ├── brain/

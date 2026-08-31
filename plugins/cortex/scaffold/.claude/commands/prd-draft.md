@@ -58,7 +58,7 @@ Auto-write: create `brain/knowledge/product/features/<feature-slug>.md` as a lig
 
 ### Step 4: Offer Follow-ups
 
-- "Want multi-perspective review? Run `/prd-review-panel` to run all 7 sub-agents."
+- "Want multi-perspective review? Run `/prd-review-panel` to run all 7 reviewer subagents in parallel."
 - "Surface the riskiest assumptions? Run `/hypothesize` to formalize them."
 - "Break this into tickets? Run `/create-tickets`."
 - "Run `/ingest` on the final PRD to route decisions into your brain."

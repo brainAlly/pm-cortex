@@ -62,7 +62,7 @@ my-product-brain/
 └── .claude/
     ├── commands/   ← 45 slash commands
     ├── skills/     ← 8 auto-invoked domain skills
-    └── sub-agents/ ← 7 reviewer personas
+    └── agents/ ← 7 reviewer personas
 ```
 
 ## Step 4: Try Your First Commands

@@ -30,7 +30,7 @@ If a PM's `.pm-os-version` is missing or unreadable, treat as v0.0.0 and apply a
 - Copy scaffold/.claude/skills/[name].md → .claude/skills/[name].md
 
 ### NEW SUB-AGENTS
-- Copy scaffold/.claude/sub-agents/[name].md → .claude/sub-agents/[name].md
+- Copy scaffold/.claude/agents/[name].md → .claude/agents/[name].md
 
 ### SCAFFOLD CHANGES
 - Create [directory]/ if not exists

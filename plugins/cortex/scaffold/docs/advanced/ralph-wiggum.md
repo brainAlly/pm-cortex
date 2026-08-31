@@ -119,13 +119,13 @@ Step 1: Generate PRD using:
 - PRD workflow from .claude/skills/_prd-draft
 
 Step 2: Run reviews using all 7 sub-agents:
-- sub-agents/engineer-reviewer.md
-- sub-agents/designer-reviewer.md
-- sub-agents/executive-reviewer.md
-- sub-agents/legal-advisor.md
-- sub-agents/uxr-analyst.md
-- sub-agents/skeptic.md
-- sub-agents/customer-voice.md
+- agents/engineer-reviewer.md
+- agents/designer-reviewer.md
+- agents/executive-reviewer.md
+- agents/legal-advisor.md
+- agents/uxr-analyst.md
+- agents/skeptic.md
+- agents/customer-voice.md
 
 Step 3: Address all critical feedback and iterate
 
@@ -443,8 +443,8 @@ Ralph Wiggum works seamlessly with other PM OS components:
 ### With Sub-Agents
 ```bash
 /ralph-loop "Generate PRD and run all reviews from:
-- sub-agents/engineer-reviewer.md
-- sub-agents/designer-reviewer.md
+- agents/engineer-reviewer.md
+- agents/designer-reviewer.md
 ..."
 ```
 

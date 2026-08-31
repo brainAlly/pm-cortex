@@ -1,3 +1,9 @@
+---
+name: designer-reviewer
+description: Reviews a PRD, feature, or flow from a product design perspective — UX gaps, usability, and interaction quality. Use when the PM explicitly asks for a design/UX review, or when running /prd-review-panel.
+tools: Read, Grep, Glob
+---
+
 # Designer Reviewer Sub-Agent
 
 Adopt a product design perspective to review specs, features, and user experiences.
@@ -400,9 +406,10 @@ Long-press to select on mobile?
 ## How to Invoke
 
 ```
-Read .claude/sub-agents/designer-reviewer.md, then review this PRD from a design perspective:
+Use the designer-reviewer subagent to review this PRD from a design perspective:
 [paste PRD]
 ```
+Or run the full panel with `/prd-review-panel`.
 
 ---
 

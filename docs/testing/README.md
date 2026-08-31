@@ -31,7 +31,7 @@ ls brain/
 ls .claude/commands/ | wc -l
 # → 45 (plus INDEX.md = 46 entries)
 
-ls .claude/sub-agents/
+ls .claude/agents/
 # → customer-voice.md  designer-reviewer.md  engineer-reviewer.md
 #   executive-reviewer.md  legal-advisor.md  skeptic.md  uxr-analyst.md
 ```
@@ -83,7 +83,7 @@ To test PM Cortex thoroughly:
    ```bash
    ls .claude/commands/ | wc -l    # expect 46 (45 commands + INDEX.md)
    ls .claude/skills/ | wc -l      # expect 54 dirs
-   ls .claude/sub-agents/          # expect 7 files
+   ls .claude/agents/          # expect 7 files
    ```
 
 ## Related Documentation

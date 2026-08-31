@@ -80,7 +80,7 @@ Root-level files and folders:
 - [ ] `.claude/` directory exists
 - [ ] `.claude/commands/` exists and is populated with command `.md` files (`INDEX.md` plus ~45 commands — not empty)
 - [ ] `.claude/skills/` exists and is populated with skill subdirectories, each containing a `SKILL.md` (~50)
-- [ ] `.claude/sub-agents/` exists and is populated with sub-agent `.md` files (7)
+- [ ] `.claude/agents/` exists and is populated with sub-agent `.md` files (7)
 - [ ] `.claude/hooks/validate_brain_file.py` exists
 - [ ] `.claude/settings.json` exists
 - [ ] `.gitignore` exists
@@ -261,7 +261,7 @@ pm-brain/
 │   │   │   └── validate_brain_file.py   # PostToolUse schema validator
 │   │   ├── commands/         # ~45 slash commands + INDEX.md (local to project)
 │   │   ├── skills/           # ~52 skill packages (8 standalone + command-backing), each a dir with SKILL.md
-│   │   ├── sub-agents/       # 7 sub-agents (local to project)
+│   │   ├── agents/           # 7 sub-agents (registered Claude Code agents, local to project)
 │   │   └── settings.json     # Wires the hook to Write|Edit
 │   ├── .gitignore            # Ignores source/, ingestion/, outputs/, maintenance/log/
 │   ├── .pm-os-version        # Current installed version

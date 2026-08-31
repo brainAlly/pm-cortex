@@ -274,10 +274,10 @@ Then: Synthesize all 4 into one report
 ```
 All agents read same PRD:
 
-Agent 1: Engineering review (sub-agents/engineer-reviewer.md)
-Agent 2: Design review (sub-agents/designer-reviewer.md)
-Agent 3: Executive review (sub-agents/executive-reviewer.md)
-Agent 4: Customer voice (sub-agents/customer-voice.md)
+Agent 1: Engineering review (agents/engineer-reviewer.md)
+Agent 2: Design review (agents/designer-reviewer.md)
+Agent 3: Executive review (agents/executive-reviewer.md)
+Agent 4: Customer voice (agents/customer-voice.md)
 
 Results: Comprehensive feedback from 4 perspectives in 5 minutes
 ```
