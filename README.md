@@ -288,7 +288,7 @@ pm-cortex/
     ├── scaffold/                  # Deterministic static structure — copied as-is
     │   ├── .claude/
     │   │   ├── commands/         # 45 slash commands (local to project)
-    │   │   ├── skills/           # 52 skill files (8 standalone + methodology)
+    │   │   ├── skills/           # 53 skill files (8 standalone + methodology)
     │   │   ├── agents/           # 7 reviewer subagents (registered)
     │   │   └── hooks/
     │   │       └── validate_brain_file.py   # PostToolUse schema validator
