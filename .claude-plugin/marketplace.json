@@ -2,10 +2,10 @@
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pm-cortex",
   "version": "1.0.0",
-  "description": "Unified PM Operating System — three-tier memory brain + 58 rationalized skills, commands, and sub-agents for product managers.",
+  "description": "Unified PM Operating System — three-tier memory brain + 60 rationalized skills, commands, and sub-agents for product managers.",
   "owner": {
     "name": "BrainAlly",
-    "email": "contact@brainly.io",
+    "email": "vivek@brainally.io",
     "url": "https://github.com/brainAlly/pm-cortex"
   },
   "plugins": [

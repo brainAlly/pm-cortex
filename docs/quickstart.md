@@ -127,4 +127,4 @@ The system compounds over time. The more you ingest, the better every command ge
 
 - 📖 [Setup Guide](https://100x-pm.vercel.app/)
 - 🐛 [Report Issues](https://github.com/brainAlly/pm-cortex/issues)
-- 📧 [Contact](mailto:engg@brainally.io)
+- 📧 [Contact](mailto:vivek@brainally.io)

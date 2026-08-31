@@ -61,4 +61,4 @@ See [Quickstart Guide](quickstart.md) for full setup including brain initializat
 
 - 🐛 [Report Issues](https://github.com/brainAlly/pm-cortex/issues)
 - 📖 [Setup Guide](https://100x-pm.vercel.app/)
-- 📧 [Contact](mailto:engg@brainally.io)
+- 📧 [Contact](mailto:vivek@brainally.io)
