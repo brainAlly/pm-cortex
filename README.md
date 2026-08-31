@@ -60,8 +60,6 @@ Then install: claude plugin install cortex@pm-cortex
 After installation, guide me through creating a brain directory, opening it in Claude Desktop, and running /pm-brain to initialize.
 ```
 
-[See the full interactive guide with guided next steps →](INSTALL.md)
-
 ---
 
 ### Manual Install
