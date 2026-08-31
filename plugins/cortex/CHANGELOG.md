@@ -20,7 +20,7 @@ All notable changes to the PM Brain plugin are documented here. Run `/pm-brain u
 - 36 skill and workflow commands organized by frequency: daily (6), weekly (6), sprint (14), occasional (11), strategic (6)
 
 **Standalone skills (8)**
-- Auto-selected by Claude: opportunity-solution-tree, market-sizing, porters-five-forces, pricing-strategy, lean-canvas, sentiment-analysis, user-personas, swot-analysis
+- User-invocable and auto-selected by Claude: opportunity-solution-tree, market-sizing, porters-five-forces, pricing-strategy, lean-canvas, sentiment-analysis, user-personas, swot-analysis
 
 **Sub-agents (7)**
 - engineer-reviewer, designer-reviewer, executive-reviewer, legal-advisor, customer-voice, skeptic, uxr-analyst

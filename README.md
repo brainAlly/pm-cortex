@@ -33,9 +33,9 @@ Every command loads relevant brain context before executing and updates the brai
 
 Organized by how often you'll reach for them: [Daily](#daily--8-commands) · [Weekly](#weekly--6-commands) · [Sprint Cadence](#sprint-cadence--14-commands) · [Occasional](#occasional--11-commands) · [Strategic](#strategic--6-commands)
 
-### 🔍 8 Standalone Skills — Auto-Selected
+### 🔍 8 Standalone Skills — Invoke or Auto-Select
 
-You never type these. Claude invokes them automatically when context signals they're relevant — opportunity solution trees during discovery, market sizing when evaluating a segment, sentiment analysis when you paste qualitative data.
+Call these by name when you want them (e.g. ask for a SWOT or a market sizing), or let Claude pull them in automatically when context signals they're relevant — opportunity solution trees during discovery, market sizing when evaluating a segment, sentiment analysis when you paste qualitative data.
 
 ### 👥 7 Sub-Agent Reviewers
 
@@ -227,11 +227,11 @@ The commands you'll reach for every working day. These should feel automatic wit
 
 ---
 
-## Standalone Skills — Auto-Selected
+## Standalone Skills — Invoke or Auto-Select
 
-You never invoke these directly. Claude pulls them in when context signals they're needed.
+Invoke these by name when you want them, or let Claude pull them in when context signals they're needed. Unlike the command-backed skills, these are directly user-invocable.
 
-| Skill | Triggered when |
+| Skill | Invoke it / auto-triggered when |
 |---|---|
 | `opportunity-solution-tree` | Structuring discovery work |
 | `market-sizing` | Evaluating a new market or segment |
