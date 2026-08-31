@@ -11,6 +11,11 @@ fields. A clean file exits 0 and is silent.
 Validates decisions/, hypotheses/, stakeholders/, and knowledge/product/features/.
 Free-form dirs (ingestion/, source/, style/, outputs/) are silently skipped.
 
+Beyond the required-field substring check, decision files get two structural
+checks (what .claude/commands/decide.md promises): the Reversal Condition must
+name a specific, observable signal (not "if things change"), and every Evidence
+row must carry a provenance tag (COUNT-THE-TAGS).
+
 Input: the PostToolUse JSON payload on stdin (written path at
 `tool_input.file_path`). A path argument is also accepted, so the script stays
 runnable by hand for tests and manual sweeps.
@@ -87,6 +92,102 @@ FEATURE_REQUIRED_FIELDS = [
 ]
 
 
+# --- Decision-specific structural checks -------------------------------------
+# A substring field-check can confirm the words "reversal condition" appear; it
+# cannot tell "if NPS drops below 30 for two months" from "if things change".
+# These two checks are what `.claude/commands/decide.md` promises and what the
+# field-check alone could not deliver:
+#   1. the Reversal Condition must name a specific, observable signal
+#   2. every Evidence row must carry a provenance tag (COUNT-THE-TAGS)
+# They run only for files in brain/decisions/.
+
+# Reject a reversal condition that is empty, still the placeholder, or one of
+# these known-vague fillers. This is a "reject known-bad" list, not a
+# "prove-it-is-good" gate, so a genuinely specific condition never trips it.
+VAGUE_REVERSAL_PHRASES = [
+    "if things change", "things change",
+    "if it's not working", "if it isn't working", "if this isn't working",
+    "if it doesn't work", "if this doesn't work",
+    "if the market shifts", "if market shifts", "market shifts",
+    "if we get pushback", "if there's pushback", "if there is pushback",
+    "if needed", "if necessary", "if appropriate", "when appropriate",
+    "if circumstances change", "if something changes", "as needed",
+    "revisit later", "revisit if needed", "tbd", "n/a", "none", "unknown",
+]
+
+# A provenance tag is a bracketed path ([ingestion/...] / [source/...]) or one
+# of the parenthetical enum forms (see brain/decisions/_SCHEMA.md).
+_TAG_PATH = re.compile(r"\[[^\]\n]*/[^\]\n]*\]")
+_TAG_PAREN = re.compile(
+    r"\((?:stakeholder-verbal|intuition|industry-knowledge|chat)\b[^)]*\)", re.I
+)
+
+
+def _section_body(raw: str, heading: str):
+    """Return the text under a `## <heading>` up to the next `## ` or `---`.
+
+    Returns None if the heading is absent (the required-field check already
+    flags a missing section, so the structural check stays silent there).
+    """
+    lines = raw.splitlines()
+    target = heading.strip().lower()
+    start = None
+    for i, line in enumerate(lines):
+        s = line.strip()
+        if s.startswith("#") and s.lstrip("#").strip().lower() == target:
+            start = i + 1
+            break
+    if start is None:
+        return None
+    body = []
+    for line in lines[start:]:
+        s = line.strip()
+        if s.startswith("## ") or s == "---":
+            break
+        body.append(line)
+    return "\n".join(body)
+
+
+def _has_provenance_tag(text: str) -> bool:
+    return bool(_TAG_PATH.search(text) or _TAG_PAREN.search(text))
+
+
+def check_reversal_condition(raw: str) -> list[str]:
+    """A decision's Reversal Condition must name a specific, observable signal."""
+    body = _section_body(raw, "Reversal Condition")
+    if body is None:
+        return []  # heading absent — required-field check handles that
+    text = re.sub(r"<!--.*?-->", "", body, flags=re.S).strip()
+    if not text or (text.startswith("[") and text.endswith("]")):
+        return ["Reversal Condition is empty or still the schema placeholder — "
+                "name a specific, observable signal."]
+    norm = " ".join(text.lower().split())
+    if len(norm.split()) <= 12 and any(p in norm for p in VAGUE_REVERSAL_PHRASES):
+        return ["Reversal Condition is too vague — name a specific, observable "
+                "signal (a metric crossing a threshold, a named event, a "
+                "stakeholder withdrawing support), not e.g. 'if things change'."]
+    return []
+
+
+def check_evidence_tags(raw: str) -> list[str]:
+    """Every Evidence row in a decision must carry a provenance tag."""
+    body = _section_body(raw, "Evidence")
+    if body is None:
+        return []
+    errors = []
+    for line in body.splitlines():
+        s = line.strip()
+        if not (s.startswith("- ") or s.startswith("* ")):
+            continue
+        item = s[2:].strip()
+        if not item or item.startswith("<!--"):
+            continue
+        if not _has_provenance_tag(item):
+            snippet = item if len(item) <= 60 else item[:57] + "..."
+            errors.append(f"Evidence row has no provenance tag: '{snippet}'")
+    return errors
+
+
 def is_schema_file(path: str) -> bool:
     return os.path.basename(path) == "_SCHEMA.md"
 
@@ -132,14 +233,21 @@ def validate(path: str) -> list[str]:
 
     try:
         with open(path, "r", encoding="utf-8") as f:
-            content = f.read().lower()
+            raw = f.read()
     except Exception as e:
         return [f"Could not read file for validation: {e}"]
+
+    content = raw.lower()
 
     errors = []
     for field in rules["required_fields"]:
         if field.lower() not in content:
             errors.append(f"Missing required field: '{field}'")
+
+    # Decision files get two structural checks the substring check can't do.
+    if dir_key == "decisions":
+        errors.extend(check_reversal_condition(raw))
+        errors.extend(check_evidence_tags(raw))
 
     return errors
 
@@ -276,10 +384,10 @@ def main():
     # Claude receives this and rewrites the file — do not claim it was blocked.
     print(f"\n[PM Cortex] Schema violation written to disk — {kind} file: {path}", file=sys.stderr)
     print(f"Schema reference: {schema}", file=sys.stderr)
-    print("Missing required fields:", file=sys.stderr)
+    print("Problems found:", file=sys.stderr)
     for e in errors:
         print(f"  - {e}", file=sys.stderr)
-    print("\nFix the missing fields and rewrite the file to match the schema.\n", file=sys.stderr)
+    print("\nFix the problems above and rewrite the file to match the schema.\n", file=sys.stderr)
 
     sys.exit(2)
 
