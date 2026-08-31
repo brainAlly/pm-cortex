@@ -11,9 +11,9 @@ All notable changes to the PM Brain plugin are documented here. Run `/pm-brain u
 **Brain architecture**
 - Three-tier memory system: source/ → ingestion/ → knowledge/ with promotion threshold at 3+ independent observations
 - style/ layer: writing.md, frameworks.md, patterns.md — personalization that evolves from usage
-- Schema-validated directories: decisions/, hypotheses/, stakeholders/
-- Provenance tagging system with 5 trust levels
-- Validation hook (validate_brain_file.py) enforcing schema compliance
+- Schema-validated directories: decisions/, hypotheses/, stakeholders/, knowledge/product/features/
+- Provenance tagging system with a fixed 6-tag enum spanning four trust levels
+- Validation hook (validate_brain_file.py) enforcing schema compliance, plus decision-specific checks: a specific/observable reversal condition and a provenance tag on every evidence row
 
 **Commands (45)**
 - 9 brain commands: /ingest, /prep, /review, /decide, /strategy-check, /ideate, /risk, /hypothesize, /plan
