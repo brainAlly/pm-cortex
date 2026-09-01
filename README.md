@@ -365,7 +365,7 @@ New commands and skills are added automatically. Your brain data — everything 
 
 Want to talk PM tooling, share feedback, or explore what we're building at BrainAlly?
 
-Reach out to Vivek: [vivek@brainally.io](mailto:vivek@brainally.io) or [vivekally@gmail.com](mailto:vivekally@gmail.com)
+Reach out to Vivek: [vivekally@gmail.com](mailto:vivekally@gmail.com)
 
 ---
 
