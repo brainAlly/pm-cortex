@@ -97,7 +97,7 @@ For each PRD touched this week:
 - Compare to last week's stage (if weekly review from last week exists)
 - Determine: Advanced, Stalled, or New
 
-Method 2 - If Git available:
+Method 2 - Only if `version_control: on` (git available — see `CLAUDE.md § Environment & Capabilities` / `.pm-os-env.json`). When git is off, skip this method and rely on Method 1 above; do not run git.
 ```bash
 # PRDs with commits this week
 git log --since="7 days ago" --name-only --pretty=format: | grep -E "prds/.*\.md$" | sort -u

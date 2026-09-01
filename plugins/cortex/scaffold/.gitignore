@@ -13,6 +13,13 @@ __pycache__/
 *.pyo
 *.pyd
 
+# ── Machine-local environment state ──────────────────────────────────────────
+# Records THIS machine's capabilities (OS, python command, git availability,
+# schema_validation / version_control flags). Machine-specific, so it never
+# travels with the repo — a clone on another machine re-runs the capability
+# check and writes its own. See CLAUDE.md § Environment & Capabilities.
+.pm-os-env.json
+
 # ── brain/source/ ────────────────────────────────────────────────────────────
 # Raw artifacts — immutable originals. Large files, sensitive transcripts.
 # Directories are tracked via .gitkeep; contents are not.

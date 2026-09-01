@@ -26,6 +26,31 @@ This system combines a three-tier memory brain with 45 PM commands and 8 standal
 
 ---
 
+## Environment & Capabilities
+
+Two capabilities depend on tools that live outside the brain — Python (for automatic schema validation) and git (for version control). The brain works fully without either; these only add a safety net and a history. This machine's state is recorded in **`.pm-os-env.json`** at the project root (machine-local, git-ignored — it never travels with the repo).
+
+**At the start of a session, read `.pm-os-env.json`.** If it is missing (fresh clone on a new machine, or it was deleted), run the capability check from `/pm-brain` § Pre-flight and write a new one before relying on either capability. Its shape:
+
+```json
+{
+  "os": "macos | linux | windows",
+  "python": { "available": true, "command": "python3" },
+  "git": { "available": true },
+  "schema_validation": "on | off",
+  "version_control": "on | off",
+  "checked": "YYYY-MM-DD"
+}
+```
+
+- **`os`** — never guess the platform or try interpreter variants at write time; read it here. The validation hook already has the resolved `python.command` baked into `.claude/settings.json`, so per-write dispatch is not your job.
+- **Schema validation mode (`schema_validation`).** `on` → the PostToolUse hook validates every write (see § Schema Compliance). `off` → **no automatic catch.** Be extra deliberate: load the area's `_SCHEMA.md` before writing any validated file, self-check the required fields by hand, and when Python becomes available, prompt the PM to run `/review` (its `--all` sweep is the manual backstop). Never tell the PM their writes were validated when this is `off`.
+- **Version control mode (`version_control`).** `on` → commit at the points the workflows describe. `off` → **do not run any git command** (no `git init`, `add`, `commit`, `log`). Skip commit steps silently rather than erroring, and note in the relevant handoff that changes are not being versioned. Skills that read git history (e.g. `/weekly-review`) fall back to their non-git method.
+
+If the PM installs a missing tool mid-stream and says so, re-run the check (verify by actually invoking the tool, not just trusting the report), update `.pm-os-env.json`, and — for Python — re-point the `.claude/settings.json` hook command at the resolved interpreter. Install instructions for both tools, per OS, live at https://100x-pm.vercel.app/prerequisites.
+
+---
+
 ## Brain Directory Map
 
 The brain lives at `brain/` in the project root. Load from the right tier for the right task.
@@ -312,6 +337,8 @@ Validated directories require schema-conforming writes. Load the area's `_SCHEMA
 Free-form (no schema enforcement): `brain/ingestion/`, `brain/source/`, `brain/style/`, `outputs/`
 
 The validation hook (`validate_brain_file.py`) fires on every `Write`/`Edit` to a validated directory: a schema violation is written to stderr and the tool exits 2, so you see it and rewrite the file. **Author brain files with `Write`/`Edit`, not Bash** (`cat > file`, redirects) — Bash writes bypass the hook and land unvalidated. `/review` runs `validate_brain_file.py --all` as a backstop to catch anything authored outside the hook.
+
+This hook runs only when **schema validation mode is `on`** (Python available — see § Environment & Capabilities). When it is `off`, nothing checks your writes automatically: load the `_SCHEMA.md` and verify the required fields yourself, and lean on the `/review` sweep once Python is back.
 
 ---
 

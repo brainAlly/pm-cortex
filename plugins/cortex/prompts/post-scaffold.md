@@ -126,6 +126,9 @@ This block goes in the final message to the PM, not just internal reasoning.
 
 ## 6. Commit
 
+**Only if `version_control: on` (git available — see `/pm-brain` § 1b Pre-flight and `.pm-os-env.json`).** If `off`, skip this step: run no git commands, and note in the handoff that the brain is set up but not versioned (install guide: https://100x-pm.vercel.app/prerequisites). This is a supported mode, not a failure.
+
+When `on`:
 - Run `git rev-parse --is-inside-work-tree` in the **current working directory** (not any subfolder).
 - If yes: stage all scaffolded files. Single commit titled `feat: initialize PM brain`.
 - If no: `git init` in the **current working directory**, then stage and commit as above.

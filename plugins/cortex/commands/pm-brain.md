@@ -32,6 +32,32 @@ Load `prompts/mode-detection.md`. Inspect the current working directory. Decide:
 
 Announce the detected mode to the operator in one line. For active-repo mode, do not proceed without confirmation.
 
+### 1b. Pre-flight capability check (before scaffolding)
+
+Two capabilities depend on tools outside the brain: **schema validation** (Python) and **version control** (git). Neither is required — the brain is plain markdown and works without them — but each adds a safety net. Detect both before scaffolding, tell the PM plainly what's missing and what it costs, and let them choose. This is the same routine `CLAUDE.md § Environment & Capabilities` re-runs later when `.pm-os-env.json` is absent (e.g. a fresh clone on a new machine).
+
+**1. Detect OS and tools.**
+- OS: `uname -s` (Darwin → `macos`, Linux → `linux`); on Windows PowerShell the platform is `windows`.
+- Python — try in order, take the **first** that prints a version, and record that command: `python3 --version`, then `py -3 --version`, then `python --version`.
+- Git: `git --version`.
+
+**2. Set the flags.**
+- Python found → `schema_validation: on`, `python.command` = the one that worked. Not found → `schema_validation: off`.
+- Git found → `version_control: on`. Not found → `version_control: off`.
+
+**3. Surface to the PM.** If both are present, say so in one line and continue. If either is missing, state plainly what's absent and its effect, then offer the choice — do not silently proceed:
+
+> Before I set up your brain, two optional tools:
+> - **Python** — [present ✓ / not found]. Runs automatic schema-checking of your brain files. Without it, I'll still keep files correct by hand, but there's no automatic safety net.
+> - **git** — [present ✓ / not found]. Runs version history and undo. Without it, the brain still works, but changes aren't tracked or reversible.
+>
+> Install guide (Mac + Windows): https://100x-pm.vercel.app/prerequisites
+> Install what's missing now and I'll switch it on, or continue without it? (install / continue)
+
+If the PM installs and reports back, **re-run step 1 and verify by actually invoking the tool** (don't trust the report), then update the flags.
+
+**4. Record it.** Write `.pm-os-env.json` at the project root using the shape in `scaffold/CLAUDE.md § Environment & Capabilities`, carrying `os`, `python`, `git`, both mode flags, and today's date under `checked`. The Python `command` and the flags are consumed in step 4b (settings.json) and step 7 (commit).
+
 ### 2. If migration mode
 
 Load `prompts/migration.md`. **Copy** (do not move) pre-existing PM artifacts into a `source/` folder. Bulk-ingest with epistemic caution. Record cross-document conflicts for the post-scaffold contradictions block.
@@ -85,6 +111,7 @@ Root-level files and folders:
 - [ ] `.claude/settings.json` exists
 - [ ] `.gitignore` exists
 - [ ] `.pm-os-version` exists
+- [ ] `.pm-os-env.json` exists (written in § 1b; machine-local capability flags)
 - [ ] `CLAUDE.md` exists
 - [ ] `brain/` exists as a **directory** (not individual brain folders at root)
 - [ ] `docs/` exists with `examples/` and `advanced/` subdirectories
@@ -116,6 +143,15 @@ Brain subdirectories (all must be **inside `brain/`**, never at project root):
 - Preserve `.claude/hooks/validate_brain_file.py` and `.claude/settings.json` exactly as shipped — they're what makes schema enforcement happen in-loop as the agent edits brain files.
 - Do not modify scaffold files at the source. If you need to change a template permanently, edit `scaffold/` and re-version the skill.
 - **Never regenerate scaffold content from memory.** If a file or directory is missing after the copy, the copy failed. Fix the copy — do not synthesize replacements.
+
+#### 4c. Wire the validation hook to this machine's Python
+
+The shipped `.claude/settings.json` runs the hook via `python3`, which is correct on most macOS/Linux setups but **wrong or absent elsewhere** (Windows exposes `py`/`python`, not `python3`; a machine may have no Python at all). Using the pre-flight result from § 1b, patch the copied `.claude/settings.json` **once, now** — so the hook is right before step 5 makes the first `Write`:
+
+- **`schema_validation: on`** — set the PostToolUse hook command's interpreter to the detected `python.command`. Keep everything else (the `$CLAUDE_PROJECT_DIR` path, the matcher) unchanged. Example: on Windows, `python3 "…/validate_brain_file.py"` → `py -3 "…/validate_brain_file.py"`.
+- **`schema_validation: off`** — remove the `PostToolUse` block entirely (leave `{ "hooks": {} }`). A hook pointing at a missing interpreter errors on **every** file write; an absent hook degrades silently, which is what we want.
+
+Do not have the agent choose the interpreter per write — it is baked here once, and the running hook is an OS subprocess the agent never mediates.
 
 ### 5. Populate placeholders from interview answers
 
@@ -153,11 +189,15 @@ Load `prompts/post-scaffold.md`. Run:
 
 ### 7. Commit
 
+**Only if `version_control: on` (git available — see § 1b).** If `off`, skip this step entirely: do not run any git command, and tell the PM in the handoff that their brain is set up but not versioned, with the install guide link. This is not an error — it's a supported mode.
+
+When `on`:
 - Run `git rev-parse --is-inside-work-tree` in the **current working directory**.
 - If already a repo: stage all scaffolded files. Single commit titled `feat: initialize PM brain`.
 - If not a repo: `git init` in the current working directory, then stage and commit.
 - **Never push remotely.** PM controls publication.
 - If any git step fails, surface the error and stop. No destructive recovery.
+- `.pm-os-env.json` is git-ignored by the scaffold, so it stays out of the commit (machine-local by design).
 
 ### 8. Hand off
 
@@ -167,6 +207,7 @@ Lead with the habit loop, not the scaffold. See `prompts/post-scaffold.md § 7` 
 2. 1-3 contradictions surfaced (or "none found").
 3. 2-3 scaffold gaps worth filling.
 4. One paragraph on what was built.
+5. **Capability status — only if something is off.** If schema validation or version control is `off`, add one line naming what's missing, its effect, and the install guide (https://100x-pm.vercel.app/prerequisites): "Note: git isn't installed, so your brain isn't versioned yet — install it anytime and I'll switch it on." Skip this line entirely when both are on.
 
 Do not lead with a folder map or "your scaffold is ready." Lead with what produces value in the next 24 hours.
 
@@ -218,6 +259,8 @@ For each version above current, in order from oldest to newest:
 
 **Critical rule:** Never write to `brain/source/`, `brain/ingestion/`, `brain/knowledge/`, `brain/hypotheses/`, `brain/decisions/`, `brain/stakeholders/`, or `outputs/`. These contain the PM's data and are never modified by upgrades.
 
+**Machine-local state:** Never overwrite `.pm-os-env.json` — it holds this machine's capability flags. If an upgrade Replaces `.claude/settings.json`, the shipped copy carries the default `python3` interpreter; **re-apply the § 4c interpreter baking afterward** (read `.pm-os-env.json` and re-point or remove the hook) so the machine's resolved Python isn't clobbered. If tools changed since setup, re-run the § 1b pre-flight to refresh the flags.
+
 ### 6. Update version
 
 Write the new version number to `.pm-os-version`.
@@ -262,9 +305,10 @@ pm-brain/
 │   │   ├── commands/         # ~45 slash commands + INDEX.md (local to project)
 │   │   ├── skills/           # ~52 skill packages (8 standalone + command-backing), each a dir with SKILL.md
 │   │   ├── agents/           # 7 sub-agents (registered Claude Code agents, local to project)
-│   │   └── settings.json     # Wires the hook to Write|Edit
-│   ├── .gitignore            # Ignores source/, ingestion/, outputs/, maintenance/log/
+│   │   └── settings.json     # Wires the hook to Write|Edit; interpreter baked to this machine's Python at init (§ 4c)
+│   ├── .gitignore            # Ignores source/, outputs/, maintenance/log/, .pm-os-env.json
 │   ├── .pm-os-version        # Current installed version
+│                             # (.pm-os-env.json is generated at init § 1b, not shipped — machine-local capability flags)
 │   ├── CLAUDE.md             # Operating manual (PM-OS:START/END markers)
 │   ├── brain/
 │   │   ├── INDEX.md
